@@ -54,13 +54,13 @@ export default function MachinesPage() {
                 src={comboPhoto}
                 alt="The Power of Choice combo vending machine, stocked with snacks and cold drinks"
               />
-              <span className="machines-photo-card__caption">The real thing — stocked and on location</span>
+              <span className="machines-photo-card__caption">The real thing, stocked and on location</span>
             </Reveal>
           </div>
         </div>
       </section>
 
-      {/* coffee machine — dark section */}
+      {/* coffee machine - dark section */}
       <section className="section section--navy machines-coffee">
         <div className="container machines-coffee__grid">
           <Reveal className="machines-coffee__photo">
@@ -70,7 +70,7 @@ export default function MachinesPage() {
             <SectionHeading
               light
               eyebrow={coffeeMachine.service}
-              title="Barista Coffee — fresh beans, zero baristas"
+              title="Barista Coffee: fresh beans, zero baristas"
               lede={coffeeMachine.intro}
             />
             <ul className="machines-coffee__list" role="list">

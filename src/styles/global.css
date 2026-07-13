@@ -1,5 +1,5 @@
 /* ============================================================
-   Vending Solutions Bahamas — design system
+   Vending Solutions Bahamas - design system
    Clean white base, Bahamian blue/green accents, corporate tone
    ============================================================ */
 
@@ -74,7 +74,7 @@ html {
 
 html,
 body {
-  overflow-x: clip; /* NOT hidden — hidden would break position: sticky pinning */
+  overflow-x: clip; /* NOT hidden - hidden would break position: sticky pinning */
 }
 
 body {

@@ -62,7 +62,7 @@ export default function IndustriesPage() {
               <div className="industries-proof__frame">
                 <img
                   src={machinesOnLocation}
-                  alt="Two Vending Solutions Bahamas machines — a snack and drink combo and a Barista coffee machine — installed in a hospital lobby"
+                  alt="Two Vending Solutions Bahamas machines, a snack and drink combo and a Barista coffee machine, installed in a hospital lobby"
                   width="2048"
                   height="1152"
                   loading="lazy"
@@ -83,7 +83,7 @@ export default function IndustriesPage() {
             <h2>Already at work across Nassau</h2>
             <p>
               Our machines are already serving staff, patients, and guests in professional
-              environments across Nassau &amp; Paradise Island — placed to look right at home
+              environments across Nassau &amp; Paradise Island, placed to look right at home
               in a lobby, break room, or waiting area.
             </p>
             <p>

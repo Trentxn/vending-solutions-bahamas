@@ -7,7 +7,7 @@
 // Until then, submissions show the error state with WhatsApp/email fallbacks.
 export const FORM_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID'
 
-// Keyless Google Maps embed — swap for an exact address embed when the
+// Keyless Google Maps embed - swap for an exact address embed when the
 // client confirms their business address.
 export const MAP_EMBED_URL = 'https://maps.google.com/maps?q=Nassau,+Bahamas&z=12&output=embed'
 

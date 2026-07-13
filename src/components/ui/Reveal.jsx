@@ -1,7 +1,7 @@
 import { motion, useReducedMotion } from 'framer-motion'
 
 /**
- * Site-wide reveal-on-scroll wrapper — the ONLY animation used outside the
+ * Site-wide reveal-on-scroll wrapper - the ONLY animation used outside the
  * Machines showcase. Never wrap the MachineShowcase in this (its transform
  * would break position: sticky pinning).
  */

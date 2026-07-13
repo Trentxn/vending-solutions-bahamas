@@ -48,7 +48,7 @@ const serviceCards = [
 
 const teaserChips = [
   { icon: ArrowDownToLine, label: 'Soft elevator delivery' },
-  { icon: Coins, label: 'Dual currency — BSD & USD' },
+  { icon: Coins, label: 'Dual currency: BSD & USD' },
   { icon: Zap, label: 'Energy-saving LED lighting' },
   { icon: Lock, label: 'Three-point security locking' },
 ]
@@ -137,7 +137,7 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="What we place"
             title="Two services. Zero hassle."
-            lede="A temperature-zoned combo machine for cold drinks and snacks, and a barista-grade coffee machine — both placed, stocked, and serviced entirely by us."
+            lede="A temperature-zoned combo machine for cold drinks and snacks, and a barista-grade coffee machine, both placed, stocked, and serviced entirely by us."
           />
           <div className="home-services__grid">
             {serviceCards.map((service, i) => (
@@ -199,7 +199,7 @@ export default function HomePage() {
             center
             eyebrow="Why choose us"
             title="Everything handled, at no cost to you"
-            lede="Eleven reasons businesses across Nassau host our machines — and keep them."
+            lede="Eleven reasons businesses across Nassau host our machines and keep them."
           />
           <div className="home-why__grid">
             {whyChooseUs.map((item, i) => (
@@ -261,7 +261,7 @@ export default function HomePage() {
             />
             <div className="home-location__caption">
               <MapPin size={18} strokeWidth={2.2} aria-hidden="true" />
-              <p>On location — serving businesses across {site.serviceArea}.</p>
+              <p>On location, serving businesses across {site.serviceArea}.</p>
             </div>
           </Reveal>
         </div>

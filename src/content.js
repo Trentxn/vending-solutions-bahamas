@@ -1,6 +1,6 @@
 // ============================================================
 // Single source of truth for ALL site copy.
-// Text comes from the client's Word document — edit here, not in pages.
+// Text comes from the client's Word document. Edit here, not in pages.
 // ============================================================
 import {
   Banknote,
@@ -74,7 +74,7 @@ export const about = {
   story: [
     'Vending Solutions Bahamas is a Bahamian-owned company, established in 2012, specializing in the supply and management of vending equipment throughout Nassau & Paradise Island.',
     'We offer a traditional as well as a hot drink vending service. Our traditional service places cold drinks and snacks in a single, temperature-zoned machine; our hot drink service offers a minimum of fifteen self-contained selections, guaranteed to satisfy the discerning user or curious observer.',
-    'Every placement comes with professional installation, weekly stocking and maintenance, and reliable customer service — hosting our equipment conveys the right image as the ideal break and meeting-room accessory, and it costs you nothing.',
+    'Every placement comes with professional installation, weekly stocking and maintenance, and reliable customer service. Hosting our equipment conveys the right image as the ideal break and meeting room accessory, and it costs you nothing.',
   ],
   mission:
     'At Vending Solutions Bahamas, we are committed to delivering convenient, reliable, and high-quality vending services while providing exceptional customer support and premium products to our customers.',
@@ -93,7 +93,7 @@ export const services = {
   snack: {
     title: 'Snack & Beverage Vending',
     summary:
-      'Cold drinks and snacks together in one temperature-zoned machine — over thirty selections stocked to match your location.',
+      'Cold drinks and snacks together in one temperature-zoned machine, with over thirty selections stocked to match your location.',
     features: [
       'Cold beverages',
       'Chips',
@@ -108,7 +108,7 @@ export const services = {
   coffee: {
     title: 'Coffee Vending',
     summary:
-      'Barista-quality hot drinks, brewed fresh from whole beans — 15–18 selections at the press of a button.',
+      'Barista-quality hot drinks, brewed fresh from whole beans, with 15 to 18 selections at the press of a button.',
     features: [
       'Freshly ground coffee beans',
       'Espresso',
@@ -117,13 +117,13 @@ export const services = {
       'Hot chocolate',
       'French vanilla',
     ],
-    selections: '15–18 beverage selections',
+    selections: '15-18 beverage selections',
   },
 }
 
 export const whyChooseUs = [
-  { icon: Banknote, title: 'No Cost Installation', text: 'We provide, install, and own the equipment — you host it.' },
-  { icon: ClipboardCheck, title: 'Fully Managed Service', text: 'Stocking, cleaning, cash handling — all handled by us.' },
+  { icon: Banknote, title: 'No Cost Installation', text: 'We provide, install, and own the equipment. You just host it.' },
+  { icon: ClipboardCheck, title: 'Fully Managed Service', text: 'Stocking, cleaning, and cash handling, all handled by us.' },
   { icon: RefreshCw, title: 'Weekly Restocking', text: 'Machines stay full, fresh, and ready for your team.' },
   { icon: Wrench, title: 'Preventative Maintenance', text: 'Scheduled upkeep keeps downtime near zero.' },
   { icon: Zap, title: 'Fast Service Calls', text: 'Trained technicians respond quickly when you need us.' },
@@ -139,7 +139,7 @@ export const comboMachine = {
   name: 'Power of Choice',
   service: 'Traditional Service',
   intro:
-    'Our combo machine serves cold drinks and snacks from a single, temperature-zoned cabinet — engineered for capacity, efficiency, and guaranteed delivery.',
+    'Our combo machine serves cold drinks and snacks from a single, temperature-zoned cabinet, engineered for capacity, efficiency, and guaranteed delivery.',
   features: [
     'Over thirty different snack and drink options in a single machine',
     'Soft Elevator Delivery System with high-waist dispensing',
@@ -153,7 +153,7 @@ export const comboMachine = {
     { label: 'Dimensions', value: '72″H × 31½″W × 37″D' },
     { label: 'Weight', value: '716 lbs' },
     { label: 'Glass front', value: '43½″H × 21″W' },
-    { label: 'Electrical', value: '110–115 VAC / 8 amps' },
+    { label: 'Electrical', value: '110-115 VAC / 8 amps' },
     { label: 'Refrigeration', value: 'R134A · CFC-free' },
     { label: 'Payment', value: 'BSD & USD bills and coins' },
     { label: 'Housing', value: 'Rust-proof steel, vandal-proof lock' },
@@ -164,16 +164,16 @@ export const coffeeMachine = {
   name: 'Barista Coffee',
   service: 'Hot Drink Service',
   intro:
-    'Between fifteen and eighteen hot drink selections, brewed fresh from whole beans — with a brewing process that is the first in the market to incorporate a pressured valve, ensuring every brewing cycle completes.',
+    'Between fifteen and eighteen hot drink selections, brewed fresh from whole beans, using a brewing process that is the first in the market to incorporate a pressured valve, ensuring every brewing cycle completes.',
   features: [
-    '15–18 different product selections',
-    'Pressured-valve brewing — first and only in the market',
+    '15-18 different product selections',
+    'Pressured-valve brewing, first and only in the market',
     'Automatic grinder regulation for perfect grind thickness',
     'Fresh bean grinder in every cycle',
     'Easy operation, high reliability',
   ],
   specs: [
-    { label: 'Selections', value: '15–18 hot beverages' },
+    { label: 'Selections', value: '15-18 hot beverages' },
     { label: 'Dimensions', value: '59″H × 19½″W × 22″D' },
     { label: 'Weight', value: '221 lbs' },
     { label: 'Power', value: '110 V 60 Hz (optional 220 V)' },
@@ -209,7 +209,7 @@ export const healthSafety = {
 }
 
 export const products = {
-  note: 'Product menus are customized per location — these are popular examples.',
+  note: 'Product menus are customized per location. These are popular examples.',
   categories: [
     {
       icon: CupSoda,
@@ -231,13 +231,13 @@ export const products = {
 
 export const howItWorks = {
   title: 'How it works',
-  lede: 'From first call to fully stocked — a simple five-step process.',
+  lede: 'From first call to fully stocked in a simple five-step process.',
   steps: [
-    { icon: PhoneCall, title: 'Contact Us', text: 'Call, WhatsApp, or send the form — tell us about your location.' },
+    { icon: PhoneCall, title: 'Contact Us', text: 'Call, WhatsApp, or send the form and tell us about your location.' },
     { icon: ClipboardCheck, title: 'Free Site Assessment', text: 'We visit, measure, and understand your team’s needs.' },
     { icon: Lightbulb, title: 'Machine Recommendation', text: 'We recommend the right machines and product mix.' },
     { icon: Truck, title: 'Installation', text: 'Professional delivery and setup, at zero cost to you.' },
-    { icon: RefreshCw, title: 'Ongoing Service', text: 'Weekly stocking, maintenance, and fast support — forever.' },
+    { icon: RefreshCw, title: 'Ongoing Service', text: 'Weekly stocking, maintenance, and fast support, for as long as you host.' },
   ],
 }
 
@@ -256,7 +256,7 @@ export const industries = {
     { icon: Store, title: 'Retail Centers', text: 'Capture foot traffic with self-serve refreshments.' },
     { icon: Warehouse, title: 'Warehouses', text: 'High-capacity machines for high-demand crews.' },
     { icon: Plane, title: 'Airports', text: 'Grab-and-go convenience for travelers on the move.' },
-    { icon: Armchair, title: 'Employee Break Rooms', text: 'The heart of our business — better breaks, happier teams.' },
+    { icon: Armchair, title: 'Employee Break Rooms', text: 'The heart of our business: better breaks, happier teams.' },
   ],
 }
 
@@ -275,7 +275,7 @@ export const faq = [
   },
   {
     q: 'How often do you visit?',
-    a: 'Based on sales volume — new locations are serviced frequently to establish demand, then on a regular schedule.',
+    a: 'Based on sales volume. New locations are serviced frequently to establish demand, then on a regular schedule.',
   },
   {
     q: 'Can products be customized?',
@@ -283,7 +283,7 @@ export const faq = [
   },
 ]
 
-// No client testimonials exist yet — keep disabled until real quotes are provided.
+// No client testimonials exist yet. Keep disabled until real quotes are provided.
 // Schema for later: { quote, name, role, organization }
 export const testimonials = {
   enabled: false,
@@ -297,23 +297,23 @@ export const cta = {
 }
 
 // NOTE: phone numbers and email were read from the machine decals in the
-// client's photos — confirm with the client before launch.
+// client's photos. Confirm with the client before launch.
 export const contact = {
   phones: [
     { display: '(242) 426-4313', tel: '+12424264313', wa: '12424264313' },
     { display: '(242) 466-6367', tel: '+12424666367', wa: '12424666367' },
   ],
   email: 'vendingsolutionsbahamas@gmail.com',
-  hours: 'Mon–Fri · 9:00 AM – 5:00 PM · 24-hour help desk for service calls',
+  hours: 'Mon to Fri · 9:00 AM to 5:00 PM · 24-hour help desk for service calls',
   location: 'Nassau, New Providence, The Bahamas',
   whatsappMessage:
-    'Hi Vending Solutions Bahamas — I’d like to request a free site survey for my business.',
+    'Hi Vending Solutions Bahamas, I’d like to request a free site survey for my business.',
 }
 
 export const machinesPage = {
   eyebrow: 'The Machines',
   headline: 'Engineered for effortless refreshment',
-  lede: 'Take a scroll through the Power of Choice combo machine — capacity, payment, delivery, efficiency, security, and self-monitoring, explained part by part.',
+  lede: 'Take a scroll through the Power of Choice combo machine: capacity, payment, delivery, efficiency, security, and self-monitoring, explained part by part.',
 }
 
 export const notFound = {

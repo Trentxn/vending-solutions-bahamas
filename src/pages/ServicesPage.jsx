@@ -20,7 +20,7 @@ export default function ServicesPage() {
             <span className="eyebrow">Our Services</span>
             <h1>Fully managed vending, two ways</h1>
             <p className="lede">
-              Snack &amp; beverage combo machines and fresh-bean coffee vending — installed,
+              Snack &amp; beverage combo machines and fresh-bean coffee vending, installed,
               stocked, and maintained by our team at no cost to your business.
             </p>
           </Reveal>
@@ -163,7 +163,7 @@ export default function ServicesPage() {
             </span>
             <h3>Your machine, your menu</h3>
             <p>
-              Every product mix is customized to your location — then refined over time based on
+              Every product mix is customized to your location, then refined over time based on
               what your team actually enjoys and buys.
             </p>
             <Link className="btn btn--green" to="/contact">

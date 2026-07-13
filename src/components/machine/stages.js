@@ -23,10 +23,10 @@ import {
  * The six scroll stages of the machine showcase.
  * All copy is grounded in the client's real spec sheet.
  *
- * focus  — SVG group keys kept at full opacity (everything else dims)
- * hl     — highlight outline rect in SVG user units (viewBox 0 0 360 640)
- * lcd    — what the status display reads during the stage
- * spot   — spotlight center (SVG user units)
+ * focus  : SVG group keys kept at full opacity (everything else dims)
+ * hl     : highlight outline rect in SVG user units (viewBox 0 0 360 640)
+ * lcd    : what the status display reads during the stage
+ * spot   : spotlight center (SVG user units)
  */
 export const STAGES = [
   {
@@ -34,7 +34,7 @@ export const STAGES = [
     eyebrow: 'Capacity',
     title: 'One machine. 30+ selections.',
     body:
-      'Snacks ride the ambient shelves up top; drinks stay chilled below — a single temperature-zoned cabinet with over thirty selections behind the glass.',
+      'Snacks ride the ambient shelves up top; drinks stay chilled below, all in a single temperature-zoned cabinet with over thirty selections behind the glass.',
     bullets: [
       { icon: Layers, text: '4 snack + 3 beverage shelves' },
       { icon: Thermometer, text: 'Dual temperature zones' },
@@ -48,7 +48,7 @@ export const STAGES = [
   {
     id: 'payment',
     eyebrow: 'Payment',
-    title: 'Pay your way — BSD or USD.',
+    title: 'Pay your way, BSD or USD.',
     body:
       'Dual-currency acceptance takes Bahamian and U.S. bills and coins alike. Punch a number on the keypad and the display handles the rest.',
     bullets: [
@@ -66,7 +66,7 @@ export const STAGES = [
     eyebrow: 'Delivery',
     title: 'Soft elevator. Guaranteed delivery.',
     body:
-      'A soft elevator lowers every item gently to a high-waist delivery door — no drops, no shaken sodas, no bending down.',
+      'A soft elevator lowers every item gently to a high-waist delivery door. No drops, no shaken sodas, no bending down.',
     bullets: [
       { icon: MoveVertical, text: 'Soft Elevator Delivery System' },
       { icon: Hand, text: 'High-waist, easy-reach door' },
@@ -86,7 +86,7 @@ export const STAGES = [
     bullets: [
       { icon: Lightbulb, text: 'Auto-dimming LED lighting' },
       { icon: Snowflake, text: 'R134A · CFC-free cooling' },
-      { icon: PlugZap, text: '110–115 VAC on just 8 amps' },
+      { icon: PlugZap, text: '110-115 VAC on just 8 amps' },
     ],
     focus: ['glass', 'leds', 'drinks', 'tempZones'],
     hl: { x: 20, y: 60, w: 204, h: 458 },
@@ -114,7 +114,7 @@ export const STAGES = [
     eyebrow: 'Reliability',
     title: 'It checks on itself. We handle the rest.',
     body:
-      'Continuous self-testing and diagnostics flag issues before anyone notices — backed by weekly restocking, fast service calls, and a 24-hour help desk.',
+      'Continuous self-testing and diagnostics flag issues before anyone notices, backed by weekly restocking, fast service calls, and a 24-hour help desk.',
     bullets: [
       { icon: Activity, text: 'Continuous self-diagnostics' },
       { icon: RefreshCw, text: 'Weekly restocking' },

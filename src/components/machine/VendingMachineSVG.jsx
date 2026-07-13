@@ -90,32 +90,32 @@ export default function VendingMachineSVG({ stage = 0, progress = null, staticMo
   const seg3 = useTransform(p, seg(3), [0, 1], { clamp: true })
   const seg5 = useTransform(p, seg(5), [0, 1], { clamp: true })
 
-  /* stage 0 — capacity */
+  /* stage 0 - capacity */
   const shineX = useTransform(seg0, [0.05, 0.9], [-50, 250])
   const shineOpacity = useTransform(seg0, [0, 0.08, 0.82, 0.95], [0, 0.16, 0.16, 0])
   const tempZoneOpacity = useTransform(seg0, [0, 0.25, 0.9, 1], [0, 1, 1, 0])
 
-  /* stage 1 — payment */
+  /* stage 1 - payment */
   const billY = useTransform(seg1, [0.05, 0.45], [-32, 0])
   const billOpacity = useTransform(seg1, [0, 0.06, 0.5, 0.65], [0, 1, 1, 0])
   const coinY = useTransform(seg1, [0.35, 0.58, 0.68, 0.78], [-36, 10, 6, 9])
   const coinOpacity = useTransform(seg1, [0.28, 0.35, 0.82, 0.92], [0, 1, 1, 0])
 
-  /* stage 2 — delivery */
+  /* stage 2 - delivery */
   const trayY = useTransform(seg2, [0.02, 0.62], [0, 168], { clamp: true })
   const flapScaleY = useTransform(seg2, [0.66, 0.84], [1, 0.06], { clamp: true })
   const doorBottleOpacity = useTransform(seg2, [0.78, 0.87], [0, 1])
   const checkScale = useTransform(seg2, [0.85, 0.95], [0.3, 1])
   const checkOpacity = useTransform(seg2, [0.84, 0.92], [0, 1])
 
-  /* stage 3 — efficiency */
+  /* stage 3 - efficiency */
   const ledOpacity = useTransform(seg3, [0, 0.22, 0.38, 0.72, 0.94], [1, 1, 0.07, 0.07, 1])
   const ledGlowOpacity = useTransform(ledOpacity, (v) => v * 0.3)
   const interiorDim = useTransform(ledOpacity, (v) => 0.55 + v * 0.45)
   const snowOpacity = useTransform(seg3, [0.05, 0.2, 0.88, 1], [0, 1, 1, 0])
   const snowScale = useTransform(seg3, [0.25, 0.5, 0.75], [1, 1.22, 1])
 
-  /* stage 5 — diagnostics */
+  /* stage 5 - diagnostics */
   const scanY = useTransform(seg5, [0.06, 0.88], [0, 468], { clamp: true })
   const scanOpacity = useTransform(seg5, [0, 0.08, 0.82, 0.94], [0, 0.9, 0.9, 0])
 
@@ -123,7 +123,7 @@ export default function VendingMachineSVG({ stage = 0, progress = null, staticMo
   const focused = (key) => st.focus.includes('all') || st.focus.includes(key)
   const dimT = staticMode ? { duration: 0 } : { duration: 0.45, ease: 'easeOut' }
   // Plain function (not a component) so the motion.g identity is stable across
-  // renders — a component defined in-render would remount its subtree on every
+  // renders - a component defined in-render would remount its subtree on every
   // stage change and restart all animations.
   const group = (k, children) => (
     <motion.g animate={{ opacity: focused(k) ? 1 : 0.24 }} transition={dimT}>
@@ -186,7 +186,7 @@ export default function VendingMachineSVG({ stage = 0, progress = null, staticMo
         </text>
         {/* seam between glass door and service column */}
         <line x1={224} y1={62} x2={224} y2={545} stroke="#0B2239" strokeOpacity={0.16} strokeWidth={1.5} />
-        {/* vents, bottom right — like the real unit */}
+        {/* vents, bottom right - like the real unit */}
         {[548, 557, 566, 575, 584].map((y) => (
           <rect key={y} x={244} y={y} width={92} height={4} rx={2} fill="#D6DEE6" />
         ))}

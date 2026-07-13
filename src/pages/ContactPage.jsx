@@ -32,7 +32,7 @@ export default function ContactPage() {
               <div className="contact-form-card__head">
                 <h2 className="contact-form-card__title">Tell us about your location</h2>
                 <p className="contact-form-card__sub">
-                  Takes about a minute. No cost, no obligation — just better breaks.
+                  Takes about a minute. No cost, no obligation, just better breaks.
                 </p>
               </div>
               <ContactForm />

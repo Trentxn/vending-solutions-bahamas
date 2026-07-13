@@ -5,7 +5,7 @@ import { STAGES } from './stages.js'
 
 /**
  * prefers-reduced-motion fallback: the six stages rendered as ordinary
- * stacked sections — same content, no pinning, no scroll-driven motion.
+ * stacked sections - same content, no pinning, no scroll-driven motion.
  */
 export default function StaticShowcase() {
   return (

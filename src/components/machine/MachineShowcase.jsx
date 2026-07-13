@@ -11,7 +11,7 @@ import { STAGE_COUNT } from './stages.js'
  * drives the machine.
  *
  * IMPORTANT: no ancestor of .showcase__sticky may have a transform or
- * non-visible overflow, or the pin breaks — never wrap this in Reveal.
+ * non-visible overflow, or the pin breaks - never wrap this in Reveal.
  */
 export default function MachineShowcase() {
   const ref = useRef(null)

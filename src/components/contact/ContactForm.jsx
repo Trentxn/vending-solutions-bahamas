@@ -36,7 +36,7 @@ export default function ContactForm() {
     e.preventDefault()
     const formData = new FormData(e.target)
 
-    // Honeypot — bots fill it; humans never see it. Pretend success, send nothing.
+    // Honeypot - bots fill it; humans never see it. Pretend success, send nothing.
     if (formData.get('_gotcha')) {
       setStatus('success')
       return
@@ -102,7 +102,7 @@ export default function ContactForm() {
               <div className="contact-form__alert-head">
                 <AlertTriangle size={18} aria-hidden="true" />
                 <p>
-                  Something didn&rsquo;t go through — your details are safe. Try again, or reach us
+                  Something didn&rsquo;t go through, but your details are safe. Try again, or reach us
                   directly:
                 </p>
               </div>

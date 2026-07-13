@@ -23,7 +23,7 @@ export default function Header() {
   return (
     <header className={`header ${scrolled ? 'header--scrolled' : ''}`}>
       <div className="container header__inner">
-        <Link to="/" className="header__brand" aria-label="Vending Solutions Bahamas — home">
+        <Link to="/" className="header__brand" aria-label="Vending Solutions Bahamas home">
           <Logo />
         </Link>
 

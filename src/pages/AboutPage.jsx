@@ -20,7 +20,7 @@ const galleryItems = [
   {
     photo: machinesOnLocationPhoto,
     alt: `A ${comboMachine.name} combo vending machine and a ${coffeeMachine.name} machine installed side by side in a hospital lobby`,
-    caption: 'On location — snacks, cold drinks & fresh coffee, side by side',
+    caption: 'On location: snacks, cold drinks & fresh coffee, side by side',
     wide: true,
   },
   {

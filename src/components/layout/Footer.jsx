@@ -12,7 +12,7 @@ export default function Footer() {
         <div className="footer__brand">
           <Logo light />
           <p className="footer__blurb">
-            Fully managed snack, beverage, and coffee vending for businesses throughout {site.serviceArea} — at no
+            Fully managed snack, beverage, and coffee vending for businesses throughout {site.serviceArea}, at no
             cost to you.
           </p>
           <span className="badge badge--green footer__badge">Est. {site.established} · Bahamian-owned</span>

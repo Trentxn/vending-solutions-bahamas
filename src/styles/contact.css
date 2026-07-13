@@ -406,7 +406,7 @@
 }
 
 /* styled fallback shown behind the iframe until the map loads (or if the
-   embed is blocked) — the iframe paints over it once ready */
+   embed is blocked) - the iframe paints over it once ready */
 .contact-map__placeholder {
   position: absolute;
   inset: 0;
