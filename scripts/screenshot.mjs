@@ -29,6 +29,29 @@ const VIEWPORTS = [
 
 const STAGE_COUNT = 6
 
+// framer-motion's whileInView leaves below-the-fold content at opacity:0
+// until it scrolls into view, which a fullPage capture can't trigger. For QA
+// we scroll through (so anything keying off scroll settles) and then force any
+// still-hidden Reveal wrappers to their final state. Scoped to [style*="opacity"]
+// under <main>, so the machine SVG's own animations are untouched.
+async function revealAll(page) {
+  await page.evaluate(async () => {
+    const step = Math.round(window.innerHeight * 0.7)
+    for (let y = 0; y <= document.body.scrollHeight; y += step) {
+      window.scrollTo(0, y)
+      await new Promise((r) => setTimeout(r, 150))
+    }
+    window.scrollTo(0, 0)
+    document.querySelectorAll('main [style*="opacity"]').forEach((el) => {
+      if (parseFloat(el.style.opacity) < 1) {
+        el.style.opacity = '1'
+        el.style.transform = 'none'
+      }
+    })
+  })
+  await page.waitForTimeout(300)
+}
+
 mkdirSync(OUT, { recursive: true })
 
 const browser = await chromium.launch({
@@ -41,7 +64,8 @@ for (const [vpName, viewport] of VIEWPORTS) {
 
   for (const [name, route] of ROUTES) {
     await page.goto(BASE + route, { waitUntil: 'networkidle' })
-    await page.waitForTimeout(600)
+    await page.waitForTimeout(400)
+    if (name !== 'machines') await revealAll(page)
     await page.screenshot({ path: join(OUT, `${name}-${vpName}.png`), fullPage: true })
     console.log(`✓ ${name}-${vpName}`)
 
@@ -51,14 +75,16 @@ for (const [vpName, viewport] of VIEWPORTS) {
         const el = document.querySelector('.showcase')
         if (!el) return null
         const r = el.getBoundingClientRect()
-        return { top: r.top + window.scrollY, height: el.offsetHeight }
+        // scroll progress spans [top, top + height - viewportHeight]
+        return { top: r.top + window.scrollY, travel: el.offsetHeight - window.innerHeight }
       })
       if (box) {
-        const stageH = box.height / STAGE_COUNT
         for (let i = 0; i < STAGE_COUNT; i++) {
+          // sample the center of stage i's scroll window
+          const progress = (i + 0.5) / STAGE_COUNT
           await page.evaluate(
             ({ top }) => window.scrollTo({ top, behavior: 'instant' }),
-            { top: box.top + i * stageH + stageH * 0.55 },
+            { top: box.top + progress * box.travel },
           )
           await page.waitForTimeout(850)
           await page.screenshot({ path: join(OUT, `machines-stage${i}-${vpName}.png`) })

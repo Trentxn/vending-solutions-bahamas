@@ -117,6 +117,10 @@ export default function ContactPage() {
         <div className="container">
           <Reveal>
             <div className="contact-map">
+              <span className="contact-map__placeholder" aria-hidden="true">
+                <MapPin size={26} strokeWidth={2} />
+                {contact.location}
+              </span>
               <iframe
                 src={MAP_EMBED_URL}
                 title="Map of Nassau, The Bahamas"

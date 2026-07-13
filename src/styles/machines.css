@@ -200,19 +200,21 @@
   }
 
   .showcase__grid {
+    display: flex;
+    flex-direction: column;
     grid-template-columns: 1fr;
     height: 100%;
-    align-content: start;
     gap: 0;
-    padding-top: 12px;
   }
 
   .showcase__machine {
-    height: 48svh;
+    height: 60svh;
+    align-items: center;
+    padding-top: 8px;
   }
 
   .machine-svg {
-    max-height: 47svh;
+    max-height: 58svh;
   }
 
   .showcase__panel {
