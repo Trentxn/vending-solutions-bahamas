@@ -1,3 +1,28 @@
+/* ---------- page hero (interior pages) ---------- */
+.page-hero {
+  position: relative;
+  padding-block: clamp(var(--space-6), 9vw, var(--space-7)) clamp(var(--space-5), 7vw, var(--space-6));
+  background:
+    radial-gradient(640px 320px at 82% -10%, rgba(0, 180, 216, 0.14), transparent 70%),
+    radial-gradient(520px 300px at 6% 110%, rgba(12, 154, 108, 0.1), transparent 70%),
+    var(--color-surface);
+  overflow: hidden;
+}
+
+.page-hero__inner {
+  max-width: 780px;
+  margin-inline: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.page-hero__inner .lede {
+  margin-inline: auto;
+}
+
 /* ---------- section heading ---------- */
 .section-heading {
   max-width: 720px;

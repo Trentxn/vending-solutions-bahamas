@@ -1,0 +1,204 @@
+/* ============================================================
+   Industries page — namespaced .industries-*
+   ============================================================ */
+
+/* ---------- industry grid ---------- */
+.industries-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-4);
+}
+
+.industries-grid > li {
+  display: block;
+}
+
+.industries-grid .icon-card {
+  height: 100%;
+}
+
+@media (max-width: 599px) {
+  .industries-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+}
+
+/* ---------- proof band ---------- */
+.industries-proof {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
+  gap: clamp(var(--space-5), 6vw, var(--space-7));
+  align-items: center;
+}
+
+.industries-proof__figure {
+  margin: 0;
+}
+
+.industries-proof__frame {
+  position: relative;
+}
+
+/* soft brand-gradient accent tucked behind the photo */
+.industries-proof__frame::before {
+  content: '';
+  position: absolute;
+  inset: 16px -16px -16px 16px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, rgba(0, 119, 182, 0.16), rgba(0, 180, 216, 0.14) 55%, rgba(12, 154, 108, 0.16));
+}
+
+.industries-proof__frame img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.industries-proof__badge {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.93);
+  backdrop-filter: blur(6px);
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  box-shadow: 0 4px 14px rgba(11, 34, 57, 0.18);
+}
+
+.industries-proof__badge svg {
+  color: var(--color-blue);
+}
+
+.industries-proof__caption {
+  margin-top: var(--space-4);
+  font-size: var(--fs-small);
+  color: var(--color-muted);
+}
+
+.industries-proof__body h2 {
+  margin-top: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.industries-proof__body p {
+  max-width: 54ch;
+  margin-bottom: var(--space-3);
+}
+
+.industries-proof__benefits {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-block: var(--space-4) var(--space-5);
+}
+
+.industries-proof__benefit {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.industries-proof__benefit-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  background: var(--color-green-soft);
+  color: var(--color-green);
+  flex-shrink: 0;
+}
+
+@media (max-width: 899px) {
+  .industries-proof {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  .industries-proof__caption {
+    margin-top: var(--space-4);
+  }
+}
+
+/* ---------- fit checklist ---------- */
+.industries-fit__inner {
+  max-width: 800px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.industries-fit__inner .eyebrow {
+  justify-content: center;
+}
+
+.industries-fit__inner h2 {
+  margin-top: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+
+.industries-fit__lede {
+  margin-bottom: var(--space-5);
+  color: var(--color-body);
+}
+
+.industries-fit__pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2) var(--space-3);
+}
+
+.industries-fit__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  border-radius: var(--radius-pill);
+  background: #fff;
+  border: 1px solid rgba(12, 154, 108, 0.28);
+  box-shadow: 0 4px 14px rgba(12, 154, 108, 0.1);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.94rem;
+  color: var(--color-ink);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.industries-fit__pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(12, 154, 108, 0.18);
+}
+
+.industries-fit__pill-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-green);
+  color: #fff;
+  flex-shrink: 0;
+}
+
+@media (max-width: 599px) {
+  .industries-fit__pills {
+    flex-direction: column;
+    align-items: center;
+  }
+}
