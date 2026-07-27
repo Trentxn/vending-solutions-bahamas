@@ -1,29 +1,53 @@
 /* ============================================================
    Vending Solutions Bahamas - design system
-   Clean white base, Bahamian blue/green accents, corporate tone
+   Two themes: "Deep Reef" dark (default) and "Ocean & Palm" light.
+   Dark values live on :root; [data-theme='light'] overrides them.
+   data-theme is set on <html> pre-paint by the script in index.html.
    ============================================================ */
 
 :root {
-  /* color */
-  --color-bg: #ffffff;
-  --color-surface: #f4f8fa;
-  --color-sand: #f7f3ea;
-  --color-ink: #0b2239;
-  --color-body: #3e5568;
-  --color-muted: #7c8da0;
-  --color-blue: #0077b6;
-  --color-blue-deep: #005f92;
-  --color-blue-bright: #00b4d8;
-  --color-blue-soft: #e3f5fb;
-  --color-navy: #0b2239;
-  --color-navy-800: #10304e;
-  --color-green: #0c9a6c;
-  --color-green-deep: #0a7f59;
-  --color-green-soft: #e6f6ef;
-  --color-line: #e3eaf1;
+  color-scheme: dark;
+
+  /* color - Deep Reef (dark, default) */
+  --color-bg: #0b1826;
+  --color-surface: #13273b;
+  --color-sand: #0f2133; /* deep alt band, stands in for the light sand tone */
+  --color-card: #152c42;
+  --color-input-bg: #0e2033;
+  --color-overlay: rgba(19, 39, 59, 0.88);
+  --color-ink: #f2f6fa;
+  --color-body: #c2d2e0;
+  --color-muted: #8ca3b8;
+  --color-blue: #2bc5df;
+  --color-blue-deep: #56d4ea; /* on dark, "deeper" reads lighter */
+  --color-blue-bright: #5ad7f0;
+  --color-blue-soft: rgba(43, 197, 223, 0.14);
+  --color-navy: #0b2239; /* always-dark contexts (footer, photo captions) */
+  --color-green: #3fb58a;
+  --color-green-deep: #62c7a1;
+  --color-green-soft: rgba(63, 181, 138, 0.16);
+  --color-line: rgba(148, 184, 214, 0.18);
   --color-whatsapp: #1fa855;
+  --color-on-accent: #06121f; /* text on aqua/mint fills - white would fail contrast */
+  --color-header-bg: rgba(11, 24, 38, 0.82);
+  --color-band-body: #b9cfe0;
+  --color-error: #f2796b;
+  --color-error-bg: rgba(211, 69, 47, 0.16);
+  --color-error-border: rgba(211, 69, 47, 0.45);
   --grad-brand: linear-gradient(135deg, var(--color-blue), var(--color-blue-bright) 55%, var(--color-green));
-  --grad-band: linear-gradient(120deg, #0b2239 0%, #0d3a5c 55%, #0c5e74 100%);
+  --grad-band: linear-gradient(120deg, #142f4a 0%, #17405c 55%, #145a66 100%);
+
+  /* machine SVG - routed through vars so the drawing reads on both grounds */
+  --vm-stroke-strong: rgba(159, 212, 234, 0.55);
+  --vm-stroke-soft: rgba(159, 212, 234, 0.25);
+  --vm-plinth: #33506e;
+  --vm-interior: #17334c;
+  --vm-rail: #6e8ba6;
+  --vm-label-muted: #a8bfd3;
+  --vm-lcd-glass: #04101c;
+  --vm-tz-chip: #06121d;
+  --vm-floor: rgba(0, 0, 0, 0.5);
+  --vm-spot-o: 1;
 
   /* type */
   --font-display: 'Sora Variable', system-ui, sans-serif;
@@ -42,9 +66,16 @@
   --radius-md: 14px;
   --radius-lg: 24px;
   --radius-pill: 999px;
-  --shadow-card: 0 10px 30px rgba(11, 34, 57, 0.08);
-  --shadow-card-hover: 0 16px 44px rgba(11, 34, 57, 0.13);
-  --shadow-header: 0 2px 24px rgba(11, 34, 57, 0.07);
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.45);
+  --shadow-card-hover: 0 16px 44px rgba(0, 0, 0, 0.55);
+  --shadow-header: 0 2px 24px rgba(0, 0, 0, 0.5);
+  --shadow-btn-primary: 0 6px 18px rgba(43, 197, 223, 0.28);
+  --shadow-btn-primary-hover: 0 10px 26px rgba(43, 197, 223, 0.38);
+  --shadow-btn-green: 0 6px 18px rgba(63, 181, 138, 0.28);
+  --glow-accent: 0 0 28px rgba(43, 197, 223, 0.3);
+
+  /* header height - single source for overlay compensation + scroll-margin */
+  --header-h: 76px;
 
   /* space */
   --space-1: 4px;
@@ -55,6 +86,61 @@
   --space-6: 64px;
   --space-7: 96px;
   --space-8: 128px;
+}
+
+/* ---------- light theme: "Ocean & Palm" ---------- */
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --color-bg: #ffffff;
+  --color-surface: #f4f8fa;
+  --color-sand: #f7f3ea;
+  --color-card: #ffffff;
+  --color-input-bg: #ffffff;
+  --color-overlay: rgba(255, 255, 255, 0.94);
+  --color-ink: #0b2239;
+  --color-body: #3e5568;
+  --color-muted: #7c8da0;
+  --color-blue: #0077b6;
+  --color-blue-deep: #005f92;
+  --color-blue-bright: #00b4d8;
+  --color-blue-soft: #e3f5fb;
+  --color-green: #0c9a6c;
+  --color-green-deep: #0a7f59;
+  --color-green-soft: #e6f6ef;
+  --color-line: #e3eaf1;
+  --color-on-accent: #ffffff;
+  --color-header-bg: rgba(255, 255, 255, 0.92);
+  --color-band-body: #b9c9d9;
+  --color-error: #c0392b;
+  --color-error-bg: #fdf1ef;
+  --color-error-border: #f3cdc5;
+  --grad-band: linear-gradient(120deg, #0b2239 0%, #0d3a5c 55%, #0c5e74 100%);
+
+  --vm-stroke-strong: rgba(11, 34, 57, 0.35);
+  --vm-stroke-soft: rgba(11, 34, 57, 0.2);
+  --vm-plinth: #22384e;
+  --vm-interior: #142a3e;
+  --vm-rail: #3e5568;
+  --vm-label-muted: #7c8da0;
+  --vm-lcd-glass: #071626;
+  --vm-tz-chip: #0b2239;
+  --vm-floor: rgba(11, 34, 57, 0.13);
+  --vm-spot-o: 0.7;
+
+  --shadow-card: 0 10px 30px rgba(11, 34, 57, 0.08);
+  --shadow-card-hover: 0 16px 44px rgba(11, 34, 57, 0.13);
+  --shadow-header: 0 2px 24px rgba(11, 34, 57, 0.07);
+  --shadow-btn-primary: 0 6px 18px rgba(0, 119, 182, 0.32);
+  --shadow-btn-primary-hover: 0 10px 26px rgba(0, 119, 182, 0.4);
+  --shadow-btn-green: 0 6px 18px rgba(12, 154, 108, 0.32);
+  --glow-accent: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+@media (max-width: 899px) {
+  :root {
+    --header-h: 66px;
+  }
 }
 
 /* ---------- reset ---------- */
@@ -149,7 +235,7 @@ ol[role='list'] {
 
 ::selection {
   background: var(--color-blue-bright);
-  color: #fff;
+  color: var(--color-on-accent);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -188,8 +274,11 @@ ol[role='list'] {
   background: var(--color-sand);
 }
 
+/* "band" sections: on dark they must read raised against the page, so they use
+   the band gradient plus hairline borders rather than a flat navy fill. */
 .section--navy {
-  background: var(--color-navy);
+  background: var(--grad-band);
+  border-block: 1px solid var(--color-line);
 }
 
 .section--navy h2,
@@ -198,11 +287,23 @@ ol[role='list'] {
 }
 
 .section--navy p {
-  color: #b9c9d9;
+  color: var(--color-band-body);
 }
 
 .section--green-soft {
   background: var(--color-green-soft);
+}
+
+/* ---------- immersive panels ---------- */
+.panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: clamp(var(--space-6), 10vw, var(--space-8));
+}
+
+.panel--full {
+  min-height: 100svh;
 }
 
 /* ---------- type utilities ---------- */
@@ -264,20 +365,20 @@ ol[role='list'] {
 
 .btn--primary {
   background: var(--color-blue);
-  color: #fff;
-  box-shadow: 0 6px 18px rgba(0, 119, 182, 0.32);
+  color: var(--color-on-accent);
+  box-shadow: var(--shadow-btn-primary);
 }
 
 .btn--primary:hover {
   background: var(--color-blue-deep);
-  box-shadow: 0 10px 26px rgba(0, 119, 182, 0.4);
+  box-shadow: var(--shadow-btn-primary-hover);
   transform: translateY(-1px);
 }
 
 .btn--green {
   background: var(--color-green);
-  color: #fff;
-  box-shadow: 0 6px 18px rgba(12, 154, 108, 0.32);
+  color: var(--color-on-accent);
+  box-shadow: var(--shadow-btn-green);
 }
 
 .btn--green:hover {
@@ -334,7 +435,7 @@ ol[role='list'] {
 
 /* ---------- cards ---------- */
 .card {
-  background: #fff;
+  background: var(--color-card);
   border: 1px solid var(--color-line);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-card);

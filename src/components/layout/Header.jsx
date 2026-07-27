@@ -4,9 +4,11 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { nav } from '../../content.js'
 import Logo from './Logo.jsx'
+import ThemeToggle from '../ui/ThemeToggle.jsx'
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
+  const [overHero, setOverHero] = useState(false)
   const [open, setOpen] = useState(false)
   const { pathname } = useLocation()
 
@@ -17,11 +19,41 @@ export default function Header() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // The home hero renders a #hero-end sentinel; while it is still below the
+  // header the bar stays transparent over the hero. Other routes have no
+  // sentinel, so the header is permanently solid there.
+  useEffect(() => {
+    const sentinel = document.getElementById('hero-end')
+    if (!sentinel) {
+      setOverHero(false)
+      return undefined
+    }
+    setOverHero(true)
+    const io = new IntersectionObserver(([entry]) => setOverHero(entry.isIntersecting), {
+      rootMargin: '-100px 0px 0px 0px',
+    })
+    io.observe(sentinel)
+    return () => io.disconnect()
+  }, [pathname])
+
   // Close the mobile panel whenever the route changes.
   useEffect(() => setOpen(false), [pathname])
 
+  const overlayPage = pathname === '/'
+  // An open menu over a transparent hero is unreadable, so force the solid look.
+  const transparent = overlayPage && overHero && !open
+
   return (
-    <header className={`header ${scrolled ? 'header--scrolled' : ''}`}>
+    <header
+      className={[
+        'header',
+        scrolled ? 'header--scrolled' : '',
+        overlayPage ? 'header--overlay-page' : '',
+        transparent ? 'header--over-hero' : '',
+      ]
+        .filter(Boolean)
+        .join(' ')}
+    >
       <div className="container header__inner">
         <Link to="/" className="header__brand" aria-label="Vending Solutions Bahamas home">
           <Logo />
@@ -36,6 +68,7 @@ export default function Header() {
         </nav>
 
         <div className="header__actions">
+          <ThemeToggle />
           <Link to="/contact#survey" className="btn btn--primary btn--sm header__cta">
             Free Site Survey
           </Link>
