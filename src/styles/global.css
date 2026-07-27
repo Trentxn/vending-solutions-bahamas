@@ -43,7 +43,9 @@
   --vm-plinth: #33506e;
   --vm-interior: #17334c;
   --vm-rail: #6e8ba6;
-  --vm-label-muted: #a8bfd3;
+  /* sits on the cream cabinet, which stays lit at full strength on the last
+     stage, so this stays dark in both themes */
+  --vm-label-muted: #6d7f92;
   --vm-lcd-glass: #04101c;
   --vm-tz-chip: #06121d;
   --vm-floor: rgba(0, 0, 0, 0.5);
@@ -397,9 +399,11 @@ ol[role='list'] {
   color: var(--color-blue);
 }
 
+/* Sits on always-dark bands, so the pill stays white and its label stays dark
+   in both themes (--color-ink would flip to near-white and disappear). */
 .btn--light {
   background: #fff;
-  color: var(--color-ink);
+  color: var(--color-navy);
   box-shadow: 0 6px 18px rgba(3, 16, 28, 0.25);
 }
 

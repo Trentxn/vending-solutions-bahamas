@@ -68,13 +68,13 @@
   gap: 6px;
   padding: 7px 14px;
   border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.93);
+  background: var(--color-overlay);
   backdrop-filter: blur(6px);
   font-family: var(--font-display);
   font-size: 0.82rem;
   font-weight: 600;
   color: var(--color-ink);
-  box-shadow: 0 4px 14px rgba(11, 34, 57, 0.18);
+  box-shadow: var(--shadow-card);
 }
 
 .industries-proof__badge svg {
@@ -163,15 +163,21 @@
   gap: var(--space-2) var(--space-3);
 }
 
+/* Edge + halo are theme-scoped: the light mint tints disappear against a dark
+   card, so dark uses the brighter reef mint at a higher alpha to keep each pill
+   outlined. Light keeps the original softer values. */
 .industries-fit__pill {
+  --pill-edge: rgba(63, 181, 138, 0.45);
+  --pill-halo: rgba(63, 181, 138, 0.22);
+  --pill-halo-hover: rgba(63, 181, 138, 0.32);
   display: inline-flex;
   align-items: center;
   gap: 8px;
   padding: 11px 20px;
   border-radius: var(--radius-pill);
-  background: #fff;
-  border: 1px solid rgba(12, 154, 108, 0.28);
-  box-shadow: 0 4px 14px rgba(12, 154, 108, 0.1);
+  background: var(--color-card);
+  border: 1px solid var(--pill-edge);
+  box-shadow: 0 4px 14px var(--pill-halo);
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 0.94rem;
@@ -179,9 +185,15 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+:root[data-theme='light'] .industries-fit__pill {
+  --pill-edge: rgba(12, 154, 108, 0.28);
+  --pill-halo: rgba(12, 154, 108, 0.1);
+  --pill-halo-hover: rgba(12, 154, 108, 0.18);
+}
+
 .industries-fit__pill:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(12, 154, 108, 0.18);
+  box-shadow: 0 8px 22px var(--pill-halo-hover);
 }
 
 .industries-fit__pill-check {
@@ -192,7 +204,7 @@
   height: 22px;
   border-radius: 50%;
   background: var(--color-green);
-  color: #fff;
+  color: var(--color-on-accent);
   flex-shrink: 0;
 }
 

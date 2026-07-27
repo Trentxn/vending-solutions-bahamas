@@ -104,7 +104,7 @@ export default function HomePage() {
           <Reveal className="home-hero__visual" delay={0.12} y={26}>
             <div className="home-hero__blob" aria-hidden="true" />
             <div className="home-hero__machine">
-              <VendingMachineSVG stage={0} staticMode />
+              <VendingMachineSVG stage={0} staticMode showAll />
             </div>
             {heroChips.map((chip, i) => (
               <div key={chip.label} className={`home-hero__chip home-hero__chip--${i + 1}`}>

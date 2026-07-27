@@ -5,7 +5,7 @@
 
 /* ---------- form + details grid ---------- */
 .contact-main {
-  scroll-margin-top: 90px; /* sticky header clearance for /contact#survey */
+  scroll-margin-top: calc(var(--header-h) + 14px); /* sticky header clearance for /contact#survey */
 }
 
 .contact-grid {
@@ -86,7 +86,7 @@
 .contact-form__textarea {
   width: 100%;
   padding: 12px 14px;
-  background: #fff;
+  background: var(--color-input-bg);
   border: 1.5px solid var(--color-line);
   border-radius: var(--radius-sm);
   color: var(--color-ink);
@@ -101,7 +101,7 @@
 .contact-form__input:hover,
 .contact-form__select:hover,
 .contact-form__textarea:hover {
-  border-color: #c6d4e0;
+  border-color: var(--color-muted);
 }
 
 .contact-form__input:focus,
@@ -109,7 +109,16 @@
 .contact-form__textarea:focus {
   outline: none;
   border-color: var(--color-blue);
-  box-shadow: 0 0 0 3px rgba(0, 119, 182, 0.15);
+  box-shadow: 0 0 0 3px rgba(43, 197, 223, 0.25); /* aqua-neutral: reads on the dark well and on white */
+}
+
+/* keep browser autofill from repainting the well white on Deep Reef */
+.contact-form__input:-webkit-autofill,
+.contact-form__select:-webkit-autofill,
+.contact-form__textarea:-webkit-autofill {
+  -webkit-text-fill-color: var(--color-ink);
+  -webkit-box-shadow: 0 0 0 1000px var(--color-input-bg) inset;
+  caret-color: var(--color-ink);
 }
 
 .contact-form__textarea {
@@ -120,10 +129,16 @@
 .contact-form__select {
   appearance: none;
   padding-right: 42px;
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237c8da0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238ca3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 14px center;
   cursor: pointer;
+}
+
+/* the chevron stroke is baked into the data URI, so the light theme needs its
+   own copy - --color-muted cannot reach inside the SVG */
+:root[data-theme='light'] .contact-form__select {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237c8da0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
 }
 
 .contact-form__select--placeholder {
@@ -132,19 +147,19 @@
 
 /* validation */
 .contact-form__input--error {
-  border-color: #d3452f;
+  border-color: var(--color-error);
 }
 
 .contact-form__input--error:focus {
-  border-color: #d3452f;
-  box-shadow: 0 0 0 3px rgba(211, 69, 47, 0.14);
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 3px var(--color-error-bg);
 }
 
 .contact-form__error {
   margin: 0;
   font-size: 0.82rem;
   font-weight: 500;
-  color: #c0392b;
+  color: var(--color-error);
 }
 
 /* interest chips */
@@ -185,7 +200,7 @@
   padding: 9px 18px;
   border: 1.5px solid var(--color-line);
   border-radius: var(--radius-pill);
-  background: #fff;
+  background: var(--color-input-bg);
   font-family: var(--font-display);
   font-size: 0.9rem;
   font-weight: 600;
@@ -203,7 +218,7 @@
 .contact-form__chip input:checked + .contact-form__chip-pill {
   background: var(--color-blue);
   border-color: var(--color-blue);
-  color: #fff;
+  color: var(--color-on-accent);
   box-shadow: 0 4px 14px rgba(0, 119, 182, 0.3);
 }
 
@@ -227,8 +242,8 @@
 /* error alert */
 .contact-form__alert {
   padding: var(--space-3) var(--space-4);
-  background: #fdf1ef;
-  border: 1px solid #f3cdc5;
+  background: var(--color-error-bg);
+  border: 1px solid var(--color-error-border);
   border-radius: var(--radius-md);
 }
 
@@ -236,7 +251,7 @@
   display: flex;
   align-items: flex-start;
   gap: var(--space-2);
-  color: #8c3122;
+  color: var(--color-error);
 }
 
 .contact-form__alert-head svg {
@@ -258,7 +273,7 @@
 }
 
 .contact-form__alert-actions .btn--outline {
-  background: #fff;
+  background: var(--color-card);
 }
 
 /* success panel */
@@ -395,21 +410,25 @@
   color: var(--color-muted);
 }
 
-/* ---------- map ---------- */
+/* ---------- map ----------
+   the Google embed is always light, so instead of fighting it (an invert
+   filter mangles the labels) the frame mats it: a card-coloured inset around
+   the tile makes the bright slab read as a deliberate inlay on Deep Reef. */
 .contact-map {
   position: relative;
   overflow: hidden;
+  padding: 6px;
   border: 1px solid var(--color-line);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
-  background: var(--color-surface);
+  background: var(--color-card);
 }
 
 /* styled fallback shown behind the iframe until the map loads (or if the
    embed is blocked) - the iframe paints over it once ready */
 .contact-map__placeholder {
   position: absolute;
-  inset: 0;
+  inset: 6px; /* matches the frame mat - abs offsets resolve against the padding box */
   z-index: 0;
   display: flex;
   flex-direction: column;
@@ -419,6 +438,7 @@
   color: var(--color-muted);
   font-family: var(--font-display);
   font-weight: 600;
+  border-radius: calc(var(--radius-lg) - 6px);
   background:
     radial-gradient(420px 220px at 50% 40%, rgba(0, 180, 216, 0.1), transparent 70%),
     var(--color-surface);
@@ -435,6 +455,7 @@
   width: 100%;
   height: 380px;
   border: 0;
+  border-radius: calc(var(--radius-lg) - 6px);
 }
 
 /* ---------- FAQ ---------- */

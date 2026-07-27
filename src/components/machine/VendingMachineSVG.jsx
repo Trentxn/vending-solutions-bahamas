@@ -80,11 +80,18 @@ function KeypadGrid() {
   )
 }
 
-export default function VendingMachineSVG({ stage = 0, progress = null, staticMode = false }) {
+export default function VendingMachineSVG({
+  stage = 0,
+  progress = null,
+  staticMode = false,
+  showAll = false,
+}) {
   const { theme } = useTheme()
   // How far unfocused groups fade back. 0.24 all but vanishes against the
   // near-black Deep Reef ground, so dark holds a little more of the drawing.
-  const DIM = theme === 'dark' ? 0.34 : 0.24
+  // showAll keeps the whole machine lit for display use (the home hero), where
+  // there is no stage being explained and dimming just looks like a dull image.
+  const DIM = showAll ? 1 : theme === 'dark' ? 0.34 : 0.24
 
   // Static fallback: a representative point (~60%) inside the stage window.
   const fallback = useMotionValue((stage + 0.6) / STAGE_COUNT)
@@ -394,22 +401,24 @@ export default function VendingMachineSVG({ stage = 0, progress = null, staticMo
         transition={staticMode ? { duration: 0 } : { duration: 0.9, ease: 'easeInOut' }}
       />
 
-      {/* per-stage highlight outline */}
-      <motion.rect
-        key={`hl-${stage}`}
-        x={st.hl.x}
-        y={st.hl.y}
-        width={st.hl.w}
-        height={st.hl.h}
-        rx={12}
-        fill="none"
-        stroke="var(--color-blue-bright)"
-        strokeWidth={2.2}
-        filter="url(#vmGlow)"
-        initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ pathLength: 1, opacity: 1 }}
-        transition={staticMode ? { duration: 0 } : { duration: 0.7, ease: 'easeOut' }}
-      />
+      {/* per-stage highlight outline (nothing to point at in display mode) */}
+      {!showAll && (
+        <motion.rect
+          key={`hl-${stage}`}
+          x={st.hl.x}
+          y={st.hl.y}
+          width={st.hl.w}
+          height={st.hl.h}
+          rx={12}
+          fill="none"
+          stroke="var(--color-blue-bright)"
+          strokeWidth={2.2}
+          filter="url(#vmGlow)"
+          initial={{ pathLength: 0, opacity: 0 }}
+          animate={{ pathLength: 1, opacity: 1 }}
+          transition={staticMode ? { duration: 0 } : { duration: 0.7, ease: 'easeOut' }}
+        />
+      )}
     </svg>
   )
 }
