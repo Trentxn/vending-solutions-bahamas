@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom'
 import Header from './Header.jsx'
 import Footer from './Footer.jsx'
 import CtaBanner from './CtaBanner.jsx'
+import DockBar from './DockBar.jsx'
 import ScrollToTop from './ScrollToTop.jsx'
 
 export default function Layout() {
@@ -17,6 +18,9 @@ export default function Layout() {
       </main>
       <CtaBanner />
       <Footer />
+      {/* Must stay a direct child of the fragment - any transformed ancestor
+          would become the containing block for its position: fixed. */}
+      <DockBar />
     </>
   )
 }

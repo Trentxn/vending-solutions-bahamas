@@ -1,12 +1,22 @@
 /* ---------- page hero (interior pages) ---------- */
+/* The tint hues/alphas are theme-scoped: the light-theme values disappear on a
+   near-black ground, so dark gets the brighter reef aqua/mint at a touch more
+   opacity - still subtle, just enough to lift the hero off the page. */
 .page-hero {
+  --hero-tint-blue: rgba(43, 197, 223, 0.16);
+  --hero-tint-green: rgba(63, 181, 138, 0.12);
   position: relative;
   padding-block: clamp(var(--space-6), 9vw, var(--space-7)) clamp(var(--space-5), 7vw, var(--space-6));
   background:
-    radial-gradient(640px 320px at 82% -10%, rgba(0, 180, 216, 0.14), transparent 70%),
-    radial-gradient(520px 300px at 6% 110%, rgba(12, 154, 108, 0.1), transparent 70%),
+    radial-gradient(640px 320px at 82% -10%, var(--hero-tint-blue), transparent 70%),
+    radial-gradient(520px 300px at 6% 110%, var(--hero-tint-green), transparent 70%),
     var(--color-surface);
   overflow: hidden;
+}
+
+:root[data-theme='light'] .page-hero {
+  --hero-tint-blue: rgba(0, 180, 216, 0.14);
+  --hero-tint-green: rgba(12, 154, 108, 0.1);
 }
 
 .page-hero__inner {
@@ -50,27 +60,30 @@
   margin-inline: auto;
 }
 
+/* --light is only used inside dark bands, so the literal white stays */
 .section-heading--light .section-heading__title {
   color: #fff;
 }
 
 .section-heading--light .section-heading__lede {
-  color: #b9c9d9;
+  color: var(--color-band-body);
 }
 
 /* ---------- icon card ---------- */
 .icon-card {
-  background: #fff;
+  background: var(--color-card);
   border: 1px solid var(--color-line);
   border-radius: var(--radius-md);
   padding: var(--space-4);
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
+/* the old hover dropped the border and let the shadow do the work - on dark a
+   black shadow separates nothing, so the edge lights up instead */
 .icon-card:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-card-hover);
-  border-color: transparent;
+  border-color: var(--color-blue);
 }
 
 .icon-card__icon {
@@ -164,7 +177,7 @@
 
 .steps__item {
   position: relative;
-  background: #fff;
+  background: var(--color-card);
   border: 1px solid var(--color-line);
   border-radius: var(--radius-md);
   padding: var(--space-4);
@@ -226,7 +239,7 @@
 }
 
 .accordion__item {
-  background: #fff;
+  background: var(--color-card);
   border: 1px solid var(--color-line);
   border-radius: var(--radius-md);
   overflow: hidden;

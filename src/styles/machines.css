@@ -28,13 +28,15 @@
 
 /* ---------- pinned showcase ---------- */
 .showcase {
-  /* 6 stages × 120vh of scroll runway */
-  height: 720vh;
+  /* scroll runway: 120vh per stage - the 6 must match STAGE_COUNT in stages.js */
+  height: calc(6 * 120vh);
   position: relative;
+  /* aqua/mint wash over the page ground: a soft reef glow behind the machine
+     on dark, and the same airy tint it always had on light */
   background:
-    radial-gradient(700px 420px at 18% 30%, rgba(0, 180, 216, 0.07), transparent 70%),
-    radial-gradient(600px 380px at 85% 75%, rgba(12, 154, 108, 0.06), transparent 70%),
-    #fff;
+    radial-gradient(700px 420px at 18% 30%, rgba(0, 180, 216, 0.1), transparent 70%),
+    radial-gradient(600px 380px at 85% 75%, rgba(12, 154, 108, 0.09), transparent 70%),
+    var(--color-bg);
 }
 
 .showcase__sticky {
@@ -98,7 +100,7 @@
   padding: 3px 10px;
   border: 1px solid var(--color-line);
   border-radius: var(--radius-pill);
-  background: #fff;
+  background: var(--color-card);
 }
 
 .showcase__title {
@@ -180,8 +182,11 @@
   padding-block: var(--space-6);
 }
 
+/* the surface/page step is gentle on dark, so a hairline crisps the edge
+   between stacked stages in both themes */
 .showcase-static--alt {
   background: var(--color-surface);
+  border-block: 1px solid var(--color-line);
 }
 
 .showcase__grid--static {
@@ -228,7 +233,7 @@
   .showcase__card {
     max-width: none;
     width: 100%;
-    background: rgba(255, 255, 255, 0.96);
+    background: var(--color-overlay);
     backdrop-filter: blur(8px);
     border: 1px solid var(--color-line);
     border-radius: var(--radius-md);

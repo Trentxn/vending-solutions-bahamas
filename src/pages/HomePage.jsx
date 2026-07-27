@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom'
+import { useReducedMotion } from 'framer-motion'
 import {
   ArrowDownToLine,
   ArrowRight,
   Banknote,
   Check,
+  ChevronDown,
   Coffee,
   Coins,
   CupSoda,
@@ -17,6 +19,9 @@ import Reveal from '../components/ui/Reveal.jsx'
 import SectionHeading from '../components/ui/SectionHeading.jsx'
 import IconCard from '../components/ui/IconCard.jsx'
 import Steps from '../components/ui/Steps.jsx'
+import MachineShowcase from '../components/machine/MachineShowcase.jsx'
+import StaticShowcase from '../components/machine/StaticShowcase.jsx'
+import VendingMachineSVG from '../components/machine/VendingMachineSVG.jsx'
 import {
   site,
   hero,
@@ -27,7 +32,6 @@ import {
   howItWorks,
   industries,
 } from '../content.js'
-import comboMachinePhoto from '../assets/photos/combo-machine.jpg'
 import locationPhoto from '../assets/photos/machines-on-location.jpg'
 import '../styles/home.css'
 
@@ -67,22 +71,24 @@ function renderHeadline(text, phrase) {
 
 export default function HomePage() {
   usePageTitle()
+  const reduced = useReducedMotion()
 
   return (
     <>
-      {/* 1. Hero */}
-      <section className="home-hero">
+      {/* 1. Hero: full-bleed, the machine itself is the opening image */}
+      <section className="home-hero panel panel--full">
         <div className="container home-hero__grid">
           <Reveal className="home-hero__copy">
             <span className="eyebrow">{site.serviceArea}</span>
             <h1 className="home-hero__title">{renderHeadline(hero.headline, HERO_GRADIENT_PHRASE)}</h1>
             <p className="lede home-hero__lede">{hero.subheading}</p>
             <div className="home-hero__actions">
-              <Link className="btn btn--primary" to={hero.primaryCta.to}>
+              <Link className="btn btn--primary btn--lg" to={hero.primaryCta.to}>
                 {hero.primaryCta.label}
               </Link>
-              <Link className="btn btn--outline" to={hero.secondaryCta.to}>
+              <Link className="home-hero__secondary" to={hero.secondaryCta.to}>
                 {hero.secondaryCta.label}
+                <ArrowRight size={16} strokeWidth={2.2} aria-hidden="true" />
               </Link>
             </div>
             <ul className="home-hero__micro" role="list">
@@ -97,13 +103,8 @@ export default function HomePage() {
 
           <Reveal className="home-hero__visual" delay={0.12} y={26}>
             <div className="home-hero__blob" aria-hidden="true" />
-            <div className="home-hero__frame">
-              <img
-                src={comboMachinePhoto}
-                alt="Power of Choice combo vending machine stocked with snacks and cold drinks"
-                fetchpriority="high"
-                decoding="async"
-              />
+            <div className="home-hero__machine">
+              <VendingMachineSVG stage={0} staticMode />
             </div>
             {heroChips.map((chip, i) => (
               <div key={chip.label} className={`home-hero__chip home-hero__chip--${i + 1}`}>
@@ -113,6 +114,16 @@ export default function HomePage() {
             ))}
           </Reveal>
         </div>
+
+        {!reduced && (
+          <span className="home-hero__cue" aria-hidden="true">
+            Scroll to explore
+            <ChevronDown size={18} />
+          </span>
+        )}
+
+        {/* Sentinel: the header stays transparent while this is on screen. */}
+        <div id="hero-end" className="home-hero__sentinel" aria-hidden="true" />
       </section>
 
       {/* 2. Trust bar */}
@@ -169,22 +180,18 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. Machine teaser */}
-      <section className="section section--navy">
-        <div className="container home-teaser__grid">
-          <Reveal className="home-teaser__copy">
+      {/* 4. Lead-in to the machine tour */}
+      <section className="section home-tour-intro">
+        <div className="container">
+          <Reveal className="home-tour-intro__copy">
             <span className="eyebrow">{comboMachine.service}</span>
             <h2>Meet the {comboMachine.name}</h2>
-            <p>{comboMachine.intro}</p>
-            <Link className="btn btn--light" to="/machines">
-              Explore the machine
-              <ArrowRight size={17} strokeWidth={2.2} aria-hidden="true" />
-            </Link>
+            <p className="lede">{comboMachine.intro}</p>
           </Reveal>
-          <div className="home-teaser__chips">
+          <div className="home-tour-intro__chips">
             {teaserChips.map((chip, i) => (
-              <Reveal key={chip.label} delay={0.1 + i * 0.07} y={14} className="home-teaser__chip">
-                <chip.icon size={20} strokeWidth={2} aria-hidden="true" />
+              <Reveal key={chip.label} delay={0.1 + i * 0.07} y={14} className="home-tour-intro__chip">
+                <chip.icon size={18} strokeWidth={2} aria-hidden="true" />
                 <span>{chip.label}</span>
               </Reveal>
             ))}
@@ -192,8 +199,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. Why choose us */}
-      <section className="section">
+      {/* 5. The scroll tour: the spine of the page.
+          Must stay a direct child here: any wrapper with a transform (Reveal!)
+          or non-visible overflow would break the sticky pin. */}
+      {reduced ? <StaticShowcase /> : <MachineShowcase />}
+
+      {/* 6. Why choose us */}
+      <section className="section section--surface">
         <div className="container">
           <SectionHeading
             center
@@ -211,8 +223,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. Industries strip */}
-      <section className="section section--sand">
+      {/* 7. Industries */}
+      <section className="section section--sand home-industries panel--full-lg">
         <div className="container">
           <SectionHeading
             center
@@ -241,30 +253,28 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 7. How it works */}
-      <section className="section section--surface">
+      {/* 8. How it works */}
+      <section className="section">
         <div className="container">
           <SectionHeading center eyebrow="Getting started" title={howItWorks.title} lede={howItWorks.lede} />
           <Steps steps={howItWorks.steps} />
         </div>
       </section>
 
-      {/* 8. Location photo band */}
-      <section className="section" aria-label="Our machines on location">
-        <div className="container">
-          <Reveal className="home-location__frame" y={24}>
-            <img
-              src={locationPhoto}
-              alt="Two Power of Choice combo vending machines installed in a hospital waiting lounge"
-              loading="lazy"
-              decoding="async"
-            />
-            <div className="home-location__caption">
-              <MapPin size={18} strokeWidth={2.2} aria-hidden="true" />
-              <p>On location, serving businesses across {site.serviceArea}.</p>
-            </div>
-          </Reveal>
-        </div>
+      {/* 9. Cinematic close: the real thing, on location */}
+      <section className="home-location" aria-label="Our machines on location">
+        <Reveal className="home-location__frame" y={24}>
+          <img
+            src={locationPhoto}
+            alt="Two Power of Choice combo vending machines installed in a hospital waiting lounge"
+            loading="lazy"
+            decoding="async"
+          />
+          <div className="home-location__caption">
+            <MapPin size={18} strokeWidth={2.2} aria-hidden="true" />
+            <p>On location, serving businesses across {site.serviceArea}.</p>
+          </div>
+        </Reveal>
       </section>
     </>
   )

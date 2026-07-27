@@ -1,6 +1,5 @@
-import { Link } from 'react-router-dom'
-import { ArrowRight } from 'lucide-react'
 import VendingMachineSVG from './VendingMachineSVG.jsx'
+import StageCard from './StageCard.jsx'
 import { STAGES } from './stages.js'
 
 /**
@@ -17,27 +16,7 @@ export default function StaticShowcase() {
               <VendingMachineSVG stage={i} staticMode />
             </div>
             <div className="showcase__card showcase__card--static">
-              <span className="showcase__eyebrow">
-                <span className="showcase__count">
-                  {String(i + 1).padStart(2, '0')} / {String(STAGES.length).padStart(2, '0')}
-                </span>
-                {st.eyebrow}
-              </span>
-              <h3 className="showcase__title">{st.title}</h3>
-              <p className="showcase__body">{st.body}</p>
-              <ul className="showcase__bullets" role="list">
-                {st.bullets.map((b) => (
-                  <li key={b.text}>
-                    <b.icon size={17} strokeWidth={2.2} aria-hidden="true" />
-                    <span>{b.text}</span>
-                  </li>
-                ))}
-              </ul>
-              {st.cta && (
-                <Link to="/contact#survey" className="btn btn--primary btn--sm showcase__cta">
-                  Get this machine free <ArrowRight size={16} />
-                </Link>
-              )}
+              <StageCard stage={i} />
             </div>
           </div>
         </div>

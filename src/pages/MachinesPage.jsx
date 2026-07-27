@@ -1,9 +1,7 @@
-import { useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { Check, ChevronDown, Coffee, ArrowRight } from 'lucide-react'
+import { Check, Coffee, ArrowRight } from 'lucide-react'
 import usePageTitle from '../hooks/usePageTitle.js'
 import { machinesPage, comboMachine, coffeeMachine, healthSafety, services } from '../content.js'
-import MachineShowcase from '../components/machine/MachineShowcase.jsx'
 import StaticShowcase from '../components/machine/StaticShowcase.jsx'
 import SectionHeading from '../components/ui/SectionHeading.jsx'
 import SpecCard from '../components/ui/SpecCard.jsx'
@@ -15,7 +13,6 @@ import '../styles/machines.css'
 
 export default function MachinesPage() {
   usePageTitle('The Machines')
-  const reduced = useReducedMotion()
 
   return (
     <>
@@ -25,17 +22,12 @@ export default function MachinesPage() {
           <span className="eyebrow">{machinesPage.eyebrow}</span>
           <h1>{machinesPage.headline}</h1>
           <p className="lede">{machinesPage.lede}</p>
-          {!reduced && (
-            <span className="machines-hero__hint" aria-hidden="true">
-              Scroll to explore
-              <ChevronDown size={18} />
-            </span>
-          )}
         </div>
       </section>
 
-      {/* the scrollytelling centerpiece (static fallback under reduced motion) */}
-      {reduced ? <StaticShowcase /> : <MachineShowcase />}
+      {/* Reference view of the same six-stage tour. The scroll-driven version
+          lives on the home page; here each stage is laid out to be read. */}
+      <StaticShowcase />
 
       {/* combo machine on paper */}
       <section className="section section--surface">

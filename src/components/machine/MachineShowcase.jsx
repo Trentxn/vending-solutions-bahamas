@@ -6,9 +6,12 @@ import ProgressRail from './ProgressRail.jsx'
 import { STAGE_COUNT } from './stages.js'
 
 /**
- * The pinned scrollytelling showcase. The outer section is STAGE_COUNT × 120vh
- * tall; the inner viewport sticks for the whole ride while scroll progress
- * drives the machine.
+ * The pinned scrollytelling showcase. The inner viewport sticks for the whole
+ * ride while scroll progress drives the machine and the copy panel.
+ *
+ * The scroll runway lives in machines.css as `.showcase { height: calc(6 * 120vh) }`
+ * - that 6 must stay in step with STAGE_COUNT, or the stage math below runs out
+ * of runway before the last stage lands.
  *
  * IMPORTANT: no ancestor of .showcase__sticky may have a transform or
  * non-visible overflow, or the pin breaks - never wrap this in Reveal.

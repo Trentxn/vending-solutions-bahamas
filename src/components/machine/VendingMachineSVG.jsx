@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { motion, useMotionValue, useTransform } from 'framer-motion'
-import { STAGES } from './stages.js'
+import { STAGES, STAGE_COUNT } from './stages.js'
+import useTheme from '../../hooks/useTheme.js'
 
 /* ------------------------------------------------------------------
    Anatomical vending machine, modeled on the client's real
@@ -9,6 +10,11 @@ import { STAGES } from './stages.js'
    - `progress` (MotionValue 0..1 across the whole showcase) drives
      continuous animations; when absent (static mode) a fixed value
      representative of the stage is used instead.
+
+   Theming: the cream cabinet is true to the real unit and pops on both
+   grounds, so it stays literal. Everything that has to sit against the
+   *page* (edges, shadow, plinth, spotlight) is routed through the --vm-*
+   custom properties defined in global.css.
    ------------------------------------------------------------------ */
 
 const SNACK_PLATES = [126, 184, 242, 300]
@@ -75,15 +81,20 @@ function KeypadGrid() {
 }
 
 export default function VendingMachineSVG({ stage = 0, progress = null, staticMode = false }) {
+  const { theme } = useTheme()
+  // How far unfocused groups fade back. 0.24 all but vanishes against the
+  // near-black Deep Reef ground, so dark holds a little more of the drawing.
+  const DIM = theme === 'dark' ? 0.34 : 0.24
+
   // Static fallback: a representative point (~60%) inside the stage window.
-  const fallback = useMotionValue((stage + 0.6) / 6)
+  const fallback = useMotionValue((stage + 0.6) / STAGE_COUNT)
   useEffect(() => {
-    if (!progress) fallback.set((stage + 0.6) / 6)
+    if (!progress) fallback.set((stage + 0.6) / STAGE_COUNT)
   }, [stage, progress, fallback])
   const p = progress ?? fallback
 
   // Per-stage sub-progress with 12% dead zones on both ends.
-  const seg = (i) => [(i + 0.12) / 6, (i + 0.88) / 6]
+  const seg = (i) => [(i + 0.12) / STAGE_COUNT, (i + 0.88) / STAGE_COUNT]
   const seg0 = useTransform(p, seg(0), [0, 1], { clamp: true })
   const seg1 = useTransform(p, seg(1), [0, 1], { clamp: true })
   const seg2 = useTransform(p, seg(2), [0, 1], { clamp: true })
@@ -126,7 +137,7 @@ export default function VendingMachineSVG({ stage = 0, progress = null, staticMo
   // renders - a component defined in-render would remount its subtree on every
   // stage change and restart all animations.
   const group = (k, children) => (
-    <motion.g animate={{ opacity: focused(k) ? 1 : 0.24 }} transition={dimT}>
+    <motion.g animate={{ opacity: focused(k) ? 1 : DIM }} transition={dimT}>
       {children}
     </motion.g>
   )
@@ -150,32 +161,34 @@ export default function VendingMachineSVG({ stage = 0, progress = null, staticMo
           <stop offset="1" stopColor="#E9DFC9" />
         </linearGradient>
         <linearGradient id="vmScan" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stopColor="#00B4D8" stopOpacity="0" />
-          <stop offset="0.5" stopColor="#00B4D8" />
-          <stop offset="1" stopColor="#00B4D8" stopOpacity="0" />
+          <stop offset="0" stopColor="var(--color-blue-bright)" stopOpacity="0" />
+          <stop offset="0.5" stopColor="var(--color-blue-bright)" />
+          <stop offset="1" stopColor="var(--color-blue-bright)" stopOpacity="0" />
         </linearGradient>
+        {/* full-strength stops; --vm-spot-o scales the whole circle back down
+            in light mode so the net result matches the original wash */}
         <radialGradient id="vmSpot" cx="0.5" cy="0.5" r="0.5">
-          <stop offset="0" stopColor="#00B4D8" stopOpacity="0.35" />
-          <stop offset="0.6" stopColor="#00B4D8" stopOpacity="0.12" />
-          <stop offset="1" stopColor="#00B4D8" stopOpacity="0" />
+          <stop offset="0" stopColor="var(--color-blue-bright)" stopOpacity="0.5" />
+          <stop offset="0.6" stopColor="var(--color-blue-bright)" stopOpacity="0.18" />
+          <stop offset="1" stopColor="var(--color-blue-bright)" stopOpacity="0" />
         </radialGradient>
         <filter id="vmGlow" x="-30%" y="-30%" width="160%" height="160%">
-          <feDropShadow dx="0" dy="0" stdDeviation="5" floodColor="#00B4D8" floodOpacity="0.5" />
+          <feDropShadow dx="0" dy="0" stdDeviation="5" floodColor="var(--color-blue-bright)" floodOpacity="0.5" />
         </filter>
       </defs>
 
       {/* drifting spotlight behind the machine */}
       <motion.g animate={{ x: st.spot.x - 180, y: st.spot.y - 300 }} transition={staticMode ? { duration: 0 } : { type: 'spring', stiffness: 60, damping: 20 }}>
-        <circle cx={180} cy={300} r={210} fill="url(#vmSpot)" />
+        <circle cx={180} cy={300} r={210} fill="url(#vmSpot)" style={{ opacity: 'var(--vm-spot-o)' }} />
       </motion.g>
 
       {/* floor shadow */}
-      <ellipse cx={180} cy={620} rx={152} ry={11} fill="#0B2239" opacity={0.13} />
+      <ellipse cx={180} cy={620} rx={152} ry={11} fill="var(--vm-floor)" />
 
       {/* cabinet */}
       {group('cabinet', <>
-        <rect x={8} y={8} width={344} height={584} rx={16} fill="url(#vmCabinet)" stroke="#0B2239" strokeOpacity={0.25} strokeWidth={1.5} />
-        <rect x={20} y={592} width={320} height={16} rx={5} fill="#22384E" />
+        <rect x={8} y={8} width={344} height={584} rx={16} fill="url(#vmCabinet)" stroke="var(--vm-stroke-strong)" strokeWidth={1.5} />
+        <rect x={20} y={592} width={320} height={16} rx={5} fill="var(--vm-plinth)" />
         {/* brand band */}
         <path d="M24 8 h312 a16 16 0 0 1 16 16 v30 h-344 v-30 a16 16 0 0 1 16 -16 z" fill="url(#vmBand)" />
         <text x={180} y={34} textAnchor="middle" fontFamily="'Sora Variable', sans-serif" fontStyle="italic" fontWeight="700" fontSize="15" fill="#fff" letterSpacing="0.5">
@@ -185,7 +198,7 @@ export default function VendingMachineSVG({ stage = 0, progress = null, staticMo
           VENDING SOLUTIONS BAHAMAS
         </text>
         {/* seam between glass door and service column */}
-        <line x1={224} y1={62} x2={224} y2={545} stroke="#0B2239" strokeOpacity={0.16} strokeWidth={1.5} />
+        <line x1={224} y1={62} x2={224} y2={545} stroke="var(--vm-stroke-soft)" strokeWidth={1.5} />
         {/* vents, bottom right - like the real unit */}
         {[548, 557, 566, 575, 584].map((y) => (
           <rect key={y} x={244} y={y} width={92} height={4} rx={2} fill="#D6DEE6" />
@@ -195,7 +208,7 @@ export default function VendingMachineSVG({ stage = 0, progress = null, staticMo
       {/* glass window & interior */}
       {group('glass', <>
         {/* dark interior */}
-        <motion.rect x={24} y={66} width={196} height={446} rx={10} fill="#142A3E" style={{ opacity: interiorDim }} />
+        <motion.rect x={24} y={66} width={196} height={446} rx={10} fill="var(--vm-interior)" style={{ opacity: interiorDim }} />
       </>)}
 
       {/* LED strips + glow */}
@@ -228,19 +241,19 @@ export default function VendingMachineSVG({ stage = 0, progress = null, staticMo
       {group('tempZones', <>
         <motion.g style={{ opacity: tempZoneOpacity }}>
           <rect x={26} y={70} width={192} height={236} rx={8} fill="#F2B33D" opacity={0.14} />
-          <rect x={34} y={80} width={64} height={15} rx={7.5} fill="#0B2239" opacity={0.75} />
+          <rect x={34} y={80} width={64} height={15} rx={7.5} fill="var(--vm-tz-chip)" opacity={0.75} />
           <text x={66} y={90.5} textAnchor="middle" fontFamily="'Inter Variable', sans-serif" fontSize="7.5" fontWeight="600" fill="#F2B33D" letterSpacing="1.2">
             AMBIENT
           </text>
           <rect x={26} y={310} width={192} height={200} rx={8} fill="#00B4D8" opacity={0.13} />
-          <rect x={34} y={318} width={78} height={15} rx={7.5} fill="#0B2239" opacity={0.75} />
+          <rect x={34} y={318} width={78} height={15} rx={7.5} fill="var(--vm-tz-chip)" opacity={0.75} />
           <text x={73} y={328.5} textAnchor="middle" fontFamily="'Inter Variable', sans-serif" fontSize="7.5" fontWeight="600" fill="#7BE3FF" letterSpacing="1.2">
             CHILLED 4°C
           </text>
         </motion.g>
         {/* snowflake badge (stage 3) */}
         <motion.g style={{ opacity: snowOpacity, scale: snowScale, originX: 0.5, originY: 0.5 }}>
-          <circle cx={122} cy={420} r={15} fill="#0B2239" opacity={0.8} />
+          <circle cx={122} cy={420} r={15} fill="var(--vm-tz-chip)" opacity={0.8} />
           <text x={122} y={426} textAnchor="middle" fontSize="16" fill="#7BE3FF">
             ❄
           </text>
@@ -249,7 +262,7 @@ export default function VendingMachineSVG({ stage = 0, progress = null, staticMo
 
       {/* elevator lane */}
       {group('elevator', <>
-        <line x1={186} y1={68} x2={186} y2={510} stroke="#3E5568" strokeWidth={1} opacity={0.5} />
+        <line x1={186} y1={68} x2={186} y2={510} stroke="var(--vm-rail)" strokeWidth={1} opacity={0.5} />
         <line x1={207} y1={72} x2={207} y2={504} stroke="#8FA3B8" strokeWidth={2.5} strokeDasharray="5 4" opacity={0.75} />
         <motion.g style={{ y: trayY }}>
           <Bottle x={190} bottomY={208} color="#0C9A6C" />
@@ -263,14 +276,14 @@ export default function VendingMachineSVG({ stage = 0, progress = null, staticMo
         <motion.g style={{ x: shineX, opacity: shineOpacity }}>
           <rect x={30} y={66} width={34} height={446} fill="#fff" transform="skewX(-12)" />
         </motion.g>
-        <rect x={24} y={66} width={196} height={446} rx={10} fill="none" stroke="#0B2239" strokeOpacity={0.35} strokeWidth={2} />
+        <rect x={24} y={66} width={196} height={446} rx={10} fill="none" stroke="var(--vm-stroke-strong)" strokeWidth={2} />
       </>)}
 
       {/* payment & service column */}
       {group('payment', <>
         {/* status display */}
         <rect x={242} y={80} width={96} height={36} rx={6} fill="#0B2239" />
-        <rect x={246} y={84} width={88} height={28} rx={4} fill="#071626" />
+        <rect x={246} y={84} width={88} height={28} rx={4} fill="var(--vm-lcd-glass)" />
         <motion.text
           key={`lcd-${stage}`}
           initial={{ opacity: 0 }}
@@ -314,15 +327,15 @@ export default function VendingMachineSVG({ stage = 0, progress = null, staticMo
 
       {/* high-waist delivery door */}
       {group('door', <>
-        <rect x={238} y={286} width={104} height={104} rx={12} fill="#E3DCCB" stroke="#0B2239" strokeOpacity={0.2} strokeWidth={1.5} />
-        <rect x={246} y={294} width={88} height={88} rx={8} fill="#142A3E" />
+        <rect x={238} y={286} width={104} height={104} rx={12} fill="#E3DCCB" stroke="var(--vm-stroke-soft)" strokeWidth={1.5} />
+        <rect x={246} y={294} width={88} height={88} rx={8} fill="var(--vm-interior)" />
         {/* delivered bottle appears when the flap opens */}
         <motion.g style={{ opacity: doorBottleOpacity }}>
           <Bottle x={282} bottomY={376} color="#0C9A6C" />
         </motion.g>
         <motion.rect x={246} y={294} width={88} height={88} rx={8} fill="#9FB3C4" opacity={0.92} style={{ scaleY: flapScaleY, originY: 0, originX: 0.5 }} />
-        <rect x={246} y={294} width={88} height={88} rx={8} fill="none" stroke="#0B2239" strokeOpacity={0.3} strokeWidth={1} />
-        <text x={290} y={404} textAnchor="middle" fontFamily="'Inter Variable', sans-serif" fontSize="6.5" fill="#7C8DA0" letterSpacing="1.6">
+        <rect x={246} y={294} width={88} height={88} rx={8} fill="none" stroke="var(--vm-stroke-soft)" strokeWidth={1} />
+        <text x={290} y={404} textAnchor="middle" fontFamily="'Inter Variable', sans-serif" fontSize="6.5" fill="var(--vm-label-muted)" letterSpacing="1.6">
           PICK UP HERE
         </text>
         {/* delivered check */}
@@ -374,7 +387,7 @@ export default function VendingMachineSVG({ stage = 0, progress = null, staticMo
         height={584}
         rx={16}
         fill="none"
-        stroke="#0C9A6C"
+        stroke="var(--color-green)"
         strokeWidth={3}
         initial={false}
         animate={{ pathLength: stage === 4 ? 1 : 0, opacity: stage === 4 ? 1 : 0 }}
@@ -390,7 +403,7 @@ export default function VendingMachineSVG({ stage = 0, progress = null, staticMo
         height={st.hl.h}
         rx={12}
         fill="none"
-        stroke="#00B4D8"
+        stroke="var(--color-blue-bright)"
         strokeWidth={2.2}
         filter="url(#vmGlow)"
         initial={{ pathLength: 0, opacity: 0 }}

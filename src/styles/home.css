@@ -3,14 +3,66 @@
    ============================================================ */
 
 /* ---------- 1. hero ---------- */
+/* Full-bleed opening panel. The header sits on top of it (it is pulled up by a
+   negative margin), so the top padding has to clear the bar. */
 .home-hero {
   position: relative;
   overflow: hidden;
-  padding-block: clamp(var(--space-6), 8vw, var(--space-7));
+  padding-top: calc(var(--header-h) + clamp(var(--space-5), 6vw, var(--space-7)));
+  padding-bottom: clamp(var(--space-6), 8vw, var(--space-7));
+  background:
+    radial-gradient(820px 460px at 84% -10%, rgba(43, 197, 223, 0.16), transparent 70%),
+    radial-gradient(680px 420px at -8% 110%, rgba(63, 181, 138, 0.13), transparent 70%),
+    var(--color-bg);
+}
+
+:root[data-theme='light'] .home-hero {
   background:
     radial-gradient(760px 420px at 88% -12%, rgba(0, 180, 216, 0.14), transparent 70%),
     radial-gradient(640px 400px at -10% 112%, rgba(12, 154, 108, 0.1), transparent 70%),
     var(--color-bg);
+}
+
+/* 1px marker at the foot of the hero; the header watches it to decide when to
+   stop being transparent. */
+.home-hero__sentinel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  pointer-events: none;
+}
+
+.home-hero__cue {
+  position: absolute;
+  bottom: clamp(16px, 3vw, 28px);
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.home-hero__cue svg {
+  animation: home-cue-bob 1.9s ease-in-out infinite;
+}
+
+@keyframes home-cue-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px);
+  }
 }
 
 .home-hero__grid {
@@ -80,21 +132,38 @@
   transform: rotate(-5deg);
 }
 
-.home-hero__frame {
+/* The machine drawing is the hero image: it hands off visually to the same
+   machine in the scroll tour further down the page. */
+.home-hero__machine {
   position: relative;
   z-index: 1;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  border: 1px solid var(--color-line);
-  box-shadow: 0 30px 70px rgba(11, 34, 57, 0.2);
-  background: var(--color-surface);
+  display: flex;
+  justify-content: center;
+  filter: drop-shadow(var(--glow-accent));
 }
 
-.home-hero__frame img {
+.home-hero__machine .machine-svg {
   width: 100%;
-  aspect-ratio: 7 / 10;
-  object-fit: cover;
-  object-position: 50% 16%;
+  max-width: 340px;
+  max-height: 62svh;
+}
+
+.home-hero__secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-ink);
+  padding: 6px 2px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.18s ease, border-color 0.18s ease;
+}
+
+.home-hero__secondary:hover {
+  color: var(--color-blue);
+  border-bottom-color: var(--color-blue);
 }
 
 .home-hero__chip {
@@ -104,7 +173,7 @@
   align-items: center;
   gap: 8px;
   padding: 10px 16px;
-  background: rgba(255, 255, 255, 0.94);
+  background: var(--color-overlay);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   border: 1px solid var(--color-line);
@@ -263,7 +332,7 @@
   flex-direction: column;
   height: 100%;
   padding: clamp(var(--space-4), 3.5vw, var(--space-5));
-  background: #fff;
+  background: var(--color-card);
   border: 1px solid var(--color-line);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
@@ -371,78 +440,65 @@
   }
 }
 
-/* ---------- 4. machine teaser (navy band) ---------- */
-.home-teaser__grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-  gap: clamp(var(--space-5), 6vw, var(--space-7));
-  align-items: center;
+/* ---------- 4. lead-in to the scroll tour ---------- */
+.home-tour-intro {
+  text-align: center;
+  padding-bottom: clamp(var(--space-4), 4vw, var(--space-5));
 }
 
-.home-teaser__grid .eyebrow {
-  color: var(--color-blue-bright);
+.home-tour-intro__copy {
+  max-width: 62ch;
+  margin-inline: auto;
 }
 
-.home-teaser__copy h2 {
+.home-tour-intro__copy h2 {
   margin-top: var(--space-3);
 }
 
-.home-teaser__copy p {
+.home-tour-intro__copy .lede {
   margin-top: var(--space-3);
-  max-width: 54ch;
 }
 
-.home-teaser__copy .btn {
-  margin-top: clamp(var(--space-4), 3vw, 32px);
-}
-
-.home-teaser__chips {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--space-3);
-}
-
-.home-teaser__chip {
+.home-tour-intro__chips {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: clamp(var(--space-4), 4vw, var(--space-5));
+}
+
+.home-tour-intro__chip {
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
-  padding: 18px 20px;
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: var(--radius-md);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+  gap: 10px;
+  padding: 12px 18px;
+  background: var(--color-card);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-pill);
+  transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
-.home-teaser__chip:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.28);
+.home-tour-intro__chip:hover {
+  border-color: var(--color-blue);
+  transform: translateY(-2px);
 }
 
-.home-teaser__chip svg {
+.home-tour-intro__chip svg {
   flex: none;
-  color: var(--color-blue-bright);
+  color: var(--color-blue);
 }
 
-.home-teaser__chip span {
+.home-tour-intro__chip span {
   font-family: var(--font-display);
-  font-size: 0.93rem;
+  font-size: 0.9rem;
   font-weight: 600;
-  color: #fff;
+  color: var(--color-ink);
   line-height: 1.35;
 }
 
-@media (max-width: 899px) {
-  .home-teaser__grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-5);
-  }
-}
-
 @media (max-width: 479px) {
-  .home-teaser__chip {
-    padding: 14px 16px;
+  .home-tour-intro__chip {
+    padding: 10px 14px;
   }
 }
 
@@ -474,10 +530,10 @@
   align-items: center;
   gap: 8px;
   padding: 10px 18px;
-  background: #fff;
+  background: var(--color-card);
   border: 1px solid var(--color-line);
   border-radius: var(--radius-pill);
-  box-shadow: 0 2px 10px rgba(11, 34, 57, 0.05);
+  box-shadow: var(--shadow-card);
   font-family: var(--font-display);
   font-size: 0.92rem;
   font-weight: 600;
@@ -517,13 +573,27 @@
   }
 }
 
-/* ---------- 8. location photo band ---------- */
+/* ---------- 9. location photo: cinematic full-bleed close ---------- */
+.home-location {
+  position: relative;
+}
+
 .home-location__frame {
   position: relative;
-  border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: var(--shadow-card-hover);
   background: var(--color-surface);
+}
+
+/* Fade the photo into the page at top and bottom so it reads as part of the
+   dark scene rather than a pasted-in rectangle. */
+.home-location__frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom, var(--color-bg), transparent 18%),
+    linear-gradient(to top, var(--color-bg), transparent 22%);
 }
 
 .home-location__frame img {
@@ -539,9 +609,10 @@
   display: flex;
   align-items: flex-start;
   gap: 10px;
+  z-index: 1;
   max-width: min(430px, calc(100% - 32px));
   padding: 14px 20px;
-  background: rgba(255, 255, 255, 0.94);
+  background: var(--color-overlay);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-radius: var(--radius-md);
@@ -573,7 +644,18 @@
     border-radius: 0;
     box-shadow: none;
     border-top: 1px solid var(--color-line);
-    background: #fff;
+    background: var(--color-card);
     padding: 14px 18px;
+  }
+}
+
+/* Industries panel fills the viewport on desktop; on phones that would strand
+   the pill cloud in dead space, so it keeps normal section rhythm. */
+@media (min-width: 900px) {
+  .panel--full-lg {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }
