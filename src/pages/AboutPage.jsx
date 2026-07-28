@@ -10,10 +10,10 @@ import coffeeMachinePhoto from '../assets/photos/coffee-machine.jpg'
 import '../styles/about.css'
 
 const facts = [
-  { icon: CalendarCheck, value: `Est. ${site.established}`, label: 'Bahamian-owned from day one' },
+  { icon: CalendarCheck, value: `Est. ${site.established}`, label: 'Bahamian owned from day one' },
   { icon: MapPin, value: site.serviceArea, label: 'Our home service area' },
   { icon: ClipboardCheck, value: 'Fully managed service', label: 'Stocking, cleaning & cash handling' },
-  { icon: Headset, value: '24-hour help desk', label: 'Support whenever it matters' },
+  { icon: Headset, value: '24 hour help desk', label: 'Support whenever it matters' },
 ]
 
 const galleryItems = [
@@ -30,7 +30,7 @@ const galleryItems = [
   },
   {
     photo: coffeeMachinePhoto,
-    alt: `The ${coffeeMachine.name} vending machine, which brews hot drinks from fresh-ground beans`,
+    alt: `The ${coffeeMachine.name} vending machine, which brews hot drinks from freshly ground beans`,
     caption: `${coffeeMachine.name} · ${coffeeMachine.service}`,
   },
 ]
@@ -46,7 +46,7 @@ export default function AboutPage() {
           <Reveal className="page-hero__inner">
             <span className="eyebrow">About Us</span>
             <h1>
-              Bahamian-owned. <span className="text-gradient">Service-obsessed.</span>
+              Bahamian owned. <span className="text-gradient">Obsessed with service.</span>
             </h1>
             <p className="lede">{about.lede}</p>
           </Reveal>
@@ -103,7 +103,7 @@ export default function AboutPage() {
         <div className="container about-vision__grid">
           <SectionHeading
             eyebrow="Our vision"
-            title="The most sought-after vending partner in The Bahamas"
+            title="The most sought after vending partner in The Bahamas"
             lede={about.vision}
           />
           <Reveal delay={0.1}>
@@ -114,8 +114,8 @@ export default function AboutPage() {
               <h3>Built to international standards</h3>
               <p>{about.standards}</p>
               <div className="about-standards__badges">
-                <span className="badge">ISO-9001</span>
-                <span className="badge badge--green">ISO-14001</span>
+                <span className="badge">ISO 9001</span>
+                <span className="badge badge--green">ISO 14001</span>
               </div>
             </div>
           </Reveal>

@@ -15,7 +15,7 @@ export default function Footer() {
             Fully managed snack, beverage, and coffee vending for businesses throughout {site.serviceArea}, at no
             cost to you.
           </p>
-          <span className="badge badge--green footer__badge">Est. {site.established} · Bahamian-owned</span>
+          <span className="badge badge--green footer__badge">Est. {site.established} · Bahamian owned</span>
         </div>
 
         <nav className="footer__col" aria-label="Footer">
@@ -56,7 +56,7 @@ export default function Footer() {
           <span>
             © {year} {site.name}. All rights reserved.
           </span>
-          <span>Bahamian-owned &amp; operated since {site.established}.</span>
+          <span>Bahamian owned &amp; operated since {site.established}.</span>
         </div>
       </div>
     </footer>

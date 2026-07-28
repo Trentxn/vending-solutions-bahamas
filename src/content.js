@@ -45,8 +45,8 @@ export const site = {
 }
 
 export const nav = [
-  { label: 'Machines', to: '/machines' },
   { label: 'Services', to: '/services' },
+  { label: 'Machines', to: '/machines' },
   { label: 'Industries', to: '/industries' },
   { label: 'About', to: '/about' },
   { label: 'Contact', to: '/contact' },
@@ -61,19 +61,19 @@ export const hero = {
 }
 
 export const about = {
-  lede: 'Bahamian-owned and serving Nassau since 2012.',
+  lede: 'Bahamian owned and serving Nassau since 2012.',
   story: [
-    'Vending Solutions Bahamas is a Bahamian-owned company, established in 2012, specializing in the supply and management of vending equipment throughout Nassau & Paradise Island.',
+    'Vending Solutions Bahamas is a Bahamian owned company, established in 2012, specializing in the supply and management of vending equipment throughout Nassau & Paradise Island.',
     'Every placement comes with professional installation, weekly stocking and maintenance, and reliable customer service. Hosting our equipment conveys the right image as the ideal break and meeting room accessory, and it costs you nothing.',
   ],
   mission:
-    'At Vending Solutions Bahamas, we are committed to delivering convenient, reliable, and high-quality vending services while providing exceptional customer support and premium products to our customers.',
+    'At Vending Solutions Bahamas, we are committed to delivering convenient, reliable, and high quality vending services while providing exceptional customer support and premium products to our customers.',
   vision:
-    'It is our vision to remain the most sought-after vending equipment service provider through sustainable relationships with host locations, reliability, professionalism, and innovation. We have partnered with one of the world’s leading manufacturers of vending equipment, with a presence in more than fifty countries worldwide.',
+    'It is our vision to remain the most sought after vending equipment service provider through sustainable relationships with host locations, reliability, professionalism, and innovation. We have partnered with one of the world’s leading manufacturers of vending equipment, with a presence in more than fifty countries worldwide.',
   standards:
-    'Our equipment was subject to quality testing and environmental management concepts established in strict accordance with international standards ISO-9001 and ISO-14001.',
+    'Our equipment was subject to quality testing and environmental management concepts established in strict accordance with international standards ISO 9001 and ISO 14001.',
   goals: [
-    { icon: Sparkles, text: 'Introduce high-quality, first-to-market vending equipment' },
+    { icon: Sparkles, text: 'Introduce high quality vending equipment, first to market' },
     { icon: Salad, text: 'Offer healthy as well as fun foods' },
     { icon: BadgeCheck, text: 'Usher in a new standard for quality vending services' },
   ],
@@ -83,7 +83,7 @@ export const services = {
   snack: {
     title: 'Snack & Beverage Vending',
     summary:
-      'Cold drinks and snacks together in one temperature-zoned machine, with over thirty selections stocked to match your location.',
+      'Cold drinks and snacks together in one temperature zoned machine, with over thirty selections stocked to match your location.',
     features: [
       'Cold beverages',
       'Chips',
@@ -98,7 +98,7 @@ export const services = {
   coffee: {
     title: 'Coffee Vending',
     summary:
-      'Barista-quality hot drinks, brewed fresh from whole beans, with 15 to 18 selections at the press of a button.',
+      'Barista quality hot drinks, brewed fresh from whole beans, with 15 to 18 selections at the press of a button.',
     features: [
       'Freshly ground coffee beans',
       'Espresso',
@@ -107,7 +107,7 @@ export const services = {
       'Hot chocolate',
       'French vanilla',
     ],
-    selections: '15-18 beverage selections',
+    selections: '15 to 18 beverage selections',
   },
 }
 
@@ -118,21 +118,21 @@ export const whyChooseUs = [
   { icon: Wrench, title: 'Preventative Maintenance', text: 'Scheduled upkeep keeps downtime near zero.' },
   { icon: Zap, title: 'Fast Service Calls', text: 'Trained technicians respond quickly when you need us.' },
   { icon: ListChecks, title: 'Custom Product Selection', text: 'Menus tailored to your location and preferences.' },
-  { icon: Headset, title: '24-Hour Help Desk', text: 'Round-the-clock technical support, whenever it matters.' },
-  { icon: Leaf, title: 'Eco-Friendly Equipment', text: 'Energy-saving, CFC-free machines built to ISO standards.' },
+  { icon: Headset, title: '24 Hour Help Desk', text: 'Round the clock technical support, whenever it matters.' },
+  { icon: Leaf, title: 'Eco Friendly Equipment', text: 'Energy saving, CFC free machines built to ISO standards.' },
 ]
 
 export const comboMachine = {
   name: 'Power of Choice',
   service: 'Traditional Service',
   intro:
-    'Our combo machine serves cold drinks and snacks from a single, temperature-zoned cabinet, engineered for capacity, efficiency, and guaranteed delivery.',
+    'Our combo machine serves cold drinks and snacks from a single, temperature zoned cabinet, engineered for capacity, efficiency, and guaranteed delivery.',
   features: [
     'Over thirty different snack and drink options in a single machine',
-    'Soft Elevator Delivery System with high-waist dispensing',
-    'Energy-saving design disables LED lighting during inactivity',
-    'Continuous self-testing and diagnostics',
-    'Anti-pick lock cylinder with three-point door locking',
+    'Soft Elevator Delivery System with waist height dispensing',
+    'Energy saving design disables LED lighting during inactivity',
+    'Continuous self testing and diagnostics',
+    'A lock cylinder built to defeat picking, with three point door locking',
     'Dual currency (BSD/USD) with bill and coin acceptance',
   ],
   specs: [
@@ -140,10 +140,10 @@ export const comboMachine = {
     { label: 'Dimensions', value: '72″H × 31½″W × 37″D' },
     { label: 'Weight', value: '716 lbs' },
     { label: 'Glass front', value: '43½″H × 21″W' },
-    { label: 'Electrical', value: '110-115 VAC / 8 amps' },
-    { label: 'Refrigeration', value: 'R134A · CFC-free' },
+    { label: 'Electrical', value: '110 to 115 VAC / 8 amps' },
+    { label: 'Refrigeration', value: 'R134A, CFC free' },
     { label: 'Payment', value: 'BSD & USD bills and coins' },
-    { label: 'Housing', value: 'Rust-proof steel, vandal-proof lock' },
+    { label: 'Housing', value: 'Rust proof steel, vandal proof lock' },
   ],
 }
 
@@ -154,17 +154,17 @@ export const coffeeMachine = {
     'Between fifteen and eighteen hot drink selections, brewed fresh from whole beans, using a brewing process that is the first in the market to incorporate a pressured valve, ensuring every brewing cycle completes.',
   // the drink menu itself lives on the services page
   features: [
-    '15-18 different product selections',
-    'Pressured-valve brewing, first and only in the market',
+    '15 to 18 different product selections',
+    'Pressured valve brewing, first and only in the market',
     'Automatic grinder regulation for perfect grind thickness',
   ],
   specs: [
-    { label: 'Selections', value: '15-18 hot beverages' },
+    { label: 'Selections', value: '15 to 18 hot beverages' },
     { label: 'Dimensions', value: '59″H × 19½″W × 22″D' },
     { label: 'Weight', value: '221 lbs' },
     { label: 'Power', value: '110 V 60 Hz (optional 220 V)' },
-    { label: 'Brewing', value: 'Pressured-valve, fresh-ground beans' },
-    { label: 'Housing', value: 'Rust-proof steel, vandal-proof lock' },
+    { label: 'Brewing', value: 'Pressured valve, freshly ground beans' },
+    { label: 'Housing', value: 'Rust proof steel, vandal proof lock' },
   ],
 }
 
@@ -174,7 +174,7 @@ export const healthSafety = {
     {
       icon: Container,
       title: 'Sealed canisters',
-      text: 'Cups, coffee beans, and solubles live in self-contained canisters refilled with no personal contact.',
+      text: 'Cups, coffee beans, and solubles live in sealed canisters refilled with no personal contact.',
     },
     {
       icon: Droplets,
@@ -184,7 +184,7 @@ export const healthSafety = {
     {
       icon: SprayCan,
       title: 'Protective disinfection',
-      text: 'Housings are disinfected with surface-bonding solutions designed to form a protective barrier.',
+      text: 'Housings are disinfected with solutions that bond to the surface and form a protective barrier.',
     },
     {
       icon: ShieldCheck,
@@ -210,14 +210,14 @@ export const products = {
     {
       icon: Salad,
       title: 'Healthy Choices',
-      items: ['Baked snacks', 'Granola', 'Nuts', 'Low-sugar drinks'],
+      items: ['Baked snacks', 'Granola', 'Nuts', 'Low sugar drinks'],
     },
   ],
 }
 
 export const howItWorks = {
   title: 'How it works',
-  lede: 'From first call to fully stocked in a simple five-step process.',
+  lede: 'From first call to fully stocked in five simple steps.',
   steps: [
     { icon: PhoneCall, title: 'Contact Us', text: 'Call, WhatsApp, or send the form and tell us about your location.' },
     { icon: ClipboardCheck, title: 'Free Site Assessment', text: 'We visit, measure, and understand your team’s needs.' },
@@ -259,7 +259,7 @@ export const faq = [
   },
   {
     q: 'Who repairs it?',
-    a: 'We do. Our personnel are fully trained to troubleshoot any issue, backed by a 24-hour help desk.',
+    a: 'We do. Our personnel are fully trained to troubleshoot any issue, backed by a 24 hour help desk.',
   },
   {
     q: 'How often do you visit?',
@@ -288,11 +288,11 @@ export const cta = {
 // client's photos. Confirm with the client before launch.
 export const contact = {
   phones: [
-    { display: '(242) 426-4313', tel: '+12424264313', wa: '12424264313' },
-    { display: '(242) 466-6367', tel: '+12424666367', wa: '12424666367' },
+    { display: '(242) 426 4313', tel: '+12424264313', wa: '12424264313' },
+    { display: '(242) 466 6367', tel: '+12424666367', wa: '12424666367' },
   ],
   email: 'vendingsolutionsbahamas@gmail.com',
-  hours: 'Mon to Fri · 9:00 AM to 5:00 PM · 24-hour help desk for service calls',
+  hours: 'Mon to Fri · 9:00 AM to 5:00 PM · 24 hour help desk for service calls',
   location: 'Nassau, New Providence, The Bahamas',
   whatsappMessage:
     'Hi Vending Solutions Bahamas, I’d like to request a free site survey for my business.',

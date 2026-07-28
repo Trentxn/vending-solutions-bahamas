@@ -20,7 +20,7 @@ export default function ServicesPage() {
             <span className="eyebrow">Our Services</span>
             <h1>Fully managed vending, two ways</h1>
             <p className="lede">
-              Snack &amp; beverage combo machines and fresh-bean coffee vending, installed,
+              Snack &amp; beverage combo machines and fresh bean coffee vending, installed,
               stocked, and maintained by our team at no cost to your business.
             </p>
           </Reveal>
@@ -51,7 +51,7 @@ export default function ServicesPage() {
             <Reveal delay={0.12}>
               <p className="services-note">
                 <ThermometerSnowflake size={18} strokeWidth={2} aria-hidden="true" />
-                Over 30 selections in a single temperature-zoned machine.
+                Over 30 selections in a single temperature zoned machine.
               </p>
               <div className="services-cta-row">
                 <Link className="btn btn--outline" to="/machines">

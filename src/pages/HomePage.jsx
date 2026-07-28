@@ -113,7 +113,7 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="What we place"
             title="Two services. Zero hassle."
-            lede="A temperature-zoned combo machine for cold drinks and snacks, and a barista-grade coffee machine, both placed, stocked, and serviced entirely by us."
+            lede="A temperature zoned combo machine for cold drinks and snacks, and a barista grade coffee machine, both placed, stocked, and serviced entirely by us."
           />
           <div className="home-services__grid">
             {serviceCards.map((service, i) => (

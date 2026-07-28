@@ -10,7 +10,7 @@ import '../styles/industries.css'
 const proofBenefits = [
   { icon: Banknote, label: 'Zero cost to your business' },
   { icon: ClipboardCheck, label: 'Fully managed, end to end' },
-  { icon: Headset, label: '24-hour help desk' },
+  { icon: Headset, label: '24 hour help desk' },
 ]
 
 const fitChecks = [
@@ -68,7 +68,7 @@ export default function IndustriesPage() {
                 </span>
               </div>
               <figcaption className="industries-proof__caption">
-                A real placement: our combo and coffee machines at work in a hospital-style lobby.
+                A real placement: our combo and coffee machines at work in a hospital lobby.
               </figcaption>
             </figure>
           </Reveal>

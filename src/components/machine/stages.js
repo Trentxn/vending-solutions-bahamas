@@ -38,7 +38,7 @@ export const STAGES = [
     bullets: [
       { icon: Layers, text: '4 snack + 3 beverage shelves' },
       { icon: Thermometer, text: 'Dual temperature zones' },
-      { icon: Eye, text: 'Full-view 43½″ × 21″ glass front' },
+      { icon: Eye, text: 'Full view 43½″ × 21″ glass front' },
     ],
     focus: ['glass', 'snacks', 'drinks', 'tempZones', 'elevator'],
     hl: { x: 20, y: 60, w: 204, h: 458 },
@@ -69,7 +69,7 @@ export const STAGES = [
       'Every item rides down gently and arrives at waist height.',
     bullets: [
       { icon: MoveVertical, text: 'Soft Elevator Delivery System' },
-      { icon: Hand, text: 'High-waist, easy-reach door' },
+      { icon: Hand, text: 'Waist height door, easy reach' },
       { icon: PackageCheck, text: 'Guaranteed product delivery' },
     ],
     focus: ['elevator', 'door'],
@@ -84,9 +84,9 @@ export const STAGES = [
     body:
       'The lights sleep when nobody is around, and drinks stay cold on a household circuit.',
     bullets: [
-      { icon: Lightbulb, text: 'Auto-dimming LED lighting' },
-      { icon: Snowflake, text: 'R134A · CFC-free cooling' },
-      { icon: PlugZap, text: '110-115 VAC on just 8 amps' },
+      { icon: Lightbulb, text: 'LED lighting that dims itself' },
+      { icon: Snowflake, text: 'R134A, CFC free cooling' },
+      { icon: PlugZap, text: '110 to 115 VAC on just 8 amps' },
     ],
     focus: ['glass', 'leds', 'drinks', 'tempZones'],
     hl: { x: 20, y: 60, w: 204, h: 458 },
@@ -98,11 +98,11 @@ export const STAGES = [
     eyebrow: 'Security',
     title: 'Built like a vault.',
     body:
-      'Rust-proofed steel, an anti-pick cylinder, and three bolts across the door.',
+      'Rust proofed steel, a cylinder that defeats picking, and three bolts across the door.',
     bullets: [
-      { icon: Shield, text: 'Vandal-proof steel housing' },
-      { icon: KeyRound, text: 'Anti-pick lock cylinder' },
-      { icon: Lock, text: '3-point door locking' },
+      { icon: Shield, text: 'Vandal proof steel housing' },
+      { icon: KeyRound, text: 'Pick resistant lock cylinder' },
+      { icon: Lock, text: 'Three point door locking' },
     ],
     focus: ['locks', 'lockCyl', 'cabinet'],
     hl: { x: 8, y: 8, w: 344, h: 584 },
@@ -116,9 +116,9 @@ export const STAGES = [
     body:
       'The machine flags its own problems before anyone else notices them.',
     bullets: [
-      { icon: Activity, text: 'Continuous self-diagnostics' },
+      { icon: Activity, text: 'Continuous self diagnostics' },
       { icon: RefreshCw, text: 'Weekly restocking' },
-      { icon: Headset, text: '24-hour help desk' },
+      { icon: Headset, text: '24 hour help desk' },
     ],
     focus: ['all'],
     hl: { x: 238, y: 74, w: 104, h: 48 },
