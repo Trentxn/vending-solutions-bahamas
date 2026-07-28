@@ -3,15 +3,12 @@
 // Text comes from the client's Word document. Edit here, not in pages.
 // ============================================================
 import {
-  Banknote,
   Building2,
   Wrench,
-  CalendarCheck,
   Zap,
   ShieldCheck,
   Sparkles,
   ListChecks,
-  MapPin,
   Headset,
   Leaf,
   Hospital,
@@ -63,17 +60,10 @@ export const hero = {
   secondaryCta: { label: 'Contact Us', to: '/contact' },
 }
 
-export const trustBar = [
-  { icon: CalendarCheck, label: 'Established 2012' },
-  { icon: MapPin, label: 'Bahamian-owned & operated' },
-  { icon: Banknote, label: '$0 cost to your business' },
-  { icon: RefreshCw, label: 'Weekly restocking' },
-]
-
 export const about = {
+  lede: 'Bahamian-owned and serving Nassau since 2012.',
   story: [
     'Vending Solutions Bahamas is a Bahamian-owned company, established in 2012, specializing in the supply and management of vending equipment throughout Nassau & Paradise Island.',
-    'We offer a traditional as well as a hot drink vending service. Our traditional service places cold drinks and snacks in a single, temperature-zoned machine; our hot drink service offers a minimum of fifteen self-contained selections, guaranteed to satisfy the discerning user or curious observer.',
     'Every placement comes with professional installation, weekly stocking and maintenance, and reliable customer service. Hosting our equipment conveys the right image as the ideal break and meeting room accessory, and it costs you nothing.',
   ],
   mission:
@@ -121,16 +111,13 @@ export const services = {
   },
 }
 
+// The hero and the five-step process already cover cost, restocking, and who
+// owns the equipment, so this grid only carries what is not said elsewhere.
 export const whyChooseUs = [
-  { icon: Banknote, title: 'No Cost Installation', text: 'We provide, install, and own the equipment. You just host it.' },
   { icon: ClipboardCheck, title: 'Fully Managed Service', text: 'Stocking, cleaning, and cash handling, all handled by us.' },
-  { icon: RefreshCw, title: 'Weekly Restocking', text: 'Machines stay full, fresh, and ready for your team.' },
   { icon: Wrench, title: 'Preventative Maintenance', text: 'Scheduled upkeep keeps downtime near zero.' },
   { icon: Zap, title: 'Fast Service Calls', text: 'Trained technicians respond quickly when you need us.' },
-  { icon: Sparkles, title: 'Modern Equipment', text: 'First-to-market machines with the latest technology.' },
-  { icon: BadgeCheck, title: 'Quality Products', text: 'Premium snacks and beverages your people recognize.' },
   { icon: ListChecks, title: 'Custom Product Selection', text: 'Menus tailored to your location and preferences.' },
-  { icon: MapPin, title: 'Reliable Local Company', text: 'Bahamian-owned and serving Nassau since 2012.' },
   { icon: Headset, title: '24-Hour Help Desk', text: 'Round-the-clock technical support, whenever it matters.' },
   { icon: Leaf, title: 'Eco-Friendly Equipment', text: 'Energy-saving, CFC-free machines built to ISO standards.' },
 ]
@@ -165,12 +152,11 @@ export const coffeeMachine = {
   service: 'Hot Drink Service',
   intro:
     'Between fifteen and eighteen hot drink selections, brewed fresh from whole beans, using a brewing process that is the first in the market to incorporate a pressured valve, ensuring every brewing cycle completes.',
+  // the drink menu itself lives on the services page
   features: [
     '15-18 different product selections',
     'Pressured-valve brewing, first and only in the market',
     'Automatic grinder regulation for perfect grind thickness',
-    'Fresh bean grinder in every cycle',
-    'Easy operation, high reliability',
   ],
   specs: [
     { label: 'Selections', value: '15-18 hot beverages' },
@@ -209,7 +195,7 @@ export const healthSafety = {
 }
 
 export const products = {
-  note: 'Product menus are customized per location. These are popular examples.',
+  note: 'Menus are built per location and tuned over time to what your team actually buys. These are popular examples.',
   categories: [
     {
       icon: CupSoda,
@@ -241,22 +227,24 @@ export const howItWorks = {
   ],
 }
 
+// Titles only: thirteen one-line descriptions read as filler, and the list is
+// more convincing scanned quickly than read.
 export const industries = {
   lede: 'From hospital lobbies to hotel staff rooms, our machines serve people wherever they work, wait, and take breaks.',
   items: [
-    { icon: Hospital, title: 'Hospitals', text: 'Around-the-clock refreshment for staff, patients, and visitors.' },
-    { icon: Hotel, title: 'Hotels', text: 'Convenience your guests expect, without staffing a kiosk.' },
-    { icon: Palmtree, title: 'Resorts', text: 'Poolside-to-lobby refreshments that keep guests on property.' },
-    { icon: Building2, title: 'Corporate Offices', text: 'The break-room upgrade your team will actually use.' },
-    { icon: Landmark, title: 'Government Offices', text: 'Reliable service for busy public buildings.' },
-    { icon: GraduationCap, title: 'Schools', text: 'Balanced options, including healthy choices, for campuses.' },
-    { icon: Factory, title: 'Industrial Facilities', text: 'Fuel for every shift, built vandal-tough.' },
-    { icon: PiggyBank, title: 'Banks', text: 'A professional amenity for staff and clients alike.' },
-    { icon: Headset, title: 'Call Centers', text: 'Quick refreshment for teams that can’t leave the floor.' },
-    { icon: Store, title: 'Retail Centers', text: 'Capture foot traffic with self-serve refreshments.' },
-    { icon: Warehouse, title: 'Warehouses', text: 'High-capacity machines for high-demand crews.' },
-    { icon: Plane, title: 'Airports', text: 'Grab-and-go convenience for travelers on the move.' },
-    { icon: Armchair, title: 'Employee Break Rooms', text: 'The heart of our business: better breaks, happier teams.' },
+    { icon: Hospital, title: 'Hospitals' },
+    { icon: Hotel, title: 'Hotels' },
+    { icon: Palmtree, title: 'Resorts' },
+    { icon: Building2, title: 'Corporate Offices' },
+    { icon: Landmark, title: 'Government Offices' },
+    { icon: GraduationCap, title: 'Schools' },
+    { icon: Factory, title: 'Industrial Facilities' },
+    { icon: PiggyBank, title: 'Banks' },
+    { icon: Headset, title: 'Call Centers' },
+    { icon: Store, title: 'Retail Centers' },
+    { icon: Warehouse, title: 'Warehouses' },
+    { icon: Plane, title: 'Airports' },
+    { icon: Armchair, title: 'Employee Break Rooms' },
   ],
 }
 
@@ -313,7 +301,7 @@ export const contact = {
 export const machinesPage = {
   eyebrow: 'The Machines',
   headline: 'Engineered for effortless refreshment',
-  lede: 'Take a scroll through the Power of Choice combo machine: capacity, payment, delivery, efficiency, security, and self-monitoring, explained part by part.',
+  lede: 'Capacities, dimensions, and what keeps both machines running. The full picture, on paper.',
 }
 
 export const notFound = {

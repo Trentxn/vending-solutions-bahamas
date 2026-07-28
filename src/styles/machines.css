@@ -1,4 +1,21 @@
 /* ---------- machines page ---------- */
+.machines-hero__tour-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: var(--space-4);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-blue);
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.18s ease;
+}
+
+.machines-hero__tour-link:hover {
+  border-bottom-color: var(--color-blue);
+}
+
 .machines-hero__hint {
   display: inline-flex;
   flex-direction: column;

@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useReducedMotion } from 'framer-motion'
 import {
-  ArrowDownToLine,
   ArrowRight,
   Banknote,
   Check,
@@ -10,9 +9,7 @@ import {
   Coins,
   CupSoda,
   ListChecks,
-  Lock,
   MapPin,
-  Zap,
 } from 'lucide-react'
 import usePageTitle from '../hooks/usePageTitle.js'
 import Reveal from '../components/ui/Reveal.jsx'
@@ -22,16 +19,7 @@ import Steps from '../components/ui/Steps.jsx'
 import MachineShowcase from '../components/machine/MachineShowcase.jsx'
 import StaticShowcase from '../components/machine/StaticShowcase.jsx'
 import VendingMachineSVG from '../components/machine/VendingMachineSVG.jsx'
-import {
-  site,
-  hero,
-  trustBar,
-  services,
-  whyChooseUs,
-  comboMachine,
-  howItWorks,
-  industries,
-} from '../content.js'
+import { site, hero, services, whyChooseUs, comboMachine, howItWorks, industries } from '../content.js'
 import locationPhoto from '../assets/photos/machines-on-location.jpg'
 import '../styles/home.css'
 
@@ -48,13 +36,6 @@ const heroChips = [
 const serviceCards = [
   { data: services.snack, icon: CupSoda, tone: 'blue' },
   { data: services.coffee, icon: Coffee, tone: 'green' },
-]
-
-const teaserChips = [
-  { icon: ArrowDownToLine, label: 'Soft elevator delivery' },
-  { icon: Coins, label: 'Dual currency: BSD & USD' },
-  { icon: Zap, label: 'Energy-saving LED lighting' },
-  { icon: Lock, label: 'Three-point security locking' },
 ]
 
 function renderHeadline(text, phrase) {
@@ -126,23 +107,7 @@ export default function HomePage() {
         <div id="hero-end" className="home-hero__sentinel" aria-hidden="true" />
       </section>
 
-      {/* 2. Trust bar */}
-      <section className="section--tight section--surface" aria-label="Why businesses trust us">
-        <div className="container">
-          <ul className="home-trust__grid" role="list">
-            {trustBar.map((item, i) => (
-              <Reveal as="li" key={item.label} delay={i * 0.06} y={12} className="home-trust__item">
-                <span className={`home-trust__icon${i % 2 ? ' home-trust__icon--green' : ''}`}>
-                  <item.icon size={20} strokeWidth={2.1} aria-hidden="true" />
-                </span>
-                <span className="home-trust__label">{item.label}</span>
-              </Reveal>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* 3. Services overview */}
+      {/* 2. Services overview */}
       <section className="section">
         <div className="container">
           <SectionHeading
@@ -159,16 +124,6 @@ export default function HomePage() {
                   </span>
                   <h3>{service.data.title}</h3>
                   <p className="home-service-card__summary">{service.data.summary}</p>
-                  <ul className="home-service-card__features" role="list">
-                    {service.data.features.slice(0, 4).map((feature) => (
-                      <li key={feature}>
-                        <span className="home-service-card__check">
-                          <Check size={12} strokeWidth={3} aria-hidden="true" />
-                        </span>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
                   <Link className="home-service-card__link" to="/services">
                     Learn more
                     <ArrowRight size={17} strokeWidth={2.2} aria-hidden="true" />
@@ -188,14 +143,6 @@ export default function HomePage() {
             <h2>Meet the {comboMachine.name}</h2>
             <p className="lede">{comboMachine.intro}</p>
           </Reveal>
-          <div className="home-tour-intro__chips">
-            {teaserChips.map((chip, i) => (
-              <Reveal key={chip.label} delay={0.1 + i * 0.07} y={14} className="home-tour-intro__chip">
-                <chip.icon size={18} strokeWidth={2} aria-hidden="true" />
-                <span>{chip.label}</span>
-              </Reveal>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -207,12 +154,7 @@ export default function HomePage() {
       {/* 6. Why choose us */}
       <section className="section section--surface">
         <div className="container">
-          <SectionHeading
-            center
-            eyebrow="Why choose us"
-            title="Everything handled, at no cost to you"
-            lede="Eleven reasons businesses across Nassau host our machines and keep them."
-          />
+          <SectionHeading center eyebrow="Why choose us" title="Everything handled, at no cost to you" />
           <div className="home-why__grid">
             {whyChooseUs.map((item, i) => (
               <Reveal key={item.title} delay={(i % 4) * 0.06} y={14}>
@@ -226,12 +168,7 @@ export default function HomePage() {
       {/* 7. Industries */}
       <section className="section section--sand home-industries panel--full-lg">
         <div className="container">
-          <SectionHeading
-            center
-            eyebrow="Industries we serve"
-            title="A fit for every kind of location"
-            lede={industries.lede}
-          />
+          <SectionHeading center eyebrow="Industries we serve" title="A fit for every kind of location" />
           <Reveal>
             <ul className="home-industries__cloud" role="list">
               {industries.items.map((industry, i) => (

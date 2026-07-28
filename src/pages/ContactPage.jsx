@@ -19,7 +19,7 @@ export default function ContactPage() {
           <Reveal className="page-hero__inner">
             <span className="eyebrow">Contact</span>
             <h1>{cta.heading}</h1>
-            <p className="lede">{cta.text}</p>
+            <p className="lede">Tell us about your location. We handle everything else.</p>
           </Reveal>
         </div>
       </section>

@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Bean, Check, ListChecks, ThermometerSnowflake } from 'lucide-react'
+import { ArrowRight, Bean, Check, ThermometerSnowflake } from 'lucide-react'
 import usePageTitle from '../hooks/usePageTitle.js'
 import Reveal from '../components/ui/Reveal.jsx'
 import SectionHeading from '../components/ui/SectionHeading.jsx'
-import { services, products, coffeeMachine, machinesPage } from '../content.js'
+import { services, products, coffeeMachine } from '../content.js'
 import comboPhoto from '../assets/photos/combo-machine.jpg'
 import coffeePhoto from '../assets/photos/coffee-machine.jpg'
 import '../styles/services.css'
@@ -38,7 +38,7 @@ export default function ServicesPage() {
             />
             <Reveal delay={0.06}>
               <ul className="services-checks" role="list">
-                {services.snack.features.map((feature) => (
+                {services.snack.features.slice(0, 4).map((feature) => (
                   <li className="services-check" key={feature}>
                     <span className="services-check__icon">
                       <Check size={14} strokeWidth={3} aria-hidden="true" />
@@ -84,7 +84,7 @@ export default function ServicesPage() {
             />
             <Reveal delay={0.06}>
               <ul className="services-checks" role="list">
-                {services.coffee.features.map((feature) => (
+                {services.coffee.features.slice(0, 4).map((feature) => (
                   <li className="services-check" key={feature}>
                     <span className="services-check__icon">
                       <Check size={14} strokeWidth={3} aria-hidden="true" />
@@ -154,33 +154,13 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ---------- custom selection callout ---------- */}
-      <section className="section section--tight">
-        <div className="container">
-          <Reveal className="services-custom">
-            <span className="services-custom__icon">
-              <ListChecks size={24} strokeWidth={2} aria-hidden="true" />
-            </span>
-            <h3>Your machine, your menu</h3>
-            <p>
-              Every product mix is customized to your location, then refined over time based on
-              what your team actually enjoys and buys.
-            </p>
-            <Link className="btn btn--green" to="/contact">
-              Build your product menu
-              <ArrowRight size={18} strokeWidth={2} aria-hidden="true" />
-            </Link>
-          </Reveal>
-        </div>
-      </section>
-
       {/* ---------- cross-link to machines ---------- */}
       <section className="section section--tight services-crosslink-section">
         <div className="container">
           <Reveal className="services-crosslink" y={24}>
             <div className="services-crosslink__copy">
               <h2>Want the engineering tour?</h2>
-              <p>{machinesPage.lede}</p>
+              <p>Specs, dimensions, and the tech inside both machines.</p>
             </div>
             <Link className="btn btn--light" to="/machines">
               Explore the machines

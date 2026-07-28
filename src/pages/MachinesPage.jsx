@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 import { Check, Coffee, ArrowRight } from 'lucide-react'
 import usePageTitle from '../hooks/usePageTitle.js'
 import { machinesPage, comboMachine, coffeeMachine, healthSafety, services } from '../content.js'
-import StaticShowcase from '../components/machine/StaticShowcase.jsx'
 import SectionHeading from '../components/ui/SectionHeading.jsx'
 import SpecCard from '../components/ui/SpecCard.jsx'
 import IconCard from '../components/ui/IconCard.jsx'
@@ -22,12 +21,12 @@ export default function MachinesPage() {
           <span className="eyebrow">{machinesPage.eyebrow}</span>
           <h1>{machinesPage.headline}</h1>
           <p className="lede">{machinesPage.lede}</p>
+          <Link to="/" className="machines-hero__tour-link">
+            Watch the interactive tour
+            <ArrowRight size={16} strokeWidth={2.2} aria-hidden="true" />
+          </Link>
         </div>
       </section>
-
-      {/* Reference view of the same six-stage tour. The scroll-driven version
-          lives on the home page; here each stage is laid out to be read. */}
-      <StaticShowcase />
 
       {/* combo machine on paper */}
       <section className="section section--surface">
@@ -77,7 +76,6 @@ export default function MachinesPage() {
               <span className="badge badge--green">
                 <Coffee size={14} aria-hidden="true" /> {services.coffee.selections}
               </span>
-              <span className="badge">Espresso · Cappuccino · Hot Chocolate</span>
             </div>
             <Link to="/contact#survey" className="btn btn--light machines-coffee__cta">
               Add coffee to your break room <ArrowRight size={17} />

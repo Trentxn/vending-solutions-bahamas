@@ -42,12 +42,7 @@ export default function IndustriesPage() {
           <ul className="industries-grid" role="list">
             {industries.items.map((item, i) => (
               <Reveal as="li" key={item.title} delay={(i % 4) * 0.06}>
-                <IconCard
-                  icon={item.icon}
-                  title={item.title}
-                  text={item.text}
-                  tone={i % 2 === 0 ? 'blue' : 'green'}
-                />
+                <IconCard icon={item.icon} title={item.title} tone={i % 2 === 0 ? 'blue' : 'green'} />
               </Reveal>
             ))}
           </ul>
@@ -85,11 +80,6 @@ export default function IndustriesPage() {
               Our machines are already serving staff, patients, and guests in professional
               environments across Nassau &amp; Paradise Island, placed to look right at home
               in a lobby, break room, or waiting area.
-            </p>
-            <p>
-              Every placement starts with a free site assessment. We recommend the right
-              machines, build a product mix around your people, and keep everything stocked
-              and spotless with weekly service visits.
             </p>
             <ul className="industries-proof__benefits" role="list">
               {proofBenefits.map(({ icon: Icon, label }) => (

@@ -48,7 +48,7 @@ export default function AboutPage() {
             <h1>
               Bahamian-owned. <span className="text-gradient">Service-obsessed.</span>
             </h1>
-            <p className="lede">{about.story[0]}</p>
+            <p className="lede">{about.lede}</p>
           </Reveal>
         </div>
       </section>

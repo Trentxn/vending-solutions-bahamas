@@ -34,7 +34,7 @@ export const STAGES = [
     eyebrow: 'Capacity',
     title: 'One machine. 30+ selections.',
     body:
-      'Snacks ride the ambient shelves up top; drinks stay chilled below, all in a single temperature-zoned cabinet with over thirty selections behind the glass.',
+      'Snacks stay ambient up top, drinks stay chilled below, all in one cabinet.',
     bullets: [
       { icon: Layers, text: '4 snack + 3 beverage shelves' },
       { icon: Thermometer, text: 'Dual temperature zones' },
@@ -50,7 +50,7 @@ export const STAGES = [
     eyebrow: 'Payment',
     title: 'Pay your way, BSD or USD.',
     body:
-      'Dual-currency acceptance takes Bahamian and U.S. bills and coins alike. Punch a number on the keypad and the display handles the rest.',
+      'Bahamian and U.S. bills and coins, both accepted without a thought.',
     bullets: [
       { icon: Banknote, text: 'Bills & coins, BSD and USD' },
       { icon: Keyboard, text: 'Simple keypad selection' },
@@ -66,7 +66,7 @@ export const STAGES = [
     eyebrow: 'Delivery',
     title: 'Soft elevator. Guaranteed delivery.',
     body:
-      'A soft elevator lowers every item gently to a high-waist delivery door. No drops, no shaken sodas, no bending down.',
+      'Every item rides down gently and arrives at waist height.',
     bullets: [
       { icon: MoveVertical, text: 'Soft Elevator Delivery System' },
       { icon: Hand, text: 'High-waist, easy-reach door' },
@@ -82,7 +82,7 @@ export const STAGES = [
     eyebrow: 'Efficiency',
     title: 'Bright when busy. Frugal when idle.',
     body:
-      'LED lighting switches itself off after periods of inactivity, and CFC-free R134A refrigeration keeps drinks cold on an ordinary household circuit.',
+      'The lights sleep when nobody is around, and drinks stay cold on a household circuit.',
     bullets: [
       { icon: Lightbulb, text: 'Auto-dimming LED lighting' },
       { icon: Snowflake, text: 'R134A · CFC-free cooling' },
@@ -98,7 +98,7 @@ export const STAGES = [
     eyebrow: 'Security',
     title: 'Built like a vault.',
     body:
-      'Rust-proofed steel housing with crow-bar-resistant integration, an anti-pick lock cylinder, and a three-point locking system on the door.',
+      'Rust-proofed steel, an anti-pick cylinder, and three bolts across the door.',
     bullets: [
       { icon: Shield, text: 'Vandal-proof steel housing' },
       { icon: KeyRound, text: 'Anti-pick lock cylinder' },
@@ -114,7 +114,7 @@ export const STAGES = [
     eyebrow: 'Reliability',
     title: 'It checks on itself. We handle the rest.',
     body:
-      'Continuous self-testing and diagnostics flag issues before anyone notices, backed by weekly restocking, fast service calls, and a 24-hour help desk.',
+      'The machine flags its own problems before anyone else notices them.',
     bullets: [
       { icon: Activity, text: 'Continuous self-diagnostics' },
       { icon: RefreshCw, text: 'Weekly restocking' },

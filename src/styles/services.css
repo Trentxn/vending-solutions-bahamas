@@ -236,53 +236,6 @@
 /* Tints are theme-scoped: the light hues vanish on a near-black ground, so dark
    gets the brighter reef aqua/mint at a touch more opacity to keep the callout
    readable as a raised panel. */
-.services-custom {
-  --custom-tint-blue: rgba(43, 197, 223, 0.18);
-  --custom-tint-green: rgba(63, 181, 138, 0.16);
-  position: relative;
-  overflow: hidden;
-  max-width: 860px;
-  margin-inline: auto;
-  text-align: center;
-  padding: clamp(var(--space-5), 6vw, var(--space-6)) clamp(var(--space-4), 5vw, var(--space-6));
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-line);
-  background:
-    radial-gradient(420px 220px at 86% 0%, var(--custom-tint-blue), transparent 70%),
-    radial-gradient(380px 220px at 8% 100%, var(--custom-tint-green), transparent 70%),
-    var(--color-surface);
-}
-
-:root[data-theme='light'] .services-custom {
-  --custom-tint-blue: rgba(0, 180, 216, 0.12);
-  --custom-tint-green: rgba(12, 154, 108, 0.12);
-}
-
-.services-custom__icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 54px;
-  height: 54px;
-  border-radius: 16px;
-  margin-bottom: var(--space-3);
-  background: var(--color-card);
-  border: 1px solid var(--color-line);
-  color: var(--color-green);
-  box-shadow: var(--shadow-card);
-}
-
-.services-custom h3 {
-  font-size: clamp(1.35rem, 2.6vw, 1.7rem);
-  margin-bottom: var(--space-3);
-}
-
-.services-custom p {
-  max-width: 54ch;
-  margin-inline: auto;
-  margin-bottom: var(--space-4);
-}
-
 /* ---------- cross-link band ---------- */
 .services-crosslink-section {
   padding-top: 0;
