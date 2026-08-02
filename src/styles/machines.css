@@ -65,6 +65,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  /* the site header stays sticky above the pin, so keep the whole ride below it */
+  padding-top: var(--header-h);
 }
 
 .showcase__grid {
@@ -83,7 +85,8 @@
 .machine-svg {
   width: 100%;
   max-width: 400px;
-  max-height: 86svh;
+  /* never taller than the space left under the sticky header */
+  max-height: min(86svh, calc(100svh - var(--header-h) - 16px));
   height: auto;
 }
 
@@ -231,12 +234,13 @@
 
   .showcase__machine {
     height: 60svh;
-    align-items: center;
+    align-items: flex-start;
     padding-top: 8px;
   }
 
   .machine-svg {
-    max-height: 58svh;
+    /* shrink by the header allowance so the bottom edge stays clear of the copy card */
+    max-height: calc(58svh - var(--header-h));
   }
 
   .showcase__panel {
