@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vending-solutions-bahamas/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Vending Solutions Bahamas provides fully managed snack, beverage, and coffee vending services at no cost to businesses throughout Nassau & Paradise Island."
+    />
+    <meta name="theme-color" content="#0B1826" />
+    <title>Vending Solutions Bahamas | Premium Vending, Fully Managed, No Cost</title>
+    <!-- Apply the saved theme before first paint so a light-mode visitor never
+         sees a dark flash (and vice versa). Dark is the default. -->
+    <script>
+      (function () {
+        var t = 'dark'
+        try {
+          t = localStorage.getItem('vsb-theme') || 'dark'
+        } catch (e) {}
+        if (t !== 'light') t = 'dark'
+        document.documentElement.setAttribute('data-theme', t)
+        var m = document.querySelector('meta[name="theme-color"]')
+        if (m) m.setAttribute('content', t === 'dark' ? '#0B1826' : '#ffffff')
+      })()
+    </script>
+    <style>
+      html {
+        background: #0b1826;
+      }
+      html[data-theme='light'] {
+        background: #fff;
+      }
+    </style>
+    <script type="module" crossorigin src="/vending-solutions-bahamas/assets/index-D5m-UjR8.js"></script>
+    <link rel="stylesheet" crossorigin href="/vending-solutions-bahamas/assets/index-BNmuPrXR.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
