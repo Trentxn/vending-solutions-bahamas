@@ -9,7 +9,9 @@
       content="Vending Solutions Bahamas provides fully managed snack, beverage, and coffee vending services at no cost to businesses throughout Nassau & Paradise Island."
     />
     <meta name="theme-color" content="#0B1826" />
-    <title>Vending Solutions Bahamas | Premium Vending, Fully Managed, No Cost</title>
+    <!-- the hero photo is the first thing on screen, so it must not wait for the bundle -->
+    <link rel="preload" as="image" href="/media/machines-on-location.jpg" fetchpriority="high" />
+    <title>Vending Solutions Bahamas | Premium Vending Solutions, No Cost to Your Business</title>
     <!-- Apply the saved theme before first paint so a light-mode visitor never
          sees a dark flash (and vice versa). Dark is the default. -->
     <script>
@@ -21,7 +23,7 @@
         if (t !== 'light') t = 'dark'
         document.documentElement.setAttribute('data-theme', t)
         var m = document.querySelector('meta[name="theme-color"]')
-        if (m) m.setAttribute('content', t === 'dark' ? '#0B1826' : '#ffffff')
+        if (m) m.setAttribute('content', t === 'dark' ? '#0B1826' : '#F8F8F8')
       })()
     </script>
     <style>
@@ -29,7 +31,7 @@
         background: #0b1826;
       }
       html[data-theme='light'] {
-        background: #fff;
+        background: #f8f8f8;
       }
     </style>
   </head>

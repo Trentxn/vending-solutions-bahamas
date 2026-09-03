@@ -1,25 +1,49 @@
-export default function Logo({ light = false }) {
+import useTheme from '../../hooks/useTheme.js'
+import LogoMark from '../brand/LogoMark.jsx'
+
+/*
+ * The brand lockup: pinwheel mark + wordmark + optional script tagline.
+ *
+ * SWAPPING IN THE OFFICIAL ARTWORK: drop logo.svg (or .png) into
+ * src/assets/brand/. Add logo-on-dark.svg too if the wordmark is dark ink,
+ * and it will be used on the dark theme and on dark bands. Nothing else
+ * needs to change - the recreation below is only the fallback.
+ */
+const official = import.meta.glob('../../assets/brand/logo{,-on-dark}.{svg,png}', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+})
+
+const pick = (dark) => {
+  const entries = Object.entries(official)
+  if (!entries.length) return null
+  const onDark = entries.find(([p]) => p.includes('logo-on-dark'))
+  const base = entries.find(([p]) => !p.includes('logo-on-dark'))
+  return (dark ? onDark || base : base || onDark)?.[1] ?? null
+}
+
+export default function Logo({ light = false, tagline = false }) {
+  const { theme } = useTheme()
+  const src = pick(light || theme === 'dark')
+
+  if (src) {
+    return (
+      <span className="logo">
+        <img className="logo__img" src={src} alt="Vending Solutions Bahamas" />
+      </span>
+    )
+  }
+
   return (
     <span className="logo">
-      <svg viewBox="0 0 64 64" width="38" height="38" aria-hidden="true">
-        <defs>
-          <linearGradient id="logoGrad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#0096C7" />
-            <stop offset="0.55" stopColor="#00B4D8" />
-            <stop offset="1" stopColor="#0C9A6C" />
-          </linearGradient>
-        </defs>
-        <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#logoGrad)" />
-        <rect x="18" y="14" width="18" height="36" rx="3" fill="#fff" opacity="0.92" />
-        <rect x="40" y="14" width="7" height="36" rx="2" fill="#fff" opacity="0.55" />
-        <rect x="21" y="19" width="12" height="2.6" rx="1.3" fill="#0096C7" />
-        <rect x="21" y="26" width="12" height="2.6" rx="1.3" fill="#00B4D8" />
-        <rect x="21" y="33" width="12" height="2.6" rx="1.3" fill="#0C9A6C" />
-        <rect x="21" y="42" width="12" height="4" rx="2" fill="#0B2239" opacity="0.85" />
-      </svg>
+      <LogoMark size={40} />
       <span className={`logo__word ${light ? 'logo__word--light' : ''}`}>
-        Vending Solutions
-        <em>Bahamas</em>
+        <span className="logo__name">
+          <b>V</b>ending <b>S</b>olutions
+        </span>
+        <span className="logo__country">Bahamas</span>
+        {tagline && <span className="logo__tagline">Power of Choice</span>}
       </span>
     </span>
   )

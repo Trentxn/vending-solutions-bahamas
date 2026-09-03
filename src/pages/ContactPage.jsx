@@ -71,7 +71,7 @@ export default function ContactPage() {
             </Reveal>
 
             <Reveal delay={0.12} className="contact-aside__cell">
-              <div className="card contact-info-card contact-info-card--green">
+              <div className="card contact-info-card contact-info-card--gold">
                 <div className="contact-info-card__head">
                   <span className="contact-info-card__icon" aria-hidden="true">
                     <Mail size={18} strokeWidth={2} />
@@ -97,14 +97,15 @@ export default function ContactPage() {
             </Reveal>
 
             <Reveal delay={0.24} className="contact-aside__cell">
-              <div className="card contact-info-card contact-info-card--green">
+              <div className="card contact-info-card contact-info-card--gold">
                 <div className="contact-info-card__head">
                   <span className="contact-info-card__icon" aria-hidden="true">
                     <MapPin size={18} strokeWidth={2} />
                   </span>
                   <h3>Service area</h3>
                 </div>
-                <p className="contact-info-card__text">{contact.location}</p>
+                <p className="contact-info-card__text">{contact.postal}</p>
+            <p className="contact-info-card__text">{contact.location}</p>
                 <p className="contact-info-card__muted">Serving {site.serviceArea}</p>
               </div>
             </Reveal>

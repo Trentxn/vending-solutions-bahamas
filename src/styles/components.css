@@ -3,20 +3,20 @@
    near-black ground, so dark gets the brighter reef aqua/mint at a touch more
    opacity - still subtle, just enough to lift the hero off the page. */
 .page-hero {
-  --hero-tint-blue: rgba(43, 197, 223, 0.16);
-  --hero-tint-green: rgba(63, 181, 138, 0.12);
+  --hero-tint-blue: rgba(116, 138, 220, 0.16);
+  --hero-tint-gold: rgba(238, 196, 42, 0.12);
   position: relative;
   padding-block: clamp(var(--space-6), 9vw, var(--space-7)) clamp(var(--space-5), 7vw, var(--space-6));
   background:
     radial-gradient(640px 320px at 82% -10%, var(--hero-tint-blue), transparent 70%),
-    radial-gradient(520px 300px at 6% 110%, var(--hero-tint-green), transparent 70%),
+    radial-gradient(520px 300px at 6% 110%, var(--hero-tint-gold), transparent 70%),
     var(--color-surface);
   overflow: hidden;
 }
 
 :root[data-theme='light'] .page-hero {
-  --hero-tint-blue: rgba(0, 180, 216, 0.14);
-  --hero-tint-green: rgba(12, 154, 108, 0.1);
+  --hero-tint-blue: rgba(116, 138, 220, 0.14);
+  --hero-tint-gold: rgba(238, 196, 42, 0.1);
 }
 
 .page-hero__inner {
@@ -101,9 +101,9 @@
   color: var(--color-blue);
 }
 
-.icon-card--green .icon-card__icon {
-  background: var(--color-green-soft);
-  color: var(--color-green);
+.icon-card--gold .icon-card__icon {
+  background: var(--color-gold-soft);
+  color: var(--color-gold-text);
 }
 
 .icon-card__title {

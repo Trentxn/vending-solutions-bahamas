@@ -24,30 +24,71 @@
   gap: 10px;
 }
 
+.logo__img {
+  height: 42px;
+  width: auto;
+}
+
+.logo-mark {
+  flex: none;
+}
+
 .logo__word {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.02rem;
-  line-height: 1.05;
-  color: var(--color-ink);
   display: flex;
   flex-direction: column;
+  line-height: 1;
 }
 
-.logo__word em {
-  font-style: normal;
-  font-weight: 600;
-  font-size: 0.72rem;
-  letter-spacing: 0.22em;
+/* Michroma stands in for the wide Bank Gothic face of the real wordmark:
+   large initial caps, the rest in small caps. */
+.logo__name {
+  font-family: var(--font-brand);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  background: var(--grad-brand);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--color-ink);
+  white-space: nowrap;
 }
 
-.logo__word--light {
+.logo__name b {
+  font-weight: 400; /* Michroma ships a single weight; size carries the accent */
+  font-size: 1.4em;
+}
+
+.logo__country {
+  font-family: var(--font-brand);
+  font-size: 0.48rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-top: 4px;
+}
+
+.logo__tagline {
+  font-family: var(--font-script);
+  font-size: 1.1rem;
+  line-height: 1;
+  color: var(--color-blue);
+  margin-top: 5px;
+}
+
+.logo__word--light .logo__name {
   color: #fff;
+}
+
+.logo__word--light .logo__country,
+.logo__word--light .logo__tagline {
+  color: #b3c0f0;
+}
+
+@media (max-width: 479px) {
+  .logo__name {
+    font-size: 0.54rem;
+  }
+
+  .logo__country {
+    font-size: 0.42rem;
+  }
 }
 
 /* ---------- header ---------- */
@@ -80,6 +121,23 @@
   -webkit-backdrop-filter: none;
   border-bottom-color: transparent;
   box-shadow: none;
+}
+
+/* Over the hero photo the bar is see through in BOTH themes, so its contents
+   are forced light: the light theme's near black ink would vanish. */
+.header--over-hero .header__link,
+.header--over-hero .header__burger,
+.header--over-hero .theme-toggle,
+.header--over-hero .logo__name {
+  color: #fff;
+}
+
+.header--over-hero .logo__country {
+  color: #b3c0f0;
+}
+
+.header--over-hero .theme-toggle {
+  border-color: rgba(255, 255, 255, 0.38);
 }
 
 .header__inner {
@@ -216,8 +274,8 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(560px 280px at 85% 120%, rgba(0, 180, 216, 0.28), transparent 70%),
-    radial-gradient(420px 240px at 8% -30%, rgba(12, 154, 108, 0.22), transparent 70%);
+    radial-gradient(560px 280px at 85% 120%, rgba(116, 138, 220, 0.28), transparent 70%),
+    radial-gradient(420px 240px at 8% -30%, rgba(238, 196, 42, 0.22), transparent 70%);
   pointer-events: none;
 }
 

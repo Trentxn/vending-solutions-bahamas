@@ -3,6 +3,6 @@ import { SITE_NAME } from '../config.js'
 
 export default function usePageTitle(title) {
   useEffect(() => {
-    document.title = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} | Premium Vending, Fully Managed, No Cost`
+    document.title = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} | Premium Vending Solutions, No Cost to Your Business`
   }, [title])
 }

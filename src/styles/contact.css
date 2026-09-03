@@ -78,7 +78,7 @@
 }
 
 .contact-form__req {
-  color: var(--color-green);
+  color: var(--color-gold-text);
 }
 
 .contact-form__input,
@@ -109,7 +109,7 @@
 .contact-form__textarea:focus {
   outline: none;
   border-color: var(--color-blue);
-  box-shadow: 0 0 0 3px rgba(43, 197, 223, 0.25); /* aqua-neutral: reads on the dark well and on white */
+  box-shadow: 0 0 0 3px rgba(116, 138, 220, 0.25); /* aqua-neutral: reads on the dark well and on white */
 }
 
 /* keep browser autofill from repainting the well white on Deep Reef */
@@ -218,8 +218,8 @@
 .contact-form__chip input:checked + .contact-form__chip-pill {
   background: var(--color-blue);
   border-color: var(--color-blue);
-  color: var(--color-on-accent);
-  box-shadow: 0 4px 14px rgba(0, 119, 182, 0.3);
+  color: var(--color-on-blue);
+  box-shadow: 0 4px 14px rgba(78, 99, 196, 0.3);
 }
 
 .contact-form__chip input:focus-visible + .contact-form__chip-pill {
@@ -293,8 +293,8 @@
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: var(--color-green-soft);
-  color: var(--color-green);
+  background: var(--color-gold-soft);
+  color: var(--color-gold-text);
 }
 
 .contact-form__success p {
@@ -348,9 +348,9 @@
   flex-shrink: 0;
 }
 
-.contact-info-card--green .contact-info-card__icon {
-  background: var(--color-green-soft);
-  color: var(--color-green);
+.contact-info-card--gold .contact-info-card__icon {
+  background: var(--color-gold-soft);
+  color: var(--color-gold-text);
 }
 
 .contact-info-card__phones {
@@ -440,7 +440,7 @@
   font-weight: 600;
   border-radius: calc(var(--radius-lg) - 6px);
   background:
-    radial-gradient(420px 220px at 50% 40%, rgba(0, 180, 216, 0.1), transparent 70%),
+    radial-gradient(420px 220px at 50% 40%, rgba(116, 138, 220, 0.1), transparent 70%),
     var(--color-surface);
 }
 

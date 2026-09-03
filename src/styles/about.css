@@ -60,8 +60,8 @@
 }
 
 .about-story__facts > :nth-child(even) .about-fact__icon {
-  background: var(--color-green-soft);
-  color: var(--color-green);
+  background: var(--color-gold-soft);
+  color: var(--color-gold-text);
 }
 
 .about-fact__text {
@@ -94,8 +94,8 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(560px 300px at 85% 0%, rgba(0, 180, 216, 0.14), transparent 70%),
-    radial-gradient(480px 280px at 8% 100%, rgba(12, 154, 108, 0.12), transparent 70%);
+    radial-gradient(560px 300px at 85% 0%, rgba(116, 138, 220, 0.14), transparent 70%),
+    radial-gradient(480px 280px at 8% 100%, rgba(238, 196, 42, 0.12), transparent 70%);
   pointer-events: none;
 }
 
@@ -113,7 +113,7 @@
 /* the mission block is a .section--navy band - dark in BOTH themes - so the
    literal light values below are deliberate, not un-tokened leftovers */
 .about-mission .eyebrow {
-  color: #52d3a8;
+  color: #f3d45c;
 }
 
 .about-mission__figure {
@@ -192,8 +192,8 @@
   width: 52px;
   height: 52px;
   border-radius: 14px;
-  background: var(--color-green-soft);
-  color: var(--color-green);
+  background: var(--color-gold-soft);
+  color: var(--color-gold-text);
   margin-bottom: var(--space-3);
 }
 

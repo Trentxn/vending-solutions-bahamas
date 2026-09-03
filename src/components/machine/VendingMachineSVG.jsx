@@ -158,9 +158,9 @@ export default function VendingMachineSVG({
     >
       <defs>
         <linearGradient id="vmBand" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#0077B6" />
-          <stop offset="0.55" stopColor="#00B4D8" />
-          <stop offset="1" stopColor="#0C9A6C" />
+          <stop offset="0" stopColor="#EEC42A" />
+          <stop offset="0.5" stopColor="#D9B93A" />
+          <stop offset="1" stopColor="#A3B2BD" />
         </linearGradient>
         <linearGradient id="vmCabinet" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0" stopColor="#FBF7EE" />
@@ -198,10 +198,10 @@ export default function VendingMachineSVG({
         <rect x={20} y={592} width={320} height={16} rx={5} fill="var(--vm-plinth)" />
         {/* brand band */}
         <path d="M24 8 h312 a16 16 0 0 1 16 16 v30 h-344 v-30 a16 16 0 0 1 16 -16 z" fill="url(#vmBand)" />
-        <text x={180} y={34} textAnchor="middle" fontFamily="'Sora Variable', sans-serif" fontStyle="italic" fontWeight="700" fontSize="15" fill="#fff" letterSpacing="0.5">
+        <text x={180} y={34} textAnchor="middle" fontFamily="'Sora Variable', sans-serif" fontStyle="italic" fontWeight="700" fontSize="15" fill="#2A2A2A" letterSpacing="0.5">
           Power of Choice
         </text>
-        <text x={180} y={47} textAnchor="middle" fontFamily="'Inter Variable', sans-serif" fontSize="6.2" fill="#fff" opacity={0.85} letterSpacing="2.4">
+        <text x={180} y={47} textAnchor="middle" fontFamily="'Inter Variable', sans-serif" fontSize="6.2" fill="#2A2A2A" opacity={0.72} letterSpacing="2.4">
           VENDING SOLUTIONS BAHAMAS
         </text>
         {/* seam between glass door and service column */}
@@ -394,7 +394,7 @@ export default function VendingMachineSVG({
         height={584}
         rx={16}
         fill="none"
-        stroke="var(--color-green)"
+        stroke="var(--color-gold)"
         strokeWidth={3}
         initial={false}
         animate={{ pathLength: stage === 4 ? 1 : 0, opacity: stage === 4 ? 1 : 0 }}

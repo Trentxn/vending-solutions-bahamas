@@ -117,7 +117,7 @@ export const STAGES = [
       'The machine flags its own problems before anyone else notices them.',
     bullets: [
       { icon: Activity, text: 'Continuous self diagnostics' },
-      { icon: RefreshCw, text: 'Weekly restocking' },
+      { icon: RefreshCw, text: 'Routine restocking' },
       { icon: Headset, text: '24 hour help desk' },
     ],
     focus: ['all'],

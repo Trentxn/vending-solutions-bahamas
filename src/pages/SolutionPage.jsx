@@ -1,7 +1,15 @@
 import { Link } from 'react-router-dom'
-import { Check, Coffee, ArrowRight } from 'lucide-react'
+import { Check, Clock, Coffee, ArrowRight } from 'lucide-react'
 import usePageTitle from '../hooks/usePageTitle.js'
-import { machinesPage, comboMachine, coffeeMachine, healthSafety, services } from '../content.js'
+import {
+  solutionPage,
+  included,
+  serviceCommitment,
+  comboMachine,
+  coffeeMachine,
+  healthSafety,
+  services,
+} from '../content.js'
 import SectionHeading from '../components/ui/SectionHeading.jsx'
 import SpecCard from '../components/ui/SpecCard.jsx'
 import IconCard from '../components/ui/IconCard.jsx'
@@ -10,26 +18,56 @@ import coffeePhoto from '../assets/photos/coffee-machine.jpg'
 import comboPhoto from '../assets/photos/combo-machine.jpg'
 import '../styles/machines.css'
 
-export default function MachinesPage() {
-  usePageTitle('The Machines')
+export default function SolutionPage() {
+  usePageTitle('The Solution')
 
   return (
     <>
       {/* intro */}
       <section className="page-hero machines-hero">
         <div className="container page-hero__inner">
-          <span className="eyebrow">{machinesPage.eyebrow}</span>
-          <h1>{machinesPage.headline}</h1>
-          <p className="lede">{machinesPage.lede}</p>
-          <Link to="/" className="machines-hero__tour-link">
-            Watch the interactive tour
+          <span className="eyebrow">{solutionPage.eyebrow}</span>
+          <h1>{solutionPage.headline}</h1>
+          <p className="lede">{solutionPage.lede}</p>
+          <Link to={solutionPage.tourLink.to} className="machines-hero__tour-link">
+            {solutionPage.tourLink.label}
             <ArrowRight size={16} strokeWidth={2.2} aria-hidden="true" />
           </Link>
         </div>
       </section>
 
-      {/* combo machine on paper */}
+      {/* what the service covers, before any hardware detail */}
       <section className="section section--surface">
+        <div className="container">
+          <SectionHeading center eyebrow={included.eyebrow} title={included.title} lede={included.lede} />
+          <div className="solution-included__grid">
+            {included.items.map((item, i) => (
+              <Reveal key={item.title} delay={(i % 3) * 0.06} y={14}>
+                <IconCard icon={item.icon} title={item.title} text={item.text} tone={i % 2 ? 'blue' : 'gold'} />
+              </Reveal>
+            ))}
+          </div>
+          <Reveal delay={0.12}>
+            <div className="card solution-commitment">
+              <span className="solution-commitment__icon">
+                <Clock size={22} strokeWidth={2.1} aria-hidden="true" />
+              </span>
+              <div>
+                <h3>{serviceCommitment.title}</h3>
+                <p>{serviceCommitment.text}</p>
+                <ul className="solution-values" role="list">
+                  {serviceCommitment.values.map((value) => (
+                    <li key={value}>{value}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* combo machine on paper */}
+      <section className="section">
         <div className="container">
           <SectionHeading
             eyebrow={comboMachine.service}
@@ -72,12 +110,13 @@ export default function MachinesPage() {
                 </Reveal>
               ))}
             </ul>
+            <p className="machines-coffee__ideal">{coffeeMachine.idealFor}</p>
             <div className="machines-coffee__badges">
-              <span className="badge badge--green">
+              <span className="badge badge--gold">
                 <Coffee size={14} aria-hidden="true" /> {services.coffee.selections}
               </span>
             </div>
-            <Link to="/contact#survey" className="btn btn--light machines-coffee__cta">
+            <Link to="/contact#survey" className="btn btn--primary machines-coffee__cta">
               Add coffee to your break room <ArrowRight size={17} />
             </Link>
           </div>
@@ -90,13 +129,13 @@ export default function MachinesPage() {
       </section>
 
       {/* health & safety */}
-      <section className="section section--green-soft">
+      <section className="section section--gold-soft">
         <div className="container">
           <SectionHeading center eyebrow="Health & Safety" title={healthSafety.title} />
           <div className="machines-hs-grid">
             {healthSafety.items.map((item, i) => (
               <Reveal key={item.title} delay={i * 0.07}>
-                <IconCard icon={item.icon} title={item.title} text={item.text} tone="green" />
+                <IconCard icon={item.icon} title={item.title} text={item.text} tone="gold" />
               </Reveal>
             ))}
           </div>

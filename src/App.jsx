@@ -1,7 +1,7 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Layout from './components/layout/Layout.jsx'
 import HomePage from './pages/HomePage.jsx'
-import MachinesPage from './pages/MachinesPage.jsx'
+import SolutionPage from './pages/SolutionPage.jsx'
 import ServicesPage from './pages/ServicesPage.jsx'
 import IndustriesPage from './pages/IndustriesPage.jsx'
 import AboutPage from './pages/AboutPage.jsx'
@@ -13,7 +13,9 @@ export default function App() {
     <Routes>
       <Route element={<Layout />}>
         <Route index element={<HomePage />} />
-        <Route path="machines" element={<MachinesPage />} />
+        <Route path="solution" element={<SolutionPage />} />
+        {/* the page was /machines before it was reframed around the service */}
+        <Route path="machines" element={<Navigate to="/solution" replace />} />
         <Route path="services" element={<ServicesPage />} />
         <Route path="industries" element={<IndustriesPage />} />
         <Route path="about" element={<AboutPage />} />

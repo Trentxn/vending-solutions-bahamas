@@ -5,12 +5,10 @@
 import {
   Building2,
   Wrench,
-  Zap,
   ShieldCheck,
   Sparkles,
   ListChecks,
   Headset,
-  Leaf,
   Hospital,
   Hotel,
   Palmtree,
@@ -34,37 +32,118 @@ import {
   Container,
   Droplets,
   BadgeCheck,
+  Smile,
+  Clock,
+  Coins,
 } from 'lucide-react'
 
 export const site = {
   name: 'Vending Solutions Bahamas',
   shortName: 'Vending Solutions',
-  tagline: 'Premium vending, fully managed, at no cost to your business.',
+  brandTagline: 'Power of Choice',
+  tagline: 'Installed, stocked and serviced at no cost to your business.',
   established: 2012,
-  serviceArea: 'Nassau & Paradise Island',
+  serviceArea: 'New Providence',
 }
 
 export const nav = [
   { label: 'Services', to: '/services' },
-  { label: 'Machines', to: '/machines' },
+  { label: 'The Solution', to: '/solution' },
   { label: 'Industries', to: '/industries' },
   { label: 'About', to: '/about' },
   { label: 'Contact', to: '/contact' },
 ]
 
+// The headline, subheading and promise are the client's own words.
 export const hero = {
-  headline: 'Premium Vending Solutions for Businesses Throughout The Bahamas',
-  subheading:
-    'Providing fully managed snack, beverage, and coffee vending services at no cost to your business.',
+  headline: 'Premium Vending Solutions for Businesses across New Providence',
+  subheading: 'Snacks, beverages, specialty coffee',
+  promise: 'Installed, stocked and serviced at No Cost to your business',
+  highlight: 'No Cost',
   primaryCta: { label: 'Request a Free Site Survey', to: '/contact#survey' },
-  secondaryCta: { label: 'Contact Us', to: '/contact' },
+  secondaryCta: { label: 'See the solution', to: '/solution' },
+  photoAlt:
+    'Two Power of Choice vending machines installed in a hospital waiting lounge in Nassau',
+  photoChip: 'On location · Nassau',
+}
+
+// The message the client wants to dominate the page: what a facilities
+// manager gets out of hosting, not what the hardware does.
+export const pillars = {
+  eyebrow: 'For facilities managers',
+  title: 'Everything a great break room should be. Nothing for you to manage.',
+  punchline: 'Happy staff.',
+  script: 'That is the Power of Choice.',
+  items: [
+    {
+      icon: PiggyBank,
+      title: 'No capital investment',
+      text: 'We own the equipment. You never buy, lease or repair a thing.',
+    },
+    {
+      icon: ListChecks,
+      title: 'One less thing to manage',
+      text: 'Stocking, cleaning, cash handling and service calls are all ours.',
+    },
+    {
+      icon: ShieldCheck,
+      title: 'Reliable service',
+      text: 'Scheduled visits, monitored stock levels and a response within 24 hours.',
+    },
+    {
+      icon: Smile,
+      title: 'A hassle free employee amenity',
+      text: 'Snacks, cold drinks and fresh coffee, steps away from every desk.',
+    },
+  ],
+}
+
+export const included = {
+  eyebrow: 'What is included',
+  title: 'You give us the floor space. We do the rest.',
+  lede: 'Every part of running the machines sits with us, for as long as you host.',
+  items: [
+    {
+      icon: Truck,
+      title: 'Machine delivery and installation',
+      text: 'Professional setup at no cost to you.',
+    },
+    {
+      icon: RefreshCw,
+      title: 'Routine restocking',
+      text: 'Monitored and scheduled, so shelves never run bare.',
+    },
+    {
+      icon: Wrench,
+      title: 'On demand maintenance',
+      text: 'Trained technicians keep every machine clean, stocked and operational.',
+    },
+    {
+      icon: Coins,
+      title: 'Dual currency on every machine',
+      text: 'BSD and USD, bills and coins.',
+    },
+    {
+      icon: Clock,
+      title: 'Response within 24 hours',
+      text: 'Typically sooner. One call and it is handled.',
+    },
+  ],
+  link: { label: 'See the full solution', to: '/solution' },
+}
+
+export const serviceCommitment = {
+  title: 'Our service commitment',
+  text: 'Our team of trained technicians ensures machines are clean, stocked and operational at all times. Response to service issues typically occurs within 24 hours or sooner.',
+  values: ['Reliability', 'Professionalism', 'Innovation', 'Customer Centered Service'],
 }
 
 export const about = {
-  lede: 'Bahamian owned and serving Nassau since 2012.',
+  lede: 'Bahamian owned and serving New Providence since 2012.',
   story: [
-    'Vending Solutions Bahamas is a Bahamian owned company, established in 2012, specializing in the supply and management of vending equipment throughout Nassau & Paradise Island.',
-    'Every placement comes with professional installation, weekly stocking and maintenance, and reliable customer service. Hosting our equipment conveys the right image as the ideal break and meeting room accessory, and it costs you nothing.',
+    'Vending Solutions Bahamas is a Bahamian owned company, established in 2012, specializing in the supply and management of vending equipment across New Providence.',
+    'Every placement comes with professional installation, routine stocking and maintenance, and reliable customer service. Hosting our equipment conveys the right image as the ideal break and meeting room accessory, and it costs you nothing.',
+    'We do not sell machines. We provide the solution and the service behind it.',
   ],
   mission:
     'At Vending Solutions Bahamas, we are committed to delivering convenient, reliable, and high quality vending services while providing exceptional customer support and premium products to our customers.',
@@ -82,49 +161,38 @@ export const about = {
 export const services = {
   snack: {
     title: 'Snack & Beverage Vending',
+    caption: 'Snacks & beverages',
     summary:
       'Cold drinks and snacks together in one temperature zoned machine, with over thirty selections stocked to match your location.',
     features: [
-      'Cold beverages',
-      'Chips',
-      'Chocolate',
-      'Cookies',
-      'Healthy snacks',
-      'Juice',
-      'Water',
-      'Energy drinks',
+      'Cold drinks & water',
+      'Chips & snacks',
+      'Chocolate & candy bars',
+      'Juices & sports drinks',
+      'Trail mix & granola bars',
+      'Local favorites on request',
     ],
   },
   coffee: {
-    title: 'Coffee Vending',
+    title: 'Specialty Coffee Vending',
+    caption: 'Specialty coffee',
     summary:
-      'Barista quality hot drinks, brewed fresh from whole beans, with 15 to 18 selections at the press of a button.',
+      'Espresso, cappuccino, hot chocolate and more, brewed fresh from medium roasted Arabica beans, with 15 to 18 selections at the press of a button.',
     features: [
-      'Freshly ground coffee beans',
-      'Espresso',
-      'Cappuccino',
-      'Hazelnut',
+      'Espresso & cappuccino',
       'Hot chocolate',
-      'French vanilla',
+      'Medium roasted Arabica beans',
+      'Pressured valve brewing',
+      'Automatic grind regulation',
+      'Freshly ground for every cup',
     ],
     selections: '15 to 18 beverage selections',
   },
 }
 
-// The hero and the five-step process already cover cost, restocking, and who
-// owns the equipment, so this grid only carries what is not said elsewhere.
-export const whyChooseUs = [
-  { icon: ClipboardCheck, title: 'Fully Managed Service', text: 'Stocking, cleaning, and cash handling, all handled by us.' },
-  { icon: Wrench, title: 'Preventative Maintenance', text: 'Scheduled upkeep keeps downtime near zero.' },
-  { icon: Zap, title: 'Fast Service Calls', text: 'Trained technicians respond quickly when you need us.' },
-  { icon: ListChecks, title: 'Custom Product Selection', text: 'Menus tailored to your location and preferences.' },
-  { icon: Headset, title: '24 Hour Help Desk', text: 'Round the clock technical support, whenever it matters.' },
-  { icon: Leaf, title: 'Eco Friendly Equipment', text: 'Energy saving, CFC free machines built to ISO standards.' },
-]
-
 export const comboMachine = {
   name: 'Power of Choice',
-  service: 'Traditional Service',
+  service: 'Snack & Beverage Service',
   intro:
     'Our combo machine serves cold drinks and snacks from a single, temperature zoned cabinet, engineered for capacity, efficiency, and guaranteed delivery.',
   features: [
@@ -151,12 +219,14 @@ export const coffeeMachine = {
   name: 'Barista Coffee',
   service: 'Hot Drink Service',
   intro:
-    'Between fifteen and eighteen hot drink selections, brewed fresh from whole beans, using a brewing process that is the first in the market to incorporate a pressured valve, ensuring every brewing cycle completes.',
+    'Between fifteen and eighteen hot drink selections, brewed fresh from medium roasted Arabica beans, using a pressured valve brewing system that is exclusive to us in the local market, so every brewing cycle completes.',
+  idealFor: 'Ideal for corporate offices, reception areas and hospitality environments.',
   // the drink menu itself lives on the services page
   features: [
-    '15 to 18 different product selections',
-    'Pressured valve brewing, first and only in the market',
-    'Automatic grinder regulation for perfect grind thickness',
+    '15 to 18 selections, including espresso, cappuccino and hot chocolate',
+    'Medium roasted Arabica beans for a smooth, creamy taste',
+    'Pressured valve brewing, exclusive in the local market',
+    'Automatic grind thickness regulation for consistent flavour',
   ],
   specs: [
     { label: 'Selections', value: '15 to 18 hot beverages' },
@@ -198,19 +268,34 @@ export const products = {
   note: 'Menus are built per location and tuned over time to what your team actually buys. These are popular examples.',
   categories: [
     {
-      icon: CupSoda,
-      title: 'Cold Drinks',
-      items: ['Coca-Cola', 'Pepsi', 'Water', 'Juice', 'Gatorade', 'Iced Tea'],
-    },
-    {
       icon: Cookie,
       title: 'Snacks',
-      items: ['Chips', 'Chocolate', 'Cookies', 'Granola Bars', 'Crackers'],
+      items: [
+        'Lay’s',
+        'Doritos',
+        'Cheetos',
+        'M&Ms',
+        'Snickers',
+        'Twix',
+        'Trail Mix',
+        'Granola Bars',
+        'Local Favorites (upon request)',
+      ],
     },
     {
-      icon: Salad,
-      title: 'Healthy Choices',
-      items: ['Baked snacks', 'Granola', 'Nuts', 'Low sugar drinks'],
+      icon: CupSoda,
+      title: 'Drinks',
+      items: [
+        'Coca-Cola',
+        'Sprite',
+        'Water',
+        'Powerade',
+        'Juices',
+        'Vita Malt',
+        'Gatorade',
+        'Bottled Teas',
+        'Flavored Water',
+      ],
     },
   ],
 }
@@ -223,7 +308,7 @@ export const howItWorks = {
     { icon: ClipboardCheck, title: 'Free Site Assessment', text: 'We visit, measure, and understand your team’s needs.' },
     { icon: Lightbulb, title: 'Machine Recommendation', text: 'We recommend the right machines and product mix.' },
     { icon: Truck, title: 'Installation', text: 'Professional delivery and setup, at zero cost to you.' },
-    { icon: RefreshCw, title: 'Ongoing Service', text: 'Weekly stocking, maintenance, and fast support, for as long as you host.' },
+    { icon: RefreshCw, title: 'Ongoing Service', text: 'Routine restocking, maintenance, and fast support, for as long as you host.' },
   ],
 }
 
@@ -251,11 +336,11 @@ export const industries = {
 export const faq = [
   {
     q: 'How much does a vending machine cost?',
-    a: 'Nothing. We provide and maintain the equipment at no cost to your business.',
+    a: 'Nothing. We provide, install and maintain the equipment at no cost to your business. You host the solution, we run it.',
   },
   {
     q: 'Who stocks the machine?',
-    a: 'We do. Our team restocks weekly and tailors the product mix to your location.',
+    a: 'We do. Restocking is monitored and scheduled, and the product mix is tailored to your location.',
   },
   {
     q: 'Who repairs it?',
@@ -271,21 +356,40 @@ export const faq = [
   },
 ]
 
-// No client testimonials exist yet. Keep disabled until real quotes are provided.
-// Schema for later: { quote, name, role, organization }
+// Supplied by the client. Attributed by role and organisation, as they wrote
+// them. Never add a quote here that the client has not provided.
 export const testimonials = {
-  enabled: false,
-  items: [],
+  enabled: true,
+  items: [
+    {
+      quote:
+        'Vending Solutions Bahamas has completely upgraded our employee breakroom experience. The combo machine is always well stocked with fresh snacks and drinks, and the service team is prompt and professional. Our staff loves the convenience.',
+      name: 'HR Manager',
+      organization: 'Financial Services Firm',
+    },
+    {
+      quote:
+        'We have had their coffee vending service in our lobby for months now, and guests constantly comment on how good the coffee is. It is a polished, self serve setup that saves us time and still impresses.',
+      name: 'Operations Director',
+      organization: 'Boutique Hotel',
+    },
+    {
+      quote:
+        'What I appreciate most is how hands off the process is. Vending Solutions handles everything, installation, restocking and maintenance, while we benefit from added convenience and a share of the revenue. Win win.',
+      name: 'Property Manager',
+      organization: 'Mixed Use Commercial Building',
+    },
+  ],
 }
 
 export const cta = {
-  heading: 'Ready to Offer Convenient Refreshments to Your Employees or Customers?',
-  text: 'Contact Vending Solutions Bahamas today for a FREE site assessment and machine recommendation.',
+  heading: 'Ready to give your team the Power of Choice?',
+  text: 'Book a free site survey. We will recommend the right setup for your location and handle everything from there.',
   button: { label: 'Request a Free Site Survey', to: '/contact#survey' },
+  dock: 'No cost · Installed, stocked, serviced',
 }
 
-// NOTE: phone numbers and email were read from the machine decals in the
-// client's photos. Confirm with the client before launch.
+// Phone numbers, email and postal address as confirmed by the client.
 export const contact = {
   phones: [
     { display: '(242) 426 4313', tel: '+12424264313', wa: '12424264313' },
@@ -294,14 +398,16 @@ export const contact = {
   email: 'vendingsolutionsbahamas@gmail.com',
   hours: 'Mon to Fri · 9:00 AM to 5:00 PM · 24 hour help desk for service calls',
   location: 'Nassau, New Providence, The Bahamas',
+  postal: 'P.O. Box CB-11368, Nassau, NP, The Bahamas',
   whatsappMessage:
     'Hi Vending Solutions Bahamas, I’d like to request a free site survey for my business.',
 }
 
-export const machinesPage = {
-  eyebrow: 'The Machines',
-  headline: 'Engineered for effortless refreshment',
-  lede: 'Capacities, dimensions, and what keeps both machines running. The full picture, on paper.',
+export const solutionPage = {
+  eyebrow: 'The Solution',
+  headline: 'You host it. We run it.',
+  lede: 'Snack, beverage and specialty coffee vending, installed, stocked and serviced by our team at no cost to your business. Here is everything that comes with it.',
+  tourLink: { label: 'Watch the interactive tour', to: '/#tour' },
 }
 
 export const notFound = {

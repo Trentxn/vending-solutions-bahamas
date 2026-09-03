@@ -16,7 +16,7 @@ export default function CtaBanner() {
           <h2 className="cta-banner__heading">{cta.heading}</h2>
           <p className="cta-banner__text">{cta.text}</p>
         </div>
-        <Link to={cta.button.to} className="btn btn--light">
+        <Link to={cta.button.to} className="btn btn--primary">
           {cta.button.label} <ArrowRight size={18} />
         </Link>
       </div>

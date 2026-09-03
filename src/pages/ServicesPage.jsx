@@ -20,8 +20,8 @@ export default function ServicesPage() {
             <span className="eyebrow">Our Services</span>
             <h1>Fully managed vending, two ways</h1>
             <p className="lede">
-              Snack &amp; beverage combo machines and fresh bean coffee vending, installed,
-              stocked, and maintained by our team at no cost to your business.
+              Snack and beverage combo machines and specialty coffee, installed, stocked
+              and serviced by our team at no cost to your business.
             </p>
           </Reveal>
         </div>
@@ -32,7 +32,7 @@ export default function ServicesPage() {
         <div className="container services-split">
           <div>
             <SectionHeading
-              eyebrow="Traditional Service"
+              eyebrow="Snack &amp; Beverage Service"
               title={services.snack.title}
               lede={services.snack.summary}
             />
@@ -54,8 +54,8 @@ export default function ServicesPage() {
                 Over 30 selections in a single temperature zoned machine.
               </p>
               <div className="services-cta-row">
-                <Link className="btn btn--outline" to="/machines">
-                  See the machine in action
+                <Link className="btn btn--outline" to="/solution">
+                  See how the solution works
                   <ArrowRight size={18} strokeWidth={2} aria-hidden="true" />
                 </Link>
               </div>
@@ -78,7 +78,7 @@ export default function ServicesPage() {
           <div>
             <SectionHeading
               light
-              eyebrow="Hot Drink Service"
+              eyebrow="Specialty Coffee Service"
               title={services.coffee.title}
               lede={services.coffee.summary}
             />
@@ -96,14 +96,14 @@ export default function ServicesPage() {
             </Reveal>
             <Reveal delay={0.12}>
               <p className="services-badge-row">
-                <span className="badge badge--green">{services.coffee.selections}</span>
+                <span className="badge badge--gold">{services.coffee.selections}</span>
               </p>
               <p className="services-note">
                 <Bean size={18} strokeWidth={2} aria-hidden="true" />
                 {coffeeMachine.intro}
               </p>
               <div className="services-cta-row">
-                <Link className="btn btn--light" to="/contact#survey">
+                <Link className="btn btn--primary" to="/contact#survey">
                   Add coffee to your break room
                   <ArrowRight size={18} strokeWidth={2} aria-hidden="true" />
                 </Link>
@@ -136,7 +136,7 @@ export default function ServicesPage() {
               const isLast = i === products.categories.length - 1
               return (
                 <Reveal as="article" className="services-cat" key={category.title} delay={i * 0.06}>
-                  <span className={`services-cat__icon${isLast ? ' services-cat__icon--green' : ''}`}>
+                  <span className={`services-cat__icon${isLast ? ' services-cat__icon--gold' : ''}`}>
                     <Icon size={22} strokeWidth={2} aria-hidden="true" />
                   </span>
                   <h3 className="services-cat__title">{category.title}</h3>
@@ -159,11 +159,11 @@ export default function ServicesPage() {
         <div className="container">
           <Reveal className="services-crosslink" y={24}>
             <div className="services-crosslink__copy">
-              <h2>Want the engineering tour?</h2>
-              <p>Specs, dimensions, and the tech inside both machines.</p>
+              <h2>Want the full picture?</h2>
+              <p>The service checklist, the specs, and what keeps both machines running.</p>
             </div>
-            <Link className="btn btn--light" to="/machines">
-              Explore the machines
+            <Link className="btn btn--primary" to="/solution">
+              Explore the solution
               <ArrowRight size={18} strokeWidth={2} aria-hidden="true" />
             </Link>
           </Reveal>

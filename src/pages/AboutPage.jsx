@@ -4,7 +4,7 @@ import { about, coffeeMachine, comboMachine, site, testimonials } from '../conte
 import Reveal from '../components/ui/Reveal.jsx'
 import SectionHeading from '../components/ui/SectionHeading.jsx'
 import IconCard from '../components/ui/IconCard.jsx'
-import machinesOnLocationPhoto from '../assets/photos/machines-on-location.jpg'
+import { LOCATION_PHOTO } from '../brand/media.js'
 import comboMachinePhoto from '../assets/photos/combo-machine.jpg'
 import coffeeMachinePhoto from '../assets/photos/coffee-machine.jpg'
 import '../styles/about.css'
@@ -18,9 +18,9 @@ const facts = [
 
 const galleryItems = [
   {
-    photo: machinesOnLocationPhoto,
-    alt: `A ${comboMachine.name} combo vending machine and a ${coffeeMachine.name} machine installed side by side in a hospital lobby`,
-    caption: 'On location: snacks, cold drinks & fresh coffee, side by side',
+    photo: LOCATION_PHOTO,
+    alt: `Two ${comboMachine.name} combo vending machines installed side by side in a hospital waiting lounge`,
+    caption: 'On location: two combo machines at work in a hospital lounge',
     wide: true,
   },
   {
@@ -57,7 +57,7 @@ export default function AboutPage() {
       <section className="section about-story">
         <div className="container about-story__grid">
           <div className="about-story__copy">
-            <SectionHeading eyebrow="Our story" title="Serving Nassau since 2012" />
+            <SectionHeading eyebrow="Our story" title={`Serving ${site.serviceArea} since 2012`} />
             {about.story.map((paragraph, i) => (
               <Reveal key={paragraph.slice(0, 32)} as="p" delay={i * 0.06}>
                 {paragraph}
@@ -115,7 +115,7 @@ export default function AboutPage() {
               <p>{about.standards}</p>
               <div className="about-standards__badges">
                 <span className="badge">ISO 9001</span>
-                <span className="badge badge--green">ISO 14001</span>
+                <span className="badge badge--gold">ISO 14001</span>
               </div>
             </div>
           </Reveal>
@@ -129,7 +129,7 @@ export default function AboutPage() {
           <div className="about-goals__grid">
             {about.goals.map((goal, i) => (
               <Reveal key={goal.text} delay={i * 0.06}>
-                <IconCard icon={goal.icon} title={goal.text} tone="green" />
+                <IconCard icon={goal.icon} title={goal.text} tone="gold" />
               </Reveal>
             ))}
           </div>

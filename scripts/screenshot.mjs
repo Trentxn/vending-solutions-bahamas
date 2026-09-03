@@ -14,7 +14,7 @@ const EXEC = process.env.CHROMIUM_PATH ?? '/opt/pw-browsers/chromium-1194/chrome
 
 const ROUTES = [
   ['home', '/'],
-  ['machines', '/machines'],
+  ['solution', '/solution'],
   ['services', '/services'],
   ['industries', '/industries'],
   ['about', '/about'],

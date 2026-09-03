@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Phone, Mail, MapPin, MessageCircle } from 'lucide-react'
+import { Phone, Mail, MapPin, Mailbox, MessageCircle } from 'lucide-react'
 import { site, nav, contact } from '../../content.js'
 import Logo from './Logo.jsx'
 
@@ -10,12 +10,12 @@ export default function Footer() {
     <footer className="footer">
       <div className="container footer__grid">
         <div className="footer__brand">
-          <Logo light />
+          <Logo light tagline />
           <p className="footer__blurb">
-            Fully managed snack, beverage, and coffee vending for businesses throughout {site.serviceArea}, at no
-            cost to you.
+            Snack, beverage and specialty coffee vending for businesses across {site.serviceArea},
+            installed, stocked and serviced at no cost to you.
           </p>
-          <span className="badge badge--green footer__badge">Est. {site.established} · Bahamian owned</span>
+          <span className="badge badge--gold footer__badge">Est. {site.established} · Bahamian owned</span>
         </div>
 
         <nav className="footer__col" aria-label="Footer">
@@ -47,6 +47,9 @@ export default function Footer() {
           </a>
           <span className="footer__plain">
             <MapPin size={15} /> {contact.location}
+          </span>
+          <span className="footer__plain">
+            <Mailbox size={15} /> {contact.postal}
           </span>
         </div>
       </div>

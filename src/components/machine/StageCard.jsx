@@ -34,7 +34,7 @@ export default function StageCard({ stage }) {
       </ul>
       {st.cta && (
         <Link to="/contact#survey" className="btn btn--primary btn--sm showcase__cta">
-          Get this machine free <ArrowRight size={16} />
+          Get started at no cost <ArrowRight size={16} />
         </Link>
       )}
     </>

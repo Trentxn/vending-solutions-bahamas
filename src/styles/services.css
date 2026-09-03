@@ -55,8 +55,8 @@
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: var(--color-green-soft);
-  color: var(--color-green);
+  background: var(--color-gold-soft);
+  color: var(--color-gold-text);
 }
 
 @media (max-width: 479px) {
@@ -70,13 +70,14 @@
 }
 
 .services-split--dark .services-check__icon {
-  background: rgba(86, 220, 171, 0.16);
-  color: #56dcab;
+  background: rgba(238, 196, 42, 0.18);
+  color: #f3d45c;
 }
 
-/* brighten the standard eyebrow green for legibility on navy */
+/* the light theme's gold text disappears on navy, so this band gets the
+   light-on-dark cornflower instead */
 .services-split--dark .eyebrow {
-  color: #3ecf9a;
+  color: #b3c0f0;
 }
 
 /* ---------- small note strip ---------- */
@@ -200,9 +201,9 @@
   color: var(--color-blue);
 }
 
-.services-cat__icon--green {
-  background: var(--color-green-soft);
-  color: var(--color-green);
+.services-cat__icon--gold {
+  background: var(--color-gold-soft);
+  color: var(--color-gold-text);
 }
 
 .services-cat__title {
@@ -260,8 +261,8 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(480px 260px at 88% -30%, rgba(0, 180, 216, 0.3), transparent 70%),
-    radial-gradient(360px 220px at 4% 130%, rgba(12, 154, 108, 0.22), transparent 70%);
+    radial-gradient(480px 260px at 88% -30%, rgba(116, 138, 220, 0.3), transparent 70%),
+    radial-gradient(360px 220px at 4% 130%, rgba(238, 196, 42, 0.22), transparent 70%);
   pointer-events: none;
 }
 
