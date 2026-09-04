@@ -6,7 +6,6 @@ import {
   Building2,
   Wrench,
   ShieldCheck,
-  Sparkles,
   ListChecks,
   Headset,
   Hospital,
@@ -23,7 +22,6 @@ import {
   Armchair,
   CupSoda,
   Cookie,
-  Salad,
   ClipboardCheck,
   Lightbulb,
   Truck,
@@ -33,6 +31,12 @@ import {
   Droplets,
   BadgeCheck,
   Smile,
+  HandCoins,
+  Plug,
+  HeartHandshake,
+  Globe,
+  CalendarCheck,
+  MapPin,
   Clock,
   Coins,
 } from 'lucide-react'
@@ -132,29 +136,62 @@ export const included = {
   link: { label: 'See the full solution', to: '/solution' },
 }
 
+// NOTE: the revenue share line comes from the client's own brief ("No Upfront
+// Costs, Revenue Share Model") and his third testimonial. No percentages are
+// published: confirm the exact terms with the client before launch.
+export const terms = {
+  eyebrow: 'The commercial side',
+  title: 'What hosting actually costs you',
+  items: [
+    {
+      icon: HandCoins,
+      title: 'Zero cost to host',
+      text: 'The equipment, the installation, the stocking and the maintenance are all ours.',
+    },
+    {
+      icon: PiggyBank,
+      title: 'Revenue share model',
+      text: 'Your location earns a share of what the machines sell, for as long as you host them.',
+    },
+    {
+      icon: Plug,
+      title: 'All we need from you',
+      text: 'A spot with a standard outlet and people nearby. That is the whole ask.',
+    },
+  ],
+  note: 'Exact terms are confirmed at your free site survey.',
+}
+
 export const serviceCommitment = {
   title: 'Our service commitment',
   text: 'Our team of trained technicians ensures machines are clean, stocked and operational at all times. Response to service issues typically occurs within 24 hours or sooner.',
-  values: ['Reliability', 'Professionalism', 'Innovation', 'Customer Centered Service'],
 }
 
 export const about = {
   lede: 'Bahamian owned and serving New Providence since 2012.',
   story: [
     'Vending Solutions Bahamas is a Bahamian owned company, established in 2012, specializing in the supply and management of vending equipment across New Providence.',
-    'Every placement comes with professional installation, routine stocking and maintenance, and reliable customer service. Hosting our equipment conveys the right image as the ideal break and meeting room accessory, and it costs you nothing.',
+    'Hosting our equipment conveys the right image as the ideal break and meeting room accessory, whether that is a hospital lobby, a hotel staff room or a shop floor.',
     'We do not sell machines. We provide the solution and the service behind it.',
   ],
   mission:
     'At Vending Solutions Bahamas, we are committed to delivering convenient, reliable, and high quality vending services while providing exceptional customer support and premium products to our customers.',
   vision:
-    'It is our vision to remain the most sought after vending equipment service provider through sustainable relationships with host locations, reliability, professionalism, and innovation. We have partnered with one of the world’s leading manufacturers of vending equipment, with a presence in more than fifty countries worldwide.',
+    'It is our vision to remain the most sought after vending equipment service provider through sustainable relationships with host locations.',
   standards:
-    'Our equipment was subject to quality testing and environmental management concepts established in strict accordance with international standards ISO 9001 and ISO 14001.',
-  goals: [
-    { icon: Sparkles, text: 'Introduce high quality vending equipment, first to market' },
-    { icon: Salad, text: 'Offer healthy as well as fun foods' },
-    { icon: BadgeCheck, text: 'Usher in a new standard for quality vending services' },
+    'We partnered with one of the world’s leading manufacturers of vending equipment, present in more than fifty countries. Their equipment is quality tested and built to the international standards ISO 9001 and ISO 14001.',
+  // the client's core values, from his brief
+  values: [
+    { icon: ShieldCheck, title: 'Reliability', text: 'We show up, and the machines work.' },
+    { icon: BadgeCheck, title: 'Professionalism', text: 'Trained technicians and a presentable machine, every visit.' },
+    { icon: Lightbulb, title: 'Innovation', text: 'We bring equipment to this market before anyone else does.' },
+    { icon: HeartHandshake, title: 'Customer Centered Service', text: 'Your location sets the product mix, not a catalogue.' },
+  ],
+  facts: [
+    { icon: CalendarCheck, value: 'Est. 2012', label: 'Bahamian owned from day one' },
+    { icon: MapPin, value: 'New Providence', label: 'Our home service area' },
+    { icon: Globe, value: '50+ countries', label: 'Where our equipment partner operates' },
+    { icon: BadgeCheck, value: 'ISO 9001 & 14001', label: 'Quality and environmental standards' },
   ],
 }
 
@@ -164,28 +201,14 @@ export const services = {
     caption: 'Snacks & beverages',
     summary:
       'Cold drinks and snacks together in one temperature zoned machine, with over thirty selections stocked to match your location.',
-    features: [
-      'Cold drinks & water',
-      'Chips & snacks',
-      'Chocolate & candy bars',
-      'Juices & sports drinks',
-      'Trail mix & granola bars',
-      'Local favorites on request',
-    ],
   },
   coffee: {
     title: 'Specialty Coffee Vending',
     caption: 'Specialty coffee',
     summary:
-      'Espresso, cappuccino, hot chocolate and more, brewed fresh from medium roasted Arabica beans, with 15 to 18 selections at the press of a button.',
-    features: [
-      'Espresso & cappuccino',
-      'Hot chocolate',
-      'Medium roasted Arabica beans',
-      'Pressured valve brewing',
-      'Automatic grind regulation',
-      'Freshly ground for every cup',
-    ],
+      'Café style hot drinks at the press of a button, brewed to order rather than poured from a jug.',
+    menu: ['Espresso', 'Cappuccino', 'Hot chocolate', 'And 12 to 15 more'],
+    beans: 'Medium roasted Arabica beans, ground fresh for every cup.',
     selections: '15 to 18 beverage selections',
   },
 }
@@ -221,19 +244,13 @@ export const coffeeMachine = {
   intro:
     'Between fifteen and eighteen hot drink selections, brewed fresh from medium roasted Arabica beans, using a pressured valve brewing system that is exclusive to us in the local market, so every brewing cycle completes.',
   idealFor: 'Ideal for corporate offices, reception areas and hospitality environments.',
-  // the drink menu itself lives on the services page
-  features: [
-    '15 to 18 selections, including espresso, cappuccino and hot chocolate',
-    'Medium roasted Arabica beans for a smooth, creamy taste',
-    'Pressured valve brewing, exclusive in the local market',
-    'Automatic grind thickness regulation for consistent flavour',
-  ],
   specs: [
     { label: 'Selections', value: '15 to 18 hot beverages' },
     { label: 'Dimensions', value: '59″H × 19½″W × 22″D' },
     { label: 'Weight', value: '221 lbs' },
     { label: 'Power', value: '110 V 60 Hz (optional 220 V)' },
-    { label: 'Brewing', value: 'Pressured valve, freshly ground beans' },
+    { label: 'Brewing', value: 'Pressured valve, exclusive in the local market' },
+    { label: 'Grinder', value: 'Automatic grind thickness regulation' },
     { label: 'Housing', value: 'Rust proof steel, vandal proof lock' },
   ],
 }
@@ -336,11 +353,11 @@ export const industries = {
 export const faq = [
   {
     q: 'How much does a vending machine cost?',
-    a: 'Nothing. We provide, install and maintain the equipment at no cost to your business. You host the solution, we run it.',
+    a: 'Nothing. See the full terms on the solution page.',
   },
   {
     q: 'Who stocks the machine?',
-    a: 'We do. Restocking is monitored and scheduled, and the product mix is tailored to your location.',
+    a: 'We do, on a schedule set by how fast your location sells.',
   },
   {
     q: 'Who repairs it?',

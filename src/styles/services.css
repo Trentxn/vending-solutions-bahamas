@@ -285,3 +285,72 @@
 .services-crosslink .btn {
   position: relative;
 }
+
+/* ---------- menu labels (snack section) ---------- */
+.services-menu__label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: var(--space-4);
+  margin-bottom: 10px;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-gold-text);
+}
+
+.services-menu__label svg {
+  color: var(--color-gold-text);
+}
+
+/* ---------- how the menu gets built ---------- */
+.services-tuned {
+  max-width: 660px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.services-tuned__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: var(--space-3);
+  border-radius: 15px;
+  background: var(--color-gold-soft);
+  color: var(--color-gold-text);
+}
+
+.services-tuned .lede {
+  margin-inline: auto;
+  margin-top: var(--space-3);
+}
+
+.services-tuned__highlight {
+  margin-top: var(--space-3);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.services-tuned__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: var(--space-4);
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--color-blue);
+}
+
+.services-tuned__link svg {
+  transition: transform 0.18s ease;
+}
+
+.services-tuned__link:hover svg {
+  transform: translateX(4px);
+}

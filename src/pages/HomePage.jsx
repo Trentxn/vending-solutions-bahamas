@@ -1,25 +1,13 @@
 import { Link } from 'react-router-dom'
 import { useReducedMotion } from 'framer-motion'
-import { ArrowRight, Check, ChevronDown, MapPin, Quote } from 'lucide-react'
+import { ArrowRight, ChevronDown, MapPin, Quote } from 'lucide-react'
 import usePageTitle from '../hooks/usePageTitle.js'
 import Reveal from '../components/ui/Reveal.jsx'
 import SectionHeading from '../components/ui/SectionHeading.jsx'
-import Steps from '../components/ui/Steps.jsx'
 import HeroMedia from '../components/home/HeroMedia.jsx'
 import MachineShowcase from '../components/machine/MachineShowcase.jsx'
 import StaticShowcase from '../components/machine/StaticShowcase.jsx'
-import {
-  hero,
-  pillars,
-  included,
-  services,
-  comboMachine,
-  howItWorks,
-  industries,
-  testimonials,
-} from '../content.js'
-import comboPhoto from '../assets/photos/combo-machine.jpg'
-import coffeePhoto from '../assets/photos/coffee-machine.jpg'
+import { hero, pillars, comboMachine, industries, testimonials } from '../content.js'
 import '../styles/home.css'
 
 /** Wrap a phrase inside a sentence so it can carry the brand gold. */
@@ -37,10 +25,7 @@ function highlight(text, phrase) {
 
 const featured = testimonials.enabled ? testimonials.items[0] : null
 
-const servicePhotos = [
-  { photo: comboPhoto, caption: services.snack.caption, to: '/services#snack', alt: 'The Power of Choice combo vending machine, stocked with snacks and cold drinks' },
-  { photo: coffeePhoto, caption: services.coffee.caption, to: '/services#coffee', alt: 'The Barista Coffee machine, which grinds fresh beans for every cup' },
-]
+const industryTeaser = industries.items.slice(0, 6)
 
 export default function HomePage() {
   usePageTitle()
@@ -124,46 +109,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. What is included, beside the two machines that deliver it */}
-      <section className="section home-included">
-        <div className="container home-included__grid">
-          <div>
-            <SectionHeading eyebrow={included.eyebrow} title={included.title} lede={included.lede} />
-            <Reveal delay={0.06}>
-              <ul className="home-included__list" role="list">
-                {included.items.map((item) => (
-                  <li key={item.title}>
-                    <span className="home-included__check">
-                      <Check size={14} strokeWidth={3} aria-hidden="true" />
-                    </span>
-                    <span>
-                      <strong>{item.title}</strong>
-                      {item.text}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
-            <Reveal delay={0.12}>
-              <Link className="home-included__link" to={included.link.to}>
-                {included.link.label}
-                <ArrowRight size={17} strokeWidth={2.2} aria-hidden="true" />
-              </Link>
-            </Reveal>
-          </div>
-
-          <Reveal className="home-included__photos" delay={0.1} y={26}>
-            {servicePhotos.map((item) => (
-              <Link className="home-included__photo" to={item.to} key={item.caption}>
-                <img src={item.photo} alt={item.alt} loading="lazy" decoding="async" />
-                <span className="home-included__caption">{item.caption}</span>
-              </Link>
-            ))}
-          </Reveal>
-        </div>
-      </section>
-
-      {/* 4. Lead-in to the machine tour */}
+      {/* 3. Lead-in to the machine tour */}
       <section className="section home-tour-intro" id="tour">
         <div className="container">
           <Reveal className="home-tour-intro__copy">
@@ -174,18 +120,18 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. The scroll tour: the spine of the page.
+      {/* 4. The scroll tour: the spine of the page.
           Must stay a direct child here: any wrapper with a transform (Reveal!)
           or non-visible overflow would break the sticky pin. */}
       {reduced ? <StaticShowcase /> : <MachineShowcase />}
 
-      {/* 6. Industries */}
-      <section className="section section--sand home-industries panel--full-lg">
+      {/* 5. Industries teaser: the full list lives on its own page */}
+      <section className="section section--sand home-industries">
         <div className="container">
           <SectionHeading center eyebrow="Industries we serve" title="A fit for every kind of location" />
           <Reveal>
             <ul className="home-industries__cloud" role="list">
-              {industries.items.map((industry, i) => (
+              {industryTeaser.map((industry, i) => (
                 <li
                   key={industry.title}
                   className={`home-industries__pill${i % 2 ? ' home-industries__pill--blue' : ''}`}
@@ -197,20 +143,14 @@ export default function HomePage() {
             </ul>
           </Reveal>
           <Reveal className="home-industries__cta" delay={0.12}>
-            <Link className="btn btn--outline" to="/industries">
-              See how we fit your industry
+            <Link className="home-industries__link" to="/industries">
+              See all {industries.items.length} location types
+              <ArrowRight size={17} strokeWidth={2.2} aria-hidden="true" />
             </Link>
           </Reveal>
         </div>
       </section>
 
-      {/* 7. How it works */}
-      <section className="section">
-        <div className="container">
-          <SectionHeading center eyebrow="Getting started" title={howItWorks.title} lede={howItWorks.lede} />
-          <Steps steps={howItWorks.steps} />
-        </div>
-      </section>
     </>
   )
 }

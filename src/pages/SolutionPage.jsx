@@ -1,21 +1,21 @@
 import { Link } from 'react-router-dom'
-import { Check, Clock, Coffee, ArrowRight } from 'lucide-react'
+import { Clock, ArrowRight } from 'lucide-react'
 import usePageTitle from '../hooks/usePageTitle.js'
 import {
   solutionPage,
   included,
   serviceCommitment,
+  terms,
+  howItWorks,
   comboMachine,
   coffeeMachine,
   healthSafety,
-  services,
 } from '../content.js'
 import SectionHeading from '../components/ui/SectionHeading.jsx'
 import SpecCard from '../components/ui/SpecCard.jsx'
 import IconCard from '../components/ui/IconCard.jsx'
 import Reveal from '../components/ui/Reveal.jsx'
-import coffeePhoto from '../assets/photos/coffee-machine.jpg'
-import comboPhoto from '../assets/photos/combo-machine.jpg'
+import Steps from '../components/ui/Steps.jsx'
 import '../styles/machines.css'
 
 export default function SolutionPage() {
@@ -55,76 +55,54 @@ export default function SolutionPage() {
               <div>
                 <h3>{serviceCommitment.title}</h3>
                 <p>{serviceCommitment.text}</p>
-                <ul className="solution-values" role="list">
-                  {serviceCommitment.values.map((value) => (
-                    <li key={value}>{value}</li>
-                  ))}
-                </ul>
               </div>
             </div>
           </Reveal>
         </div>
       </section>
 
-      {/* combo machine on paper */}
+      {/* how hosting actually starts */}
       <section className="section">
         <div className="container">
-          <SectionHeading
-            eyebrow={comboMachine.service}
-            title={`${comboMachine.name}, on paper`}
-            lede={comboMachine.intro}
-          />
-          <div className="machines-spec-grid">
-            <Reveal>
-              <SpecCard title={comboMachine.name} subtitle="Combo machine" specs={comboMachine.specs} />
-            </Reveal>
-            <Reveal delay={0.1} className="machines-photo-card">
-              <img
-                src={comboPhoto}
-                alt="The Power of Choice combo vending machine, stocked with snacks and cold drinks"
-              />
-              <span className="machines-photo-card__caption">The real thing, stocked and on location</span>
-            </Reveal>
-          </div>
+          <SectionHeading center eyebrow="Getting started" title={howItWorks.title} lede={howItWorks.lede} />
+          <Steps steps={howItWorks.steps} />
         </div>
       </section>
 
-      {/* coffee machine - dark section */}
-      <section className="section section--navy machines-coffee">
-        <div className="container machines-coffee__grid">
-          <Reveal className="machines-coffee__photo">
-            <img src={coffeePhoto} alt="The Barista Coffee hot drink vending machine" />
-          </Reveal>
-          <div>
-            <SectionHeading
-              light
-              eyebrow={coffeeMachine.service}
-              title="Barista Coffee: fresh beans, zero baristas"
-              lede={coffeeMachine.intro}
-            />
-            <ul className="machines-coffee__list" role="list">
-              {coffeeMachine.features.map((f, i) => (
-                <Reveal as="li" key={f} delay={i * 0.06}>
-                  <Check size={18} strokeWidth={2.6} aria-hidden="true" />
-                  <span>{f}</span>
-                </Reveal>
-              ))}
-            </ul>
-            <p className="machines-coffee__ideal">{coffeeMachine.idealFor}</p>
-            <div className="machines-coffee__badges">
-              <span className="badge badge--gold">
-                <Coffee size={14} aria-hidden="true" /> {services.coffee.selections}
-              </span>
-            </div>
-            <Link to="/contact#survey" className="btn btn--primary machines-coffee__cta">
-              Add coffee to your break room <ArrowRight size={17} />
-            </Link>
+      {/* the commercial side: the question only this page answers */}
+      <section className="section section--surface">
+        <div className="container">
+          <SectionHeading center eyebrow={terms.eyebrow} title={terms.title} />
+          <div className="solution-terms__grid">
+            {terms.items.map((item, i) => (
+              <Reveal key={item.title} delay={i * 0.07} y={14}>
+                <IconCard icon={item.icon} title={item.title} text={item.text} tone={i === 1 ? 'gold' : 'blue'} />
+              </Reveal>
+            ))}
           </div>
-        </div>
-        <div className="container machines-coffee__spec">
-          <Reveal>
-            <SpecCard title={coffeeMachine.name} subtitle="Hot drink machine" specs={coffeeMachine.specs} />
+          <Reveal delay={0.14}>
+            <p className="solution-terms__note">{terms.note}</p>
           </Reveal>
+        </div>
+      </section>
+
+      {/* both machines on paper, side by side */}
+      <section className="section">
+        <div className="container">
+          <SectionHeading
+            center
+            eyebrow="Specifications"
+            title="The equipment, on paper"
+            lede={coffeeMachine.idealFor}
+          />
+          <div className="solution-specs">
+            <Reveal>
+              <SpecCard title={comboMachine.name} subtitle="Snacks & beverages" specs={comboMachine.specs} />
+            </Reveal>
+            <Reveal delay={0.1}>
+              <SpecCard title={coffeeMachine.name} subtitle="Specialty coffee" specs={coffeeMachine.specs} />
+            </Reveal>
+          </div>
         </div>
       </section>
 

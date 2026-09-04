@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Bean, Check, ThermometerSnowflake } from 'lucide-react'
+import { ArrowRight, Bean, Sparkles, ThermometerSnowflake } from 'lucide-react'
 import usePageTitle from '../hooks/usePageTitle.js'
 import Reveal from '../components/ui/Reveal.jsx'
 import SectionHeading from '../components/ui/SectionHeading.jsx'
-import { services, products, coffeeMachine } from '../content.js'
+import { services, products } from '../content.js'
 import comboPhoto from '../assets/photos/combo-machine.jpg'
 import coffeePhoto from '../assets/photos/coffee-machine.jpg'
 import '../styles/services.css'
@@ -18,10 +18,9 @@ export default function ServicesPage() {
         <div className="container">
           <Reveal className="page-hero__inner">
             <span className="eyebrow">Our Services</span>
-            <h1>Fully managed vending, two ways</h1>
+            <h1>What your team gets to choose from</h1>
             <p className="lede">
-              Snack and beverage combo machines and specialty coffee, installed, stocked
-              and serviced by our team at no cost to your business.
+              Two machines, one selection built around your location. Here is what goes in them.
             </p>
           </Reveal>
         </div>
@@ -36,18 +35,21 @@ export default function ServicesPage() {
               title={services.snack.title}
               lede={services.snack.summary}
             />
-            <Reveal delay={0.06}>
-              <ul className="services-checks" role="list">
-                {services.snack.features.slice(0, 4).map((feature) => (
-                  <li className="services-check" key={feature}>
-                    <span className="services-check__icon">
-                      <Check size={14} strokeWidth={3} aria-hidden="true" />
-                    </span>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
+            {products.categories.map((category, i) => (
+              <Reveal delay={0.06 + i * 0.06} key={category.title}>
+                <p className="services-menu__label">
+                  <category.icon size={17} strokeWidth={2.2} aria-hidden="true" />
+                  {category.title}
+                </p>
+                <ul className="services-chips" role="list">
+                  {category.items.map((item) => (
+                    <li className="services-chip" key={item}>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
+            ))}
             <Reveal delay={0.12}>
               <p className="services-note">
                 <ThermometerSnowflake size={18} strokeWidth={2} aria-hidden="true" />
@@ -83,13 +85,10 @@ export default function ServicesPage() {
               lede={services.coffee.summary}
             />
             <Reveal delay={0.06}>
-              <ul className="services-checks" role="list">
-                {services.coffee.features.slice(0, 4).map((feature) => (
-                  <li className="services-check" key={feature}>
-                    <span className="services-check__icon">
-                      <Check size={14} strokeWidth={3} aria-hidden="true" />
-                    </span>
-                    {feature}
+              <ul className="services-chips" role="list">
+                {services.coffee.menu.map((item) => (
+                  <li className="services-chip" key={item}>
+                    {item}
                   </li>
                 ))}
               </ul>
@@ -100,7 +99,7 @@ export default function ServicesPage() {
               </p>
               <p className="services-note">
                 <Bean size={18} strokeWidth={2} aria-hidden="true" />
-                {coffeeMachine.intro}
+                {services.coffee.beans}
               </p>
               <div className="services-cta-row">
                 <Link className="btn btn--primary" to="/contact#survey">
@@ -121,50 +120,19 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ---------- product categories ---------- */}
+      {/* ---------- how the menu gets built ---------- */}
       <section className="section section--sand">
         <div className="container">
-          <SectionHeading
-            center
-            eyebrow="Products"
-            title="Stocked with what your team wants"
-            lede={products.note}
-          />
-          <div className="services-cats">
-            {products.categories.map((category, i) => {
-              const Icon = category.icon
-              const isLast = i === products.categories.length - 1
-              return (
-                <Reveal as="article" className="services-cat" key={category.title} delay={i * 0.06}>
-                  <span className={`services-cat__icon${isLast ? ' services-cat__icon--gold' : ''}`}>
-                    <Icon size={22} strokeWidth={2} aria-hidden="true" />
-                  </span>
-                  <h3 className="services-cat__title">{category.title}</h3>
-                  <ul className="services-chips" role="list">
-                    {category.items.map((item) => (
-                      <li className="services-chip" key={item}>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </Reveal>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ---------- cross-link to machines ---------- */}
-      <section className="section section--tight services-crosslink-section">
-        <div className="container">
-          <Reveal className="services-crosslink" y={24}>
-            <div className="services-crosslink__copy">
-              <h2>Want the full picture?</h2>
-              <p>The service checklist, the specs, and what keeps both machines running.</p>
-            </div>
-            <Link className="btn btn--primary" to="/solution">
-              Explore the solution
-              <ArrowRight size={18} strokeWidth={2} aria-hidden="true" />
+          <Reveal className="services-tuned">
+            <span className="services-tuned__icon">
+              <Sparkles size={22} strokeWidth={2.1} aria-hidden="true" />
+            </span>
+            <h2>Built around your team</h2>
+            <p className="lede">{products.note}</p>
+            <p className="services-tuned__highlight">Local favorites on request.</p>
+            <Link className="services-tuned__link" to="/solution">
+              How hosting works
+              <ArrowRight size={17} strokeWidth={2.2} aria-hidden="true" />
             </Link>
           </Reveal>
         </div>

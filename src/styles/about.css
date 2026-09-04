@@ -212,13 +212,13 @@
 }
 
 /* ---------- goals ---------- */
-.about-goals__grid {
+.about-values__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: var(--space-4);
 }
 
-.about-goals__grid .icon-card {
+.about-values__grid .icon-card {
   height: 100%;
 }
 

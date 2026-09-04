@@ -30,6 +30,19 @@ const ratio = (a, b) => {
   return (x + 0.05) / (y + 0.05)
 }
 
+// Each page must answer a question no other page answers. These phrases are
+// the fingerprint of a section: each one belongs to exactly one route.
+const UNIQUE = [
+  ['Machine delivery and installation', '/solution'],
+  ['Free Site Assessment', '/solution'],
+  ['Revenue share model', '/solution'],
+  ['Pressured valve', '/solution'],
+  ['Doritos', '/services'],
+  ['Vita Malt', '/services'],
+  ['Reliability', '/about'],
+  ['Already at work across Nassau', '/industries'],
+]
+
 const browser = await chromium.launch({
   executablePath: process.env.CHROME_PATH || '/opt/pw-browsers/chromium-1194/chrome-linux/chrome',
   args: ['--no-sandbox'],
@@ -47,6 +60,23 @@ for (const theme of ['dark', 'light']) {
     })
     const hit = text.split('\n').find((line) => DASHES.test(line))
     check(!hit, `${theme} ${route}: no hyphens or dashes in copy${hit ? ` -> "${hit.trim().slice(0, 60)}"` : ''}`)
+  }
+
+  // no phrase that identifies a section may show up on a second page
+  const seen = {}
+  for (const route of ROUTES) {
+    await page.goto(BASE + route, { waitUntil: 'networkidle' })
+    const body = await page.evaluate(() => document.body.innerText)
+    for (const [phrase] of UNIQUE) {
+      if (body.includes(phrase)) (seen[phrase] ||= []).push(route)
+    }
+  }
+  for (const [phrase, owner] of UNIQUE) {
+    const routes = seen[phrase] || []
+    check(
+      routes.length === 1 && routes[0] === owner,
+      `${theme} "${phrase}" appears only on ${owner} (found on ${routes.join(', ') || 'nothing'})`
+    )
   }
 
   // the page moved from /machines to /solution

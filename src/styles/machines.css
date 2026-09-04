@@ -506,3 +506,36 @@
     gap: var(--space-3);
   }
 }
+
+/* ---------- commercial terms ---------- */
+.solution-terms__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.solution-terms__grid .icon-card {
+  height: 100%;
+}
+
+.solution-terms__note {
+  margin-top: var(--space-4);
+  text-align: center;
+  font-size: var(--fs-small);
+  color: var(--color-muted);
+}
+
+/* ---------- both machines on paper ---------- */
+.solution-specs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+  align-items: start;
+}
+
+@media (max-width: 899px) {
+  .solution-terms__grid,
+  .solution-specs {
+    grid-template-columns: 1fr;
+  }
+}

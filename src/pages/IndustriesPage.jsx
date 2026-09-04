@@ -1,17 +1,10 @@
-import { Link } from 'react-router-dom'
-import { ArrowRight, Banknote, Check, ClipboardCheck, Headset, MapPin } from 'lucide-react'
+import { Check, MapPin } from 'lucide-react'
 import usePageTitle from '../hooks/usePageTitle.js'
-import { industries, cta } from '../content.js'
+import { industries } from '../content.js'
 import Reveal from '../components/ui/Reveal.jsx'
 import IconCard from '../components/ui/IconCard.jsx'
 import { LOCATION_PHOTO } from '../brand/media.js'
 import '../styles/industries.css'
-
-const proofBenefits = [
-  { icon: Banknote, label: 'Zero cost to your business' },
-  { icon: ClipboardCheck, label: 'Fully managed, end to end' },
-  { icon: Headset, label: '24 hour help desk' },
-]
 
 const fitChecks = [
   '20+ people on site',
@@ -81,20 +74,6 @@ export default function IndustriesPage() {
               environments across New Providence, placed to look right at home in a
               lobby, break room, or waiting area.
             </p>
-            <ul className="industries-proof__benefits" role="list">
-              {proofBenefits.map(({ icon: Icon, label }) => (
-                <li key={label} className="industries-proof__benefit">
-                  <span className="industries-proof__benefit-icon">
-                    <Icon size={20} strokeWidth={2.1} aria-hidden="true" />
-                  </span>
-                  {label}
-                </li>
-              ))}
-            </ul>
-            <Link className="btn btn--primary" to={cta.button.to}>
-              {cta.button.label}
-              <ArrowRight size={18} strokeWidth={2.2} aria-hidden="true" />
-            </Link>
           </Reveal>
         </div>
       </section>
