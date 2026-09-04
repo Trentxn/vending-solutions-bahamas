@@ -106,8 +106,18 @@ const out = await page.evaluate(async (dataUrl) => {
      1 - luminance and the edges come out perfectly clean. Coloured pixels (the
      script tagline) keep their colour and get a narrow feather instead, since
      their true coverage cannot be recovered from a flat composite. */
-  const render = (invertInk, top, bottom) => {
-    const cw = x1 - x0 + 1
+  // tight horizontal bounds of a band of rows (the script is narrower than
+  // the wordmark, so it gets its own left and right edges)
+  const boundsX = (top, bottom) => {
+    let l = W, r = 0
+    for (let y = top; y <= bottom; y++) {
+      for (let x = gutter; x < W; x++) if (isInk(x, y)) { if (x < l) l = x; if (x > r) r = x }
+    }
+    return [Math.max(gutter + 2, l - pad), Math.min(W - 1, r + pad)]
+  }
+
+  const render = (invertInk, top, bottom, left = x0, right = x1) => {
+    const cw = right - left + 1
     const ch = bottom - top + 1
     const c = document.createElement('canvas')
     c.width = cw
@@ -116,7 +126,7 @@ const out = await page.evaluate(async (dataUrl) => {
     const out = ctx.createImageData(cw, ch)
     for (let y = 0; y < ch; y++) {
       for (let x = 0; x < cw; x++) {
-        const si = ((y + top) * W + (x + x0)) * 4
+        const si = ((y + top) * W + (x + left)) * 4
         const r = data[si], g = data[si + 1], b = data[si + 2]
         const di = (y * cw + x) * 4
         const max = Math.max(r, g, b)
@@ -143,11 +153,14 @@ const out = await page.evaluate(async (dataUrl) => {
     return { url: c.toDataURL('image/png'), w: cw, h: ch }
   }
 
+  const [sx0, sx1] = boundsX(scriptTop, y1)
   return {
     wordLight: render(false, y0, scriptTop),
     wordDark: render(true, y0, scriptTop),
     fullLight: render(false, y0, y1),
     fullDark: render(true, y0, y1),
+    scriptLight: render(false, scriptTop, y1, sx0, sx1),
+    scriptDark: render(true, scriptTop, y1, sx0, sx1),
     gutter,
   }
 }, 'data:image/jpeg;base64,' + jpeg.toString('base64'))
@@ -162,3 +175,5 @@ write('src/assets/brand/wordmark.png', out.wordLight)
 write('src/assets/brand/wordmark-on-dark.png', out.wordDark)
 write('src/assets/brand/lockup.png', out.fullLight)
 write('src/assets/brand/lockup-on-dark.png', out.fullDark)
+write('src/assets/brand/script.png', out.scriptLight)
+write('src/assets/brand/script-on-dark.png', out.scriptDark)

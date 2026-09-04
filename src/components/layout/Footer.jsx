@@ -2,12 +2,15 @@ import { Link } from 'react-router-dom'
 import { Phone, Mail, MapPin, Mailbox, MessageCircle } from 'lucide-react'
 import { site, nav, contact } from '../../content.js'
 import Logo from './Logo.jsx'
+import Pinwheel from '../brand/Pinwheel.jsx'
 
 export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
     <footer className="footer">
+      {/* texture that happens to move: one slow turn every 90 seconds */}
+      <Pinwheel spin="idle" size={520} className="footer__wheel" />
       <div className="container footer__grid">
         <div className="footer__brand">
           <Logo light tagline />

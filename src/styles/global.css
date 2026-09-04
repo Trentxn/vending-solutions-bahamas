@@ -84,6 +84,11 @@
   --shadow-btn-primary-hover: 0 10px 26px rgba(238, 196, 42, 0.38);
   --glow-accent: 0 0 28px rgba(238, 196, 42, 0.22);
 
+  /* brand texture: the mark and its petals appear as background at these
+     strengths, never above them. See the brand system notes in the README. */
+  --brand-texture-opacity: 0.07;
+  --brand-spin-duration: 90s;
+
   /* header height - single source for overlay compensation + scroll-margin */
   --header-h: 76px;
 
@@ -151,6 +156,8 @@
   --shadow-card: 0 10px 30px rgba(11, 34, 57, 0.08);
   --shadow-card-hover: 0 16px 44px rgba(11, 34, 57, 0.13);
   --shadow-header: 0 2px 24px rgba(11, 34, 57, 0.07);
+  --brand-texture-opacity: 0.09; /* the wash needs a touch more on near white */
+
   --shadow-btn-primary: 0 6px 18px rgba(217, 175, 27, 0.35);
   --shadow-btn-primary-hover: 0 10px 26px rgba(217, 175, 27, 0.45);
   --glow-accent: 0 0 0 rgba(0, 0, 0, 0);
@@ -159,6 +166,19 @@
 @media (max-width: 899px) {
   :root {
     --header-h: 66px;
+  }
+}
+
+/* Brand texture layers: decorative, so they never animate for visitors who
+   asked for less motion. The Pinwheel component also checks this in JS. */
+.pinwheel {
+  pointer-events: none;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pinwheel {
+    animation: none !important;
   }
 }
 

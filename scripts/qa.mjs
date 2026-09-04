@@ -126,6 +126,41 @@ for (const theme of ['dark', 'light']) {
   }))
   check(!onContact.dock && !onContact.banner, `${theme} contact page has no duplicate call to action`)
 
+  // brand texture: present, decorative, and never louder than the copy
+  await page.goto(BASE + '/', { waitUntil: 'networkidle' })
+  const texture = await page.evaluate(() => {
+    const w = document.querySelector('.home-pillars__wheel')
+    const cs = w && getComputedStyle(w)
+    return {
+      present: !!w,
+      hidden: w?.getAttribute('aria-hidden') === 'true',
+      opacity: cs ? parseFloat(cs.opacity) : 1,
+    }
+  })
+  check(texture.present && texture.hidden, `${theme} pillars pinwheel is decorative and aria-hidden`)
+  check(texture.opacity <= 0.1, `${theme} pillars pinwheel stays texture strength (${texture.opacity})`)
+
+  // the scroll driven mark actually turns, and stops turning for reduced motion
+  const rotationAt = async (frac) => {
+    const box = await page.evaluate(() => {
+      const r = document.querySelector('.home-pillars').getBoundingClientRect()
+      return { top: r.top + window.scrollY, h: r.height }
+    })
+    await page.evaluate((y) => window.scrollTo(0, y), box.top + box.h * frac)
+    await page.waitForTimeout(500)
+    return page.evaluate(() => getComputedStyle(document.querySelector('.home-pillars__wheel')).transform)
+  }
+  const spinA = await rotationAt(-0.4)
+  const spinB = await rotationAt(0.7)
+  check(spinA !== spinB, `${theme} pinwheel rotates with scroll`)
+
+  await page.emulateMedia({ reducedMotion: 'reduce' })
+  await page.goto(BASE + '/', { waitUntil: 'networkidle' })
+  const stillA = await rotationAt(-0.4)
+  const stillB = await rotationAt(0.7)
+  check(stillA === stillB, `${theme} pinwheel holds still under reduced motion`)
+  await page.emulateMedia({ reducedMotion: null })
+
   // reduced motion swaps the pinned tour for the stacked fallback
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.goto(BASE + '/', { waitUntil: 'networkidle' })

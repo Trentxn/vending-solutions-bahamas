@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
-import { CupSoda } from 'lucide-react'
 import usePageTitle from '../hooks/usePageTitle.js'
 import Reveal from '../components/ui/Reveal.jsx'
+import Pinwheel from '../components/brand/Pinwheel.jsx'
 import { notFound } from '../content.js'
 import '../styles/contact.css'
 
@@ -12,9 +12,7 @@ export default function NotFoundPage() {
     <section className="section notfound">
       <div className="container">
         <Reveal className="notfound__inner">
-          <span className="notfound__chip" aria-hidden="true">
-            <CupSoda size={24} strokeWidth={2} />
-          </span>
+          <Pinwheel spin="idle" size={76} className="notfound__wheel" />
           <p className="notfound__code text-gradient" aria-hidden="true">
             404
           </p>

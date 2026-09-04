@@ -508,15 +508,9 @@
   text-align: center;
 }
 
-.notfound__chip {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 54px;
-  height: 54px;
-  border-radius: 16px;
-  background: var(--color-blue-soft);
-  color: var(--color-blue);
+.notfound__wheel {
+  margin-inline: auto;
+  margin-bottom: var(--space-3);
 }
 
 .notfound__code {

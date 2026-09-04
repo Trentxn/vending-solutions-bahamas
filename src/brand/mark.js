@@ -82,6 +82,47 @@ export function markEllipses() {
   return ELLIPSES
 }
 
+/* The wrap texture: not the pinwheel (that would be a second logo on screen)
+   but its ten largest petals scattered the way the real machine wrap is, on a
+   600 x 400 canvas. Positions are frozen: [cx, cy, scale, extra rotation]. */
+const SCATTER = [
+  [96, 74, 3.6, -28],
+  [236, 44, 2.8, 22],
+  [402, 92, 3.2, -10],
+  [538, 62, 2.5, 40],
+  [64, 238, 2.9, 15],
+  [206, 204, 3.8, -35],
+  [362, 252, 2.6, 8],
+  [522, 212, 3.4, -22],
+  [146, 352, 2.7, 30],
+  [446, 358, 3.0, -15],
+]
+
+export function petalScatter() {
+  const largest = ELLIPSES.slice().sort((a, b) => b.rx * b.ry - a.rx * a.ry).slice(0, SCATTER.length)
+  return SCATTER.map(([cx, cy, k, extra], i) => {
+    const p = largest[i]
+    return {
+      cx,
+      cy,
+      rx: Number((p.rx * k).toFixed(2)),
+      ry: Number((p.ry * k).toFixed(2)),
+      rot: Number((p.rot + extra).toFixed(2)),
+      fill: p.fill,
+    }
+  })
+}
+
+export function petalsSvgString() {
+  const body = petalScatter()
+    .map(
+      (e) =>
+        `  <ellipse cx="${e.cx}" cy="${e.cy}" rx="${e.rx}" ry="${e.ry}" fill="${e.fill}" transform="rotate(${e.rot} ${e.cx} ${e.cy})" />`
+    )
+    .join('\n')
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">\n${body}\n</svg>\n`
+}
+
 /**
  * The same mark as a standalone SVG document (favicon, CSS url()).
  * `inset` trims the viewBox towards the centre: the thin outer arms turn to

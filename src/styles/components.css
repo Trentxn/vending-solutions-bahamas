@@ -9,9 +9,34 @@
   padding-block: clamp(var(--space-6), 9vw, var(--space-7)) clamp(var(--space-5), 7vw, var(--space-6));
   background:
     radial-gradient(640px 320px at 82% -10%, var(--hero-tint-blue), transparent 70%),
-    radial-gradient(520px 300px at 6% 110%, var(--hero-tint-gold), transparent 70%),
     var(--color-surface);
   overflow: hidden;
+}
+
+/* the machine wrap, echoed: the same petals the real units wear */
+.page-hero::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  right: -60px;
+  width: 620px;
+  height: 413px;
+  background: url('../assets/brand/petals.svg') center / contain no-repeat;
+  opacity: var(--brand-texture-opacity);
+  pointer-events: none;
+}
+
+.page-hero__inner {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 699px) {
+  .page-hero::before {
+    width: 420px;
+    height: 280px;
+    right: -110px;
+  }
 }
 
 :root[data-theme='light'] .page-hero {

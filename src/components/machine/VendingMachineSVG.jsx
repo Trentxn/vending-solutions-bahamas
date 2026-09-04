@@ -182,6 +182,9 @@ export default function VendingMachineSVG({
         <filter id="vmGlow" x="-30%" y="-30%" width="160%" height="160%">
           <feDropShadow dx="0" dy="0" stdDeviation="5" floodColor="var(--color-blue-bright)" floodOpacity="0.5" />
         </filter>
+        <clipPath id="vmCabinetClip">
+          <rect x={8} y={8} width={344} height={584} rx={16} />
+        </clipPath>
       </defs>
 
       {/* drifting spotlight behind the machine */}
@@ -196,6 +199,16 @@ export default function VendingMachineSVG({
       {group('cabinet', <>
         <rect x={8} y={8} width={344} height={584} rx={16} fill="url(#vmCabinet)" stroke="var(--vm-stroke-strong)" strokeWidth={1.5} />
         <rect x={20} y={592} width={320} height={16} rx={5} fill="var(--vm-plinth)" />
+        {/* the wrap: the same petals as the mark, as printed on the real cabinet */}
+        <g clipPath="url(#vmCabinetClip)" opacity={0.45}>
+          <ellipse cx={258} cy={452} rx={26} ry={14} fill="#E4C247" transform="rotate(-34 258 452)" />
+          <ellipse cx={306} cy={432} rx={19} ry={10} fill="#C9B25B" transform="rotate(18 306 432)" />
+          <ellipse cx={330} cy={486} rx={23} ry={12} fill="#B6AC6E" transform="rotate(-12 330 486)" />
+          <ellipse cx={272} cy={514} rx={17} ry={9} fill="#D8BC4E" transform="rotate(41 272 514)" />
+          <ellipse cx={318} cy={538} rx={14} ry={8} fill="#A8A87F" transform="rotate(-26 318 538)" />
+          <ellipse cx={64} cy={566} rx={22} ry={12} fill="#DCC04A" transform="rotate(-20 64 566)" />
+          <ellipse cx={132} cy={574} rx={16} ry={9} fill="#BFB061" transform="rotate(28 132 574)" />
+        </g>
         {/* brand band */}
         <path d="M24 8 h312 a16 16 0 0 1 16 16 v30 h-344 v-30 a16 16 0 0 1 16 -16 z" fill="url(#vmBand)" />
         <text x={180} y={34} textAnchor="middle" fontFamily="'Sora Variable', sans-serif" fontStyle="italic" fontWeight="700" fontSize="15" fill="#2A2A2A" letterSpacing="0.5">

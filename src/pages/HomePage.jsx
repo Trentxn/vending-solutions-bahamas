@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useReducedMotion } from 'framer-motion'
 import { ArrowRight, ChevronDown, MapPin, Quote } from 'lucide-react'
@@ -5,9 +6,11 @@ import usePageTitle from '../hooks/usePageTitle.js'
 import Reveal from '../components/ui/Reveal.jsx'
 import SectionHeading from '../components/ui/SectionHeading.jsx'
 import HeroMedia from '../components/home/HeroMedia.jsx'
+import Pinwheel from '../components/brand/Pinwheel.jsx'
 import MachineShowcase from '../components/machine/MachineShowcase.jsx'
 import StaticShowcase from '../components/machine/StaticShowcase.jsx'
 import { hero, pillars, comboMachine, industries, testimonials } from '../content.js'
+import scriptTagline from '../assets/brand/script-on-dark.png'
 import '../styles/home.css'
 
 /** Wrap a phrase inside a sentence so it can carry the brand gold. */
@@ -30,6 +33,7 @@ const industryTeaser = industries.items.slice(0, 6)
 export default function HomePage() {
   usePageTitle()
   const reduced = useReducedMotion()
+  const pillarsRef = useRef(null)
 
   return (
     <>
@@ -39,7 +43,7 @@ export default function HomePage() {
 
         <div className="container home-hero__inner">
           <Reveal className="home-hero__copy">
-            <span className="home-hero__tagline">Power of Choice</span>
+            <img className="home-hero__tagline" src={scriptTagline} alt="Power of Choice" width="639" height="136" />
             <h1 className="home-hero__title">{hero.headline}</h1>
             <p className="home-hero__sub">{hero.subheading}</p>
             <p className="home-hero__promise">{highlight(hero.promise, hero.highlight)}</p>
@@ -72,7 +76,8 @@ export default function HomePage() {
       </section>
 
       {/* 2. The message that dominates the page: what a facilities manager gets */}
-      <section className="section section--surface home-pillars">
+      <section className="section section--surface home-pillars" ref={pillarsRef}>
+        <Pinwheel spin="scroll" target={pillarsRef} className="home-pillars__wheel" size="min(112vw, 1120px)" />
         <div className="container">
           <SectionHeading center eyebrow={pillars.eyebrow} title={pillars.title} />
           <ul className="home-pillars__grid" role="list">

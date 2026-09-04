@@ -111,3 +111,32 @@ three only if the client sends new artwork.
 Colours measured from the artwork: gold `#F2C521`, olive `#AEA767`, slate blue
 `#6685B1`, script `#80A9F9`, ink `#000000`. The client's colour sheet lists the
 gold as `#F6EB14`, which contradicts the RGB on its own line and the artwork.
+
+## The brand system
+
+The logo is not just placed on the site, it is the source of the site's visual
+language. Everything below is derived from the traced artwork, so the brand
+reads as deliberate rather than decorated.
+
+| Where | What | Why |
+|---|---|---|
+| Header, footer | The lockup | The visible logo |
+| Home, pillars band | The mark, turning as you scroll | The signature moment, behind "Happy staff. That is the Power of Choice." |
+| Interior page heroes, CTA band | `petals.svg`, the mark's own ellipses scattered | Echoes the wrap printed on the real machines |
+| Machine tour drawing | Seven petals on the cabinet | Makes the drawn machine the client's machine |
+| Scroll tour progress rail | Petal shaped dots, gold when active | A control built from the mark |
+| Footer corner, 404 | The mark turning slowly | Texture that happens to move |
+| Every section eyebrow | The mark at 15px | A brand full stop on every heading |
+
+Three rules keep it from tipping into clutter. Break them and it looks cheap:
+
+1. **One visible mark per screen.** Everything else is texture at or below
+   `--brand-texture-opacity` (7% on dark, 9% on light), and never sits behind
+   body copy at reading size.
+2. **Motion is slow, transform only, and optional.** A full turn takes
+   `--brand-spin-duration` (90s) or is driven by scroll. Nothing animates a
+   property that causes layout. `Pinwheel` checks `useReducedMotion()` and a
+   CSS `prefers-reduced-motion` rule backs it up.
+3. **Never draw a new brand shape.** Every petal comes from `markEllipses()`
+   in `src/brand/mark.js`, which is the traced artwork. `petalScatter()` picks
+   its ten largest and lays them out at frozen positions.
