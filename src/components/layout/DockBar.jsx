@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { cta } from '../../content.js'
 
 /**
  * A docked CTA pill that rides along once the visitor is past the hero.
@@ -78,7 +79,7 @@ export default function DockBar() {
       role="region"
       aria-label="Get started"
     >
-      <span className="dockbar__note">Free machine &middot; $0 to your business</span>
+      <span className="dockbar__note">{cta.dock}</span>
       <Link to="/contact#survey" className="btn btn--primary btn--sm">
         Free Site Survey
       </Link>

@@ -8,34 +8,42 @@
 :root {
   color-scheme: dark;
 
-  /* color - Deep Reef (dark, default) */
+  /* color - Deep Reef (dark, default) wearing the brand palette:
+     gold #EEC42A, cornflower #748ADC, gray blue #A3B2BD, slate #6B7680 */
   --color-bg: #0b1826;
   --color-surface: #13273b;
   --color-sand: #0f2133; /* deep alt band, stands in for the light sand tone */
   --color-card: #152c42;
   --color-input-bg: #0e2033;
   --color-overlay: rgba(19, 39, 59, 0.88);
-  --color-ink: #f2f6fa;
-  --color-body: #c2d2e0;
-  --color-muted: #8ca3b8;
-  --color-blue: #2bc5df;
-  --color-blue-deep: #56d4ea; /* on dark, "deeper" reads lighter */
-  --color-blue-bright: #5ad7f0;
-  --color-blue-soft: rgba(43, 197, 223, 0.14);
+  --color-ink: #f8f8f8;
+  --color-body: #c3cdd7;
+  --color-muted: #8f9ca7;
+  --color-blue: #748adc; /* cornflower: links, eyebrows */
+  --color-blue-deep: #8b9de5; /* on dark, "deeper" reads lighter */
+  --color-blue-bright: #a3b3ee;
+  --color-blue-soft: rgba(116, 138, 220, 0.16);
   --color-navy: #0b2239; /* always-dark contexts (footer, photo captions) */
-  --color-green: #3fb58a;
-  --color-green-deep: #62c7a1;
-  --color-green-soft: rgba(63, 181, 138, 0.16);
-  --color-line: rgba(148, 184, 214, 0.18);
+  --color-gold: #eec42a; /* fills only: primary button, check bullets */
+  --color-gold-deep: #f5d24a;
+  --color-gold-text: #eec42a; /* gold as text or icon - see the light block */
+  --color-gold-soft: rgba(238, 196, 42, 0.14);
+  --color-gold-wash: rgba(238, 196, 42, 0.04);
+  --color-slate: #6b7680;
+  --color-grayblue: #a3b2bd;
+  --color-line: rgba(163, 178, 189, 0.2);
   --color-whatsapp: #1fa855;
-  --color-on-accent: #06121f; /* text on aqua/mint fills - white would fail contrast */
+  --color-on-gold: #2a2a2a; /* 8.6:1 on gold */
+  --color-on-blue: #0b1826; /* 5.5:1 on cornflower - white would fail */
   --color-header-bg: rgba(11, 24, 38, 0.82);
-  --color-band-body: #b9cfe0;
+  --color-band-body: #bfc8d3;
   --color-error: #f2796b;
   --color-error-bg: rgba(211, 69, 47, 0.16);
   --color-error-border: rgba(211, 69, 47, 0.45);
-  --grad-brand: linear-gradient(135deg, var(--color-blue), var(--color-blue-bright) 55%, var(--color-green));
-  --grad-band: linear-gradient(120deg, #142f4a 0%, #17405c 55%, #145a66 100%);
+  /* the logo arms: golden centre cooling to gray blue tips */
+  --grad-brand: linear-gradient(135deg, #eec42a, #f3d45c 45%, #a3b2bd);
+  --grad-text: var(--grad-brand);
+  --grad-band: linear-gradient(120deg, #14294a 0%, #1b3560 55%, #24386a 100%);
 
   /* machine SVG - routed through vars so the drawing reads on both grounds */
   --vm-stroke-strong: rgba(159, 212, 234, 0.55);
@@ -52,6 +60,8 @@
   --vm-spot-o: 1;
 
   /* type */
+  --font-brand: 'Michroma', 'Sora Variable', system-ui, sans-serif;
+  --font-script: 'Great Vibes', 'Segoe Script', cursive;
   --font-display: 'Sora Variable', system-ui, sans-serif;
   --font-body: 'Inter Variable', system-ui, sans-serif;
   --fs-h1: clamp(2.3rem, 5.2vw, 3.7rem);
@@ -71,10 +81,9 @@
   --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.45);
   --shadow-card-hover: 0 16px 44px rgba(0, 0, 0, 0.55);
   --shadow-header: 0 2px 24px rgba(0, 0, 0, 0.5);
-  --shadow-btn-primary: 0 6px 18px rgba(43, 197, 223, 0.28);
-  --shadow-btn-primary-hover: 0 10px 26px rgba(43, 197, 223, 0.38);
-  --shadow-btn-green: 0 6px 18px rgba(63, 181, 138, 0.28);
-  --glow-accent: 0 0 28px rgba(43, 197, 223, 0.3);
+  --shadow-btn-primary: 0 6px 18px rgba(238, 196, 42, 0.28);
+  --shadow-btn-primary-hover: 0 10px 26px rgba(238, 196, 42, 0.38);
+  --glow-accent: 0 0 28px rgba(238, 196, 42, 0.22);
 
   /* header height - single source for overlay compensation + scroll-margin */
   --header-h: 76px;
@@ -94,30 +103,39 @@
 :root[data-theme='light'] {
   color-scheme: light;
 
-  --color-bg: #ffffff;
-  --color-surface: #f4f8fa;
-  --color-sand: #f7f3ea;
+  --color-bg: #f8f8f8;
+  --color-surface: #eef1f4;
+  --color-sand: #f7f2e4;
   --color-card: #ffffff;
   --color-input-bg: #ffffff;
-  --color-overlay: rgba(255, 255, 255, 0.94);
-  --color-ink: #0b2239;
-  --color-body: #3e5568;
-  --color-muted: #7c8da0;
-  --color-blue: #0077b6;
-  --color-blue-deep: #005f92;
-  --color-blue-bright: #00b4d8;
-  --color-blue-soft: #e3f5fb;
-  --color-green: #0c9a6c;
-  --color-green-deep: #0a7f59;
-  --color-green-soft: #e6f6ef;
-  --color-line: #e3eaf1;
-  --color-on-accent: #ffffff;
-  --color-header-bg: rgba(255, 255, 255, 0.92);
-  --color-band-body: #b9c9d9;
+  --color-overlay: rgba(248, 248, 248, 0.94);
+  --color-ink: #2a2a2a;
+  --color-body: #4a535b; /* raw slate is 4.37:1, too low for body text */
+  --color-muted: #6b7680; /* brand slate, captions only */
+  --color-blue: #4e63c4; /* raw cornflower is 3.1:1 here, so it is darkened */
+  --color-blue-deep: #3d50a8;
+  --color-blue-bright: #748adc; /* focus rings only (non text, 3:1 applies) */
+  --color-blue-soft: #e9ecf9;
+  /* gold is 1.6:1 on this ground: FILL ONLY, never a text colour. Anything
+     that renders gold as type or an icon must use --color-gold-text. */
+  --color-gold: #eec42a;
+  --color-gold-deep: #d9af1b;
+  --color-gold-text: #7a6009;
+  --color-gold-soft: #fbf3d3;
+  --color-gold-wash: #fbf5dc;
+  --color-slate: #6b7680;
+  --color-grayblue: #a3b2bd;
+  --color-line: #dde2e8;
+  --color-on-gold: #2a2a2a;
+  --color-on-blue: #ffffff;
+  --color-header-bg: rgba(248, 248, 248, 0.92);
+  --color-band-body: #c3cbd6;
   --color-error: #c0392b;
   --color-error-bg: #fdf1ef;
   --color-error-border: #f3cdc5;
-  --grad-band: linear-gradient(120deg, #0b2239 0%, #0d3a5c 55%, #0c5e74 100%);
+  /* a gold to gray blue gradient would be unreadable as text on white */
+  --grad-text: linear-gradient(135deg, #7a6009, #4e63c4);
+  --grad-band: linear-gradient(120deg, #2a2a2a 0%, #2f3a5e 55%, #3a4a86 100%);
 
   --vm-stroke-strong: rgba(11, 34, 57, 0.35);
   --vm-stroke-soft: rgba(11, 34, 57, 0.2);
@@ -133,9 +151,8 @@
   --shadow-card: 0 10px 30px rgba(11, 34, 57, 0.08);
   --shadow-card-hover: 0 16px 44px rgba(11, 34, 57, 0.13);
   --shadow-header: 0 2px 24px rgba(11, 34, 57, 0.07);
-  --shadow-btn-primary: 0 6px 18px rgba(0, 119, 182, 0.32);
-  --shadow-btn-primary-hover: 0 10px 26px rgba(0, 119, 182, 0.4);
-  --shadow-btn-green: 0 6px 18px rgba(12, 154, 108, 0.32);
+  --shadow-btn-primary: 0 6px 18px rgba(217, 175, 27, 0.35);
+  --shadow-btn-primary-hover: 0 10px 26px rgba(217, 175, 27, 0.45);
   --glow-accent: 0 0 0 rgba(0, 0, 0, 0);
 }
 
@@ -237,7 +254,7 @@ ol[role='list'] {
 
 ::selection {
   background: var(--color-blue-bright);
-  color: var(--color-on-accent);
+  color: var(--color-on-blue);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -292,8 +309,8 @@ ol[role='list'] {
   color: var(--color-band-body);
 }
 
-.section--green-soft {
-  background: var(--color-green-soft);
+.section--gold-soft {
+  background: var(--color-gold-soft);
 }
 
 /* ---------- immersive panels ---------- */
@@ -318,15 +335,16 @@ ol[role='list'] {
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-green);
+  color: var(--color-blue);
 }
 
+/* the pinwheel mark itself, so the brand shows up in every section label */
 .eyebrow::before {
   content: '';
-  width: 22px;
-  height: 3px;
-  border-radius: 2px;
-  background: var(--grad-brand);
+  width: 15px;
+  height: 15px;
+  flex: none;
+  background: url('../assets/brand/logo-mark.svg') center / contain no-repeat;
 }
 
 .lede {
@@ -336,7 +354,7 @@ ol[role='list'] {
 }
 
 .text-gradient {
-  background: var(--grad-brand);
+  background: var(--grad-text);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -366,25 +384,14 @@ ol[role='list'] {
 }
 
 .btn--primary {
-  background: var(--color-blue);
-  color: var(--color-on-accent);
+  background: var(--color-gold);
+  color: var(--color-on-gold);
   box-shadow: var(--shadow-btn-primary);
 }
 
 .btn--primary:hover {
-  background: var(--color-blue-deep);
+  background: var(--color-gold-deep);
   box-shadow: var(--shadow-btn-primary-hover);
-  transform: translateY(-1px);
-}
-
-.btn--green {
-  background: var(--color-green);
-  color: var(--color-on-accent);
-  box-shadow: var(--shadow-btn-green);
-}
-
-.btn--green:hover {
-  background: var(--color-green-deep);
   transform: translateY(-1px);
 }
 
@@ -458,9 +465,9 @@ ol[role='list'] {
   color: var(--color-blue-deep);
 }
 
-.badge--green {
-  background: var(--color-green-soft);
-  color: var(--color-green-deep);
+.badge--gold {
+  background: var(--color-gold-soft);
+  color: var(--color-gold-text);
 }
 
 .visually-hidden {

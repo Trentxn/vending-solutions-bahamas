@@ -1,17 +1,10 @@
-import { Link } from 'react-router-dom'
-import { ArrowRight, Banknote, Check, ClipboardCheck, Headset, MapPin } from 'lucide-react'
+import { Check, MapPin } from 'lucide-react'
 import usePageTitle from '../hooks/usePageTitle.js'
-import { industries, cta } from '../content.js'
+import { industries } from '../content.js'
 import Reveal from '../components/ui/Reveal.jsx'
 import IconCard from '../components/ui/IconCard.jsx'
-import machinesOnLocation from '../assets/photos/machines-on-location.jpg'
+import { LOCATION_PHOTO } from '../brand/media.js'
 import '../styles/industries.css'
-
-const proofBenefits = [
-  { icon: Banknote, label: 'Zero cost to your business' },
-  { icon: ClipboardCheck, label: 'Fully managed, end to end' },
-  { icon: Headset, label: '24 hour help desk' },
-]
 
 const fitChecks = [
   '20+ people on site',
@@ -42,7 +35,7 @@ export default function IndustriesPage() {
           <ul className="industries-grid" role="list">
             {industries.items.map((item, i) => (
               <Reveal as="li" key={item.title} delay={(i % 4) * 0.06}>
-                <IconCard icon={item.icon} title={item.title} tone={i % 2 === 0 ? 'blue' : 'green'} />
+                <IconCard icon={item.icon} title={item.title} tone={i % 2 === 0 ? 'blue' : 'gold'} />
               </Reveal>
             ))}
           </ul>
@@ -56,8 +49,8 @@ export default function IndustriesPage() {
             <figure className="industries-proof__figure">
               <div className="industries-proof__frame">
                 <img
-                  src={machinesOnLocation}
-                  alt="Two Vending Solutions Bahamas machines, a snack and drink combo and a Barista coffee machine, installed in a hospital lobby"
+                  src={LOCATION_PHOTO}
+                  alt="Two Power of Choice combo vending machines installed in a hospital waiting lounge"
                   width="2048"
                   height="1152"
                   loading="lazy"
@@ -68,7 +61,7 @@ export default function IndustriesPage() {
                 </span>
               </div>
               <figcaption className="industries-proof__caption">
-                A real placement: our combo and coffee machines at work in a hospital lobby.
+                A real placement: our combo machines at work in a hospital lounge.
               </figcaption>
             </figure>
           </Reveal>
@@ -78,29 +71,15 @@ export default function IndustriesPage() {
             <h2>Already at work across Nassau</h2>
             <p>
               Our machines are already serving staff, patients, and guests in professional
-              environments across Nassau &amp; Paradise Island, placed to look right at home
-              in a lobby, break room, or waiting area.
+              environments across New Providence, placed to look right at home in a
+              lobby, break room, or waiting area.
             </p>
-            <ul className="industries-proof__benefits" role="list">
-              {proofBenefits.map(({ icon: Icon, label }) => (
-                <li key={label} className="industries-proof__benefit">
-                  <span className="industries-proof__benefit-icon">
-                    <Icon size={20} strokeWidth={2.1} aria-hidden="true" />
-                  </span>
-                  {label}
-                </li>
-              ))}
-            </ul>
-            <Link className="btn btn--primary" to={cta.button.to}>
-              {cta.button.label}
-              <ArrowRight size={18} strokeWidth={2.2} aria-hidden="true" />
-            </Link>
           </Reveal>
         </div>
       </section>
 
       {/* ---------- fit checklist ---------- */}
-      <section className="section section--tight section--green-soft">
+      <section className="section section--tight section--gold-soft">
         <div className="container">
           <Reveal className="industries-fit__inner">
             <span className="eyebrow">Is your location ready?</span>

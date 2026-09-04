@@ -1,39 +1,10 @@
-import { CalendarCheck, ClipboardCheck, Headset, MapPin, Quote, ShieldCheck } from 'lucide-react'
+import { Quote, ShieldCheck } from 'lucide-react'
 import usePageTitle from '../hooks/usePageTitle.js'
-import { about, coffeeMachine, comboMachine, site, testimonials } from '../content.js'
+import { about, site, testimonials } from '../content.js'
 import Reveal from '../components/ui/Reveal.jsx'
 import SectionHeading from '../components/ui/SectionHeading.jsx'
 import IconCard from '../components/ui/IconCard.jsx'
-import machinesOnLocationPhoto from '../assets/photos/machines-on-location.jpg'
-import comboMachinePhoto from '../assets/photos/combo-machine.jpg'
-import coffeeMachinePhoto from '../assets/photos/coffee-machine.jpg'
 import '../styles/about.css'
-
-const facts = [
-  { icon: CalendarCheck, value: `Est. ${site.established}`, label: 'Bahamian owned from day one' },
-  { icon: MapPin, value: site.serviceArea, label: 'Our home service area' },
-  { icon: ClipboardCheck, value: 'Fully managed service', label: 'Stocking, cleaning & cash handling' },
-  { icon: Headset, value: '24 hour help desk', label: 'Support whenever it matters' },
-]
-
-const galleryItems = [
-  {
-    photo: machinesOnLocationPhoto,
-    alt: `A ${comboMachine.name} combo vending machine and a ${coffeeMachine.name} machine installed side by side in a hospital lobby`,
-    caption: 'On location: snacks, cold drinks & fresh coffee, side by side',
-    wide: true,
-  },
-  {
-    photo: comboMachinePhoto,
-    alt: `The ${comboMachine.name} combo vending machine, stocked with cold drinks and snacks`,
-    caption: `${comboMachine.name} · ${comboMachine.service}`,
-  },
-  {
-    photo: coffeeMachinePhoto,
-    alt: `The ${coffeeMachine.name} vending machine, which brews hot drinks from freshly ground beans`,
-    caption: `${coffeeMachine.name} · ${coffeeMachine.service}`,
-  },
-]
 
 export default function AboutPage() {
   usePageTitle('About Us')
@@ -57,7 +28,7 @@ export default function AboutPage() {
       <section className="section about-story">
         <div className="container about-story__grid">
           <div className="about-story__copy">
-            <SectionHeading eyebrow="Our story" title="Serving Nassau since 2012" />
+            <SectionHeading eyebrow="Our story" title={`Serving ${site.serviceArea} since 2012`} />
             {about.story.map((paragraph, i) => (
               <Reveal key={paragraph.slice(0, 32)} as="p" delay={i * 0.06}>
                 {paragraph}
@@ -65,7 +36,7 @@ export default function AboutPage() {
             ))}
           </div>
           <div className="about-story__facts">
-            {facts.map((fact, i) => (
+            {about.facts.map((fact, i) => (
               <Reveal key={fact.value} delay={0.08 + i * 0.06}>
                 <div className="about-fact">
                   <span className="about-fact__icon">
@@ -115,7 +86,7 @@ export default function AboutPage() {
               <p>{about.standards}</p>
               <div className="about-standards__badges">
                 <span className="badge">ISO 9001</span>
-                <span className="badge badge--green">ISO 14001</span>
+                <span className="badge badge--gold">ISO 14001</span>
               </div>
             </div>
           </Reveal>
@@ -123,36 +94,13 @@ export default function AboutPage() {
       </section>
 
       {/* ---------- goals ---------- */}
-      <section className="section section--surface about-goals">
+      <section className="section section--surface about-values">
         <div className="container">
-          <SectionHeading center eyebrow="Our goals" title="What we’re building toward" />
-          <div className="about-goals__grid">
-            {about.goals.map((goal, i) => (
-              <Reveal key={goal.text} delay={i * 0.06}>
-                <IconCard icon={goal.icon} title={goal.text} tone="green" />
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ---------- gallery ---------- */}
-      <section className="section about-gallery">
-        <div className="container">
-          <SectionHeading center eyebrow="Gallery" title="Our machines, on location" />
-          <div className="about-gallery__grid">
-            {galleryItems.map((item, i) => (
-              <Reveal
-                key={item.caption}
-                delay={i * 0.08}
-                className={`about-gallery__item${item.wide ? ' about-gallery__item--wide' : ''}`}
-              >
-                <figure className="about-gallery__figure">
-                  <div className="about-gallery__frame">
-                    <img src={item.photo} alt={item.alt} loading="lazy" />
-                  </div>
-                  <figcaption className="about-gallery__caption">{item.caption}</figcaption>
-                </figure>
+          <SectionHeading center eyebrow="Our values" title="What we hold ourselves to" />
+          <div className="about-values__grid">
+            {about.values.map((value, i) => (
+              <Reveal key={value.title} delay={i * 0.06}>
+                <IconCard icon={value.icon} title={value.title} text={value.text} tone={i % 2 ? 'gold' : 'blue'} />
               </Reveal>
             ))}
           </div>

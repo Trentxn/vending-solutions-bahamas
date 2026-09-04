@@ -22,7 +22,7 @@ export function setTheme(next) {
     /* private mode: the theme still applies for this session */
   }
   const meta = document.querySelector('meta[name="theme-color"]')
-  if (meta) meta.setAttribute('content', theme === 'dark' ? '#0B1826' : '#ffffff')
+  if (meta) meta.setAttribute('content', theme === 'dark' ? '#0B1826' : '#F8F8F8')
   listeners.forEach((cb) => cb())
 }
 
