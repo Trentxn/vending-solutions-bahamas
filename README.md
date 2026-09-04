@@ -84,3 +84,30 @@ legibility over the hero photo, contrast in both themes, and the reduced motion
 fallback. For the GitHub Pages build:
 `GH_PAGES=1 npm run build && GH_PAGES=1 npx vite preview --port 4176` then
 `node scripts/qa.mjs http://localhost:4176/vending-solutions-bahamas`.
+
+## The logo, and how it is built
+
+The client's original artwork lives at `src/assets/brand/logo.pdf` (a JPG in a
+PDF wrapper). Everything on the site is derived from it, so nothing is drawn by
+hand or approximated:
+
+- **The mark is vector.** `scripts/trace-mark.mjs` lifts the JPEG out of the
+  PDF, detects each ellipse as a connected blob, and recovers its centre, axes
+  and rotation from the blob's covariance, sampling the fill from its interior.
+  The 44 resulting ellipses are frozen into `src/brand/mark.js`, so the mark
+  stays crisp from the 16px favicon up.
+- **The wordmark is a crop.** `scripts/extract-logo.mjs` keys the paper out of
+  the artwork and writes `wordmark.png` (the three type lines, used in the
+  header) and `lockup.png` (with the "Power of Choice" script, used in the
+  footer), each with an `-on-dark` variant whose ink is flipped to white.
+- `node scripts/build-brand.mjs` regenerates `public/favicon.svg` and
+  `src/assets/brand/logo-mark.svg` (the small mark motif on every eyebrow) from
+  `mark.js`. Both zoom into the dense golden rosette, because the thin outer
+  arms turn to mush at that size.
+
+All outputs are committed and the build never runs the generators. Re-run all
+three only if the client sends new artwork.
+
+Colours measured from the artwork: gold `#F2C521`, olive `#AEA767`, slate blue
+`#6685B1`, script `#80A9F9`, ink `#000000`. The client's colour sheet lists the
+gold as `#F6EB14`, which contradicts the RGB on its own line and the artwork.

@@ -60,7 +60,6 @@
   --vm-spot-o: 1;
 
   /* type */
-  --font-brand: 'Michroma', 'Sora Variable', system-ui, sans-serif;
   --font-script: 'Great Vibes', 'Segoe Script', cursive;
   --font-display: 'Sora Variable', system-ui, sans-serif;
   --font-body: 'Inter Variable', system-ui, sans-serif;
@@ -133,8 +132,9 @@
   --color-error: #c0392b;
   --color-error-bg: #fdf1ef;
   --color-error-border: #f3cdc5;
-  /* a gold to gray blue gradient would be unreadable as text on white */
-  --grad-text: linear-gradient(135deg, #7a6009, #4e63c4);
+  /* gold darkened enough to pass contrast here turns brown, so gradient text
+     on the light theme runs through the cornflower range instead */
+  --grad-text: linear-gradient(135deg, #3d50a8, #748adc);
   --grad-band: linear-gradient(120deg, #2a2a2a 0%, #2f3a5e 55%, #3a4a86 100%);
 
   --vm-stroke-strong: rgba(11, 34, 57, 0.35);

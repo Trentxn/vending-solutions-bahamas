@@ -8,8 +8,10 @@ import { markSvgString } from '../src/brand/mark.js'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const targets = [
-  ['public/favicon.svg', markSvgString({ size: 64 })],
-  ['src/assets/brand/logo-mark.svg', markSvgString({ size: 100 })],
+  // the tab icon zooms in: at 16px the outer arms are indistinguishable
+  ['public/favicon.svg', markSvgString({ size: 64, inset: 20 })],
+  // the eyebrow motif renders at 15px, so it zooms in like the favicon
+  ['src/assets/brand/logo-mark.svg', markSvgString({ size: 100, inset: 14 })],
 ]
 
 for (const [rel, contents] of targets) {

@@ -24,70 +24,28 @@
   gap: 10px;
 }
 
-.logo__img {
-  height: 42px;
-  width: auto;
-}
-
 .logo-mark {
   flex: none;
 }
 
+/* The wordmark is a crop of the client's artwork, so height drives it and the
+   width follows its own proportions. */
 .logo__word {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
+  height: 30px;
+  width: auto;
 }
 
-/* Michroma stands in for the wide Bank Gothic face of the real wordmark:
-   large initial caps, the rest in small caps. */
-.logo__name {
-  font-family: var(--font-brand);
-  font-size: 0.62rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--color-ink);
-  white-space: nowrap;
-}
-
-.logo__name b {
-  font-weight: 400; /* Michroma ships a single weight; size carries the accent */
-  font-size: 1.4em;
-}
-
-.logo__country {
-  font-family: var(--font-brand);
-  font-size: 0.48rem;
-  letter-spacing: 0.34em;
-  text-transform: uppercase;
-  color: var(--color-muted);
-  margin-top: 4px;
-}
-
-.logo__tagline {
-  font-family: var(--font-script);
-  font-size: 1.1rem;
-  line-height: 1;
-  color: var(--color-blue);
-  margin-top: 5px;
-}
-
-.logo__word--light .logo__name {
-  color: #fff;
-}
-
-.logo__word--light .logo__country,
-.logo__word--light .logo__tagline {
-  color: #b3c0f0;
+.logo--tagline .logo__word {
+  height: 46px;
 }
 
 @media (max-width: 479px) {
-  .logo__name {
-    font-size: 0.54rem;
+  .logo {
+    gap: 8px;
   }
 
-  .logo__country {
-    font-size: 0.42rem;
+  .logo__word {
+    height: 25px;
   }
 }
 

@@ -1,126 +1,99 @@
 /* ============================================================
    Vending Solutions Bahamas - brand mark geometry
    ------------------------------------------------------------
-   A recreation of the client's pinwheel mark: a dense golden
-   rosette at the centre with six arms of ellipses curling
-   clockwise outward, shrinking and cooling from golden yellow
-   through olive to soft gray blue at the tips.
+   The client's pinwheel mark, traced from his original artwork
+   (src/assets/brand/logo.pdf) by scripts/trace-mark.mjs: each
+   ellipse below is a blob detected in that image, with its centre,
+   axes and rotation recovered from the blob's covariance and its
+   fill sampled from the blob's interior. It is his mark, not an
+   approximation of it.
 
-   Pure ESM with no dependencies so Node (scripts/build-brand.mjs)
-   and the browser (LogoMark.jsx) share one source of truth.
+   Regenerate with:
+     node scripts/extract-logo.mjs   # artwork -> wordmark PNGs
+     node scripts/trace-mark.mjs <jpg> out.json
+     node scripts/build-brand.mjs    # -> favicon.svg, logo-mark.svg
 
-   Every value here is a frozen constant and every number is
-   rounded to 2dp, so the output is byte for byte identical on
-   every run. The build never calls this: the generated SVGs are
-   committed.
-
-   Replacing this with the official artwork: drop logo.svg (and
-   optionally logo-on-dark.svg) into src/assets/brand/ - Logo.jsx
-   picks it up automatically.
+   Pure ESM with no dependencies so Node and the browser share one
+   source of truth. The build never runs the generators: their
+   outputs are committed.
    ============================================================ */
 
+/* Sampled from the artwork itself. The client's colour sheet lists the gold as
+   #F6EB14, which contradicts the RGB on the same line and the artwork; the
+   measured value is #F2C521, so the site's #EEC42A token stands. */
 export const BRAND = {
-  white: '#F8F8F8',
-  gold: '#EEC42A',
-  grayBlue: '#A3B2BD',
-  slate: '#6B7680',
-  cornflower: '#748ADC',
-  black: '#2A2A2A',
+  paper: '#FFFFFF',
+  gold: '#F2C521',
+  olive: '#AEA767',
+  slateBlue: '#6685B1',
+  script: '#80A9F9',
+  ink: '#000000',
 }
 
-/* ---------- frozen geometry ---------- */
-const ARMS = 6
-const PER_ARM = 8
-const ARM_SPREAD = 360 / ARMS // degrees between arms
-const R0 = 12 // radius where an arm starts
-const DR = 4.8 // radial step per ellipse
-const DTHETA = 16 // angular step per ellipse: the clockwise curl
-const RX0 = 7.4 // half length of the first ellipse in an arm
-const RX_STEP = 0.8 // how much each successive ellipse shrinks
-const RY_RATIO = 0.6 // ellipse thickness relative to its length
-const LEAN = 25 // tilt off tangent, which gives the pinwheel its spin
-
-const CORE_R = 4.2 // the single ellipse at dead centre
-const PETALS = 6 // gold rosette around it
-const PETAL_R = 6.8 // how far the rosette sits from centre
-const PETAL_RX = 5.2
-const PETAL_RY = 3.3
-
-/* yellow -> olive -> gray blue, sampled along each arm */
-const STOPS = [
-  [0, [238, 196, 42]],
-  [0.3, [217, 185, 58]],
-  [0.6, [169, 166, 90]],
-  [1, [163, 178, 189]],
+/** The mark on a 0 0 100 100 viewBox, drawn outside in. */
+const ELLIPSES = [
+  { cx: 57.8, cy: 54.89, rx: 7.36, ry: 4.81, rot: 5.48, fill: '#E0BB33' },
+  { cx: 38.78, cy: 49.98, rx: 8.4, ry: 5.26, rot: -7.77, fill: '#DFBB35' },
+  { cx: 57.99, cy: 38.48, rx: 7.89, ry: 4.77, rot: -59.08, fill: '#CEB445' },
+  { cx: 43.06, cy: 36.22, rx: 9.76, ry: 5.3, rot: 51.92, fill: '#CBB349' },
+  { cx: 43.27, cy: 64.1, rx: 8.38, ry: 4.65, rot: -63.68, fill: '#C7B14B' },
+  { cx: 54.61, cy: 66.93, rx: 7.01, ry: 4.28, rot: 60.34, fill: '#C4B050' },
+  { cx: 69.23, cy: 47.12, rx: 8.56, ry: 5.33, rot: 3.88, fill: '#BFAD53' },
+  { cx: 32.4, cy: 59.05, rx: 6.3, ry: 3.72, rot: 13.76, fill: '#C4B051' },
+  { cx: 32.01, cy: 36.76, rx: 6.55, ry: 3.34, rot: 73.34, fill: '#AEA865' },
+  { cx: 64.49, cy: 66.81, rx: 6.83, ry: 3.89, rot: 58.43, fill: '#B2A960' },
+  { cx: 70.72, cy: 60.18, rx: 5.99, ry: 3.45, rot: 66.52, fill: '#B1A861' },
+  { cx: 25.49, cy: 48.75, rx: 5.57, ry: 3.41, rot: -89.45, fill: '#B1A865' },
+  { cx: 55.07, cy: 25.16, rx: 8.68, ry: 5.24, rot: -49.97, fill: '#A1A372' },
+  { cx: 64.71, cy: 26.71, rx: 3.39, ry: 2.16, rot: -19.92, fill: '#96A080' },
+  { cx: 45.15, cy: 78.27, rx: 8.06, ry: 4.46, rot: -42.54, fill: '#9BA179' },
+  { cx: 32.95, cy: 74.62, rx: 5.42, ry: 3.16, rot: 7.48, fill: '#9BA27A' },
+  { cx: 36.1, cy: 22.79, rx: 6.28, ry: 3.21, rot: -37.91, fill: '#939C88' },
+  { cx: 79.55, cy: 55.47, rx: 5.6, ry: 3.38, rot: -80.68, fill: '#9AA17A' },
+  { cx: 60.76, cy: 77.97, rx: 5.34, ry: 3.28, rot: -36.95, fill: '#989F80' },
+  { cx: 19.49, cy: 43.47, rx: 5.2, ry: 1.9, rot: 86.04, fill: '#9CA17B' },
+  { cx: 15.97, cy: 38.38, rx: 4.72, ry: 1.37, rot: 88.69, fill: '#8C9D90' },
+  { cx: 67.75, cy: 19.32, rx: 5.67, ry: 2.9, rot: 43.38, fill: '#889C93' },
+  { cx: 84.2, cy: 62.18, rx: 5.03, ry: 1.99, rot: -81.57, fill: '#909D89' },
+  { cx: 38.3, cy: 14.69, rx: 6.11, ry: 2.03, rot: -27.78, fill: '#88999D' },
+  { cx: 63.78, cy: 84.03, rx: 6.68, ry: 2.52, rot: -32.78, fill: '#8B9B94' },
+  { cx: 26.18, cy: 78.5, rx: 6.03, ry: 2.2, rot: 32.91, fill: '#899C98' },
+  { cx: 13.7, cy: 33.47, rx: 4.56, ry: 0.89, rot: -88.71, fill: '#7E9BB1' },
+  { cx: 74.4, cy: 18.97, rx: 5.12, ry: 1.71, rot: 44.9, fill: '#8399A6' },
+  { cx: 86.78, cy: 67.84, rx: 4.42, ry: 1.41, rot: -79.44, fill: '#869AA0' },
+  { cx: 41.41, cy: 9.09, rx: 5.39, ry: 1.36, rot: -26.34, fill: '#7E99AC' },
+  { cx: 79.27, cy: 19.72, rx: 4.43, ry: 1.11, rot: 46.41, fill: '#7A98B1' },
+  { cx: 60.64, cy: 90.76, rx: 5.81, ry: 1.53, rot: -28.54, fill: '#819AA9' },
+  { cx: 20.03, cy: 79.04, rx: 5.16, ry: 1.51, rot: 32.19, fill: '#859CA2' },
+  { cx: 12.05, cy: 28.88, rx: 3.84, ry: 0.71, rot: -88.16, fill: '#7598CC' },
+  { cx: 83.21, cy: 20.93, rx: 4, ry: 0.77, rot: 47.09, fill: '#789BC9' },
+  { cx: 88.08, cy: 72.48, rx: 3.71, ry: 0.8, rot: -78.69, fill: '#789AC2' },
+  { cx: 45.03, cy: 4.74, rx: 4.94, ry: 0.97, rot: -24.56, fill: '#7A99C1' },
+  { cx: 86.45, cy: 22.43, rx: 3.19, ry: 0.57, rot: 48.77, fill: '#719ED9' },
+  { cx: 15.31, cy: 78.83, rx: 4.52, ry: 0.83, rot: 35.41, fill: '#7B9ABF' },
+  { cx: 57.25, cy: 95.48, rx: 4.99, ry: 1.01, rot: -25.87, fill: '#779ACD' },
+  { cx: 88.64, cy: 76.44, rx: 2.71, ry: 0.58, rot: -79.19, fill: '#759AD8' },
+  { cx: 11.84, cy: 78.26, rx: 2.91, ry: 0.65, rot: 41.14, fill: '#7299D2' },
+  { cx: 49.15, cy: 0.79, rx: 4.03, ry: 0.79, rot: -22.69, fill: '#739CD7' },
+  { cx: 53.69, cy: 99.23, rx: 4.05, ry: 0.77, rot: -23.61, fill: '#749AD9' },
 ]
 
-const r2 = (n) => Number(n.toFixed(2))
-const rad = (deg) => (deg * Math.PI) / 180
-
-function hex([r, g, b]) {
-  return '#' + [r, g, b].map((v) => Math.round(v).toString(16).padStart(2, '0')).join('').toUpperCase()
-}
-
-/** Sample the arm ramp at t (0 to 1) in sRGB. */
-function ramp(t) {
-  for (let i = 1; i < STOPS.length; i += 1) {
-    const [t1, c1] = STOPS[i]
-    if (t <= t1 || i === STOPS.length - 1) {
-      const [t0, c0] = STOPS[i - 1]
-      const f = t1 === t0 ? 0 : (t - t0) / (t1 - t0)
-      return hex(c0.map((v, j) => v + (c1[j] - v) * Math.min(Math.max(f, 0), 1)))
-    }
-  }
-  return hex(STOPS[0][1])
+export function markEllipses() {
+  return ELLIPSES
 }
 
 /**
- * The mark as a flat list of ellipses on a 0 0 100 100 viewBox,
- * in draw order: centre core, rosette, then the six arms.
+ * The same mark as a standalone SVG document (favicon, CSS url()).
+ * `inset` trims the viewBox towards the centre: the thin outer arms turn to
+ * mush at favicon size, so the tab icon zooms into the dense golden rosette.
  */
-export function markEllipses() {
-  const out = [{ cx: 50, cy: 50, rx: CORE_R, ry: CORE_R, rot: 0, fill: BRAND.gold }]
-
-  for (let p = 0; p < PETALS; p += 1) {
-    const theta = p * (360 / PETALS) - 90
-    out.push({
-      cx: r2(50 + PETAL_R * Math.cos(rad(theta))),
-      cy: r2(50 + PETAL_R * Math.sin(rad(theta))),
-      rx: PETAL_RX,
-      ry: PETAL_RY,
-      rot: r2(theta),
-      fill: BRAND.gold,
-    })
-  }
-
-  for (let i = 0; i < ARMS; i += 1) {
-    for (let k = 0; k < PER_ARM; k += 1) {
-      const theta = i * ARM_SPREAD + k * DTHETA - 90
-      const r = R0 + k * DR
-      const rx = RX0 - k * RX_STEP
-      out.push({
-        cx: r2(50 + r * Math.cos(rad(theta))),
-        cy: r2(50 + r * Math.sin(rad(theta))),
-        rx: r2(rx),
-        ry: r2(rx * RY_RATIO),
-        rot: r2(theta + 90 + LEAN),
-        fill: ramp(k / (PER_ARM - 1)),
-      })
-    }
-  }
-
-  return out
-}
-
-/** The same mark as a standalone SVG document (favicon, CSS url()). */
-export function markSvgString({ size = 64 } = {}) {
-  const body = markEllipses()
-    .map(
-      (e) =>
-        `  <ellipse cx="${e.cx}" cy="${e.cy}" rx="${e.rx}" ry="${e.ry}" fill="${e.fill}"` +
-        (e.rot ? ` transform="rotate(${e.rot} ${e.cx} ${e.cy})"` : '') +
-        ' />'
-    )
-    .join('\n')
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="${size}" height="${size}">\n${body}\n</svg>\n`
+export function markSvgString({ size = 64, inset = 0 } = {}) {
+  const vb = `${inset} ${inset} ${100 - inset * 2} ${100 - inset * 2}`
+  const body = ELLIPSES.map(
+    (e) =>
+      `  <ellipse cx="${e.cx}" cy="${e.cy}" rx="${e.rx}" ry="${e.ry}" fill="${e.fill}"` +
+      (e.rot ? ` transform="rotate(${e.rot} ${e.cx} ${e.cy})"` : '') +
+      ' />'
+  ).join('\n')
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${vb}" width="${size}" height="${size}">\n${body}\n</svg>\n`
 }

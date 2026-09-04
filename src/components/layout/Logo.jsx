@@ -1,50 +1,38 @@
 import useTheme from '../../hooks/useTheme.js'
 import LogoMark from '../brand/LogoMark.jsx'
+import wordmark from '../../assets/brand/wordmark.png'
+import wordmarkOnDark from '../../assets/brand/wordmark-on-dark.png'
+import lockup from '../../assets/brand/lockup.png'
+import lockupOnDark from '../../assets/brand/lockup-on-dark.png'
 
 /*
- * The brand lockup: pinwheel mark + wordmark + optional script tagline.
+ * The brand lockup, built from the client's own artwork:
+ *   - the pinwheel mark is vector, traced from logo.pdf (src/brand/mark.js),
+ *     so it stays crisp from the 16px favicon up
+ *   - the wordmark is cropped from the same artwork with the paper keyed out
+ *     (scripts/extract-logo.mjs), in dark ink for light grounds and white for
+ *     navy
  *
- * SWAPPING IN THE OFFICIAL ARTWORK: drop logo.svg (or .png) into
- * src/assets/brand/. Add logo-on-dark.svg too if the wordmark is dark ink,
- * and it will be used on the dark theme and on dark bands. Nothing else
- * needs to change - the recreation below is only the fallback.
+ * `tagline` picks the taller crop that includes "Power of Choice"; the header
+ * uses the wordmark alone, which would otherwise make the bar too tall.
+ * `light` forces the on dark artwork for always dark contexts (the footer, and
+ * the header while it is transparent over the hero photo).
  */
-const official = import.meta.glob('../../assets/brand/logo{,-on-dark}.{svg,png}', {
-  eager: true,
-  query: '?url',
-  import: 'default',
-})
-
-const pick = (dark) => {
-  const entries = Object.entries(official)
-  if (!entries.length) return null
-  const onDark = entries.find(([p]) => p.includes('logo-on-dark'))
-  const base = entries.find(([p]) => !p.includes('logo-on-dark'))
-  return (dark ? onDark || base : base || onDark)?.[1] ?? null
-}
-
 export default function Logo({ light = false, tagline = false }) {
   const { theme } = useTheme()
-  const src = pick(light || theme === 'dark')
-
-  if (src) {
-    return (
-      <span className="logo">
-        <img className="logo__img" src={src} alt="Vending Solutions Bahamas" />
-      </span>
-    )
-  }
+  const onDark = light || theme === 'dark'
+  const src = tagline ? (onDark ? lockupOnDark : lockup) : onDark ? wordmarkOnDark : wordmark
 
   return (
-    <span className="logo">
-      <LogoMark size={40} />
-      <span className={`logo__word ${light ? 'logo__word--light' : ''}`}>
-        <span className="logo__name">
-          <b>V</b>ending <b>S</b>olutions
-        </span>
-        <span className="logo__country">Bahamas</span>
-        {tagline && <span className="logo__tagline">Power of Choice</span>}
-      </span>
+    <span className={`logo${tagline ? ' logo--tagline' : ''}`}>
+      <LogoMark size={tagline ? 46 : 38} />
+      <img
+        className="logo__word"
+        src={src}
+        alt={`Vending Solutions Bahamas${tagline ? ', Power of Choice' : ''}`}
+        width="818"
+        height={tagline ? '429' : '307'}
+      />
     </span>
   )
 }
